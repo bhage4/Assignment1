@@ -1,0 +1,11 @@
+eclipse.preferences.version=1
+encoding//WebContent/CancelOrder.jsp=UTF-8
+encoding//WebContent/CancellationConfirmation.jsp=UTF-8
+encoding//WebContent/CustomerTransaction.jsp=UTF-8
+encoding//WebContent/CustomerTransactionConfirmation.jsp=UTF-8
+encoding//WebContent/Login.jsp=UTF-8
+encoding//WebContent/ManageOrder.jsp=UTF-8
+encoding//WebContent/MovieDetailsSelection.jsp=UTF-8
+encoding//WebContent/MovieSearchResults.jsp=UTF-8
+encoding//WebContent/ViewAndCheckoutShoppingCart.jsp=UTF-8
+encoding//WebContent/ViewOrders.jsp=UTF-8
