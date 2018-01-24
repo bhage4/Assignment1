@@ -11,23 +11,20 @@
 </body>
 </html>
 
-<!-- • This page displays a list of items in the shopping cart. Each item in the list must be -->
-<!-- displayed with the following information -->
-<!-- o Movie name -->
-<!-- o Ticket quantity -->
-<!-- o Total price -->
-<!-- o Theatre name -->
-<!-- • Use placeholders for this assignment. -->
-<!-- • No validation is required for this assignment. -->
-<!-- • The page should display the total cost (all items in the cart) and should allow for entry of -->
-<!-- credit card information. Fields must include account holder first name, last name, card -->
-<!-- type (drop-down menu with values Visa, Master or Discover), card number, security -->
-<!-- code, expiration date (drop-down menu), billing address and shipping address. For this -->
-<!-- assignment, use placeholder values for all variables. -->
-<!-- • This page should have two buttons: “Confirm Payment” and “Cancel Payment”. -->
-<!-- • Clicking the “Confirm Payment” button should lead to the -->
-<!-- CustomerTransactionConfirmation.jsp page. -->
-<!-- • Clicking the “Cancel Payment” button should lead to the -->
-<!-- View&CheckoutShoppingCart.jsp page. -->
-<!-- • This page should have a link to the ViewOrders.jsp page. -->
-<!-- • It should have logout option upon clicking that takes to the Login page. -->
+<!-- This page displays a list of items in the shopping cart. Each item in the list must be displayed with the following information -->
+	<!-- Movie name -->
+	<!-- Ticket quantity -->
+	<!-- Total price -->
+	<!-- Theatre name -->
+<!-- Use placeholders for this assignment. -->
+<!-- No validation is required for this assignment. -->
+<!-- The page should display the total cost (all items in the cart) and should allow for entry of
+	 credit card information. Fields must include account holder first name, last name, card
+	 type (drop-down menu with values Visa, Master or Discover), card number, security
+	 code, expiration date (drop-down menu), billing address and shipping address. For this
+	 assignment, use placeholder values for all variables. -->
+<!-- This page should have two buttons: “Confirm Payment” and “Cancel Payment”. -->
+<!-- Clicking the “Confirm Payment” button should lead to the CustomerTransactionConfirmation.jsp page. -->
+<!-- Clicking the “Cancel Payment” button should lead to the View&CheckoutShoppingCart.jsp page. -->
+<!-- This page should have a link to the ViewOrders.jsp page. -->
+<!-- It should have logout option upon clicking that takes to the Login page. -->

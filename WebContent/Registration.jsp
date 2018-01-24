@@ -11,8 +11,6 @@
 </body>
 </html>
 
-<!-- The page checks if the password and confirmation password match (agent side using -->
-<!-- JavaScript). -->
-<!--  Clicking the submit button on the form should call the Registration servlet. It should -->
-<!-- check whether the user already exists or not. -->
+<!-- The page checks if the password and confirmation password match (agent side using JavaScript). -->
+<!--  Clicking the submit button on the form should call the Registration servlet. It should check whether the user already exists or not. -->
 <!--  No session generation of the fields is required for this assignment. -->

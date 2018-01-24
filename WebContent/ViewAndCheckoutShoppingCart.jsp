@@ -11,19 +11,17 @@
 </body>
 </html>
 
-<!-- • This page displays the list of items in the shopping cart. -->
-<!-- • The following information must be displayed for every item in the cart -->
-<!-- o Movie name -->
-<!-- o Movie thumbnail -->
-<!-- o Theatre name and number -->
-<!-- o Showtime and Date -->
-<!-- o Number of tickets being bought -->
-<!-- o Total price -->
-<!-- • Use placeholders for this assignment. -->
-<!-- • A delete button should be displayed for each item to delete that item from the shopping -->
-<!-- cart. -->
-<!-- • This page should also display the total cost of the items in the shopping cart. -->
-<!-- • This page should have a “Checkout” button that leads to the CustomerTransaction.jsp -->
-<!-- page. -->
-<!-- • It should have logout option upon clicking that takes to the Login page. -->
-<!-- • It should have “Home” button that lead to the CustomerHomePage.jsp. -->
+<!-- This page displays the list of items in the shopping cart. -->
+<!-- The following information must be displayed for every item in the cart -->
+	<!-- Movie name -->
+	<!-- Movie thumbnail -->
+	<!-- Theatre name and number -->
+	<!-- Showtime and Date -->
+	<!-- Number of tickets being bought -->
+	<!-- Total price -->
+<!-- Use placeholders for this assignment. -->
+<!-- A delete button should be displayed for each item to delete that item from the shopping cart. -->
+<!-- This page should also display the total cost of the items in the shopping cart. -->
+<!-- This page should have a “Checkout” button that leads to the CustomerTransaction.jsp page. -->
+<!-- It should have logout option upon clicking that takes to the Login page. -->
+<!-- It should have “Home” button that lead to the CustomerHomePage.jsp. -->

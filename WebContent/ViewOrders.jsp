@@ -11,13 +11,11 @@
 </body>
 </html>
 
-<!--  This page displays the list of customer orders briefly. Each order in the list must be -->
-<!-- displayed with the following information -->
-<!-- o Order number -->
-<!-- o Order Total -->
-<!-- o Ordered date -->
-<!-- • Use placeholders for this assignment. -->
-<!-- • A View button also must be displayed along with each order which up on clicking should -->
-<!-- lead to the ManageOrder.jsp page. -->
-<!-- • It should have logout option upon clicking that takes to the Login page. -->
-<!-- • It should have “Home” button that lead to the CustomerHomePage.jsp page. -->
+<!--  This page displays the list of customer orders briefly. Each order in the list must be displayed with the following information -->
+	<!-- Order number -->
+	<!-- Order Total -->
+	<!-- Ordered date -->
+<!-- Use placeholders for this assignment. -->
+<!-- A View button also must be displayed along with each order which up on clicking should lead to the ManageOrder.jsp page. -->
+<!-- It should have logout option upon clicking that takes to the Login page. -->
+<!-- It should have “Home” button that lead to the CustomerHomePage.jsp page. -->

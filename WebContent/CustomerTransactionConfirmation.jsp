@@ -11,9 +11,8 @@
 </body>
 </html>
 
-<!--  The page must display all information on the transaction page except the credit card -->
-<!-- information. -->
-<!-- • The page must display a message “Your order has been placed”. -->
-<!-- • The page has a “Home” button that when clicked leads to the Customer Home page. -->
-<!-- • This page should have a link to the ViewOrders.jsp page. -->
-<!-- • It should have logout option upon clicking that takes to the Login page -->
+<!--  The page must display all information on the transaction page except the credit card information. -->
+<!-- The page must display a message “Your order has been placed”. -->
+<!-- The page has a “Home” button that when clicked leads to the Customer Home page. -->
+<!-- This page should have a link to the ViewOrders.jsp page. -->
+<!-- It should have logout option upon clicking that takes to the Login page -->

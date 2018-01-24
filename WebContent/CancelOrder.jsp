@@ -12,10 +12,9 @@
 </html>
 
 <!-- This page must display the movie information and the order it belongs to. -->
-<!-- • This page lets the customer to cancel the selected item in an order but not necessarily the -->
-<!-- entire order. -->
-<!-- • There must be two buttons here: “Confirm Cancellation” and “Discard Cancellation”. -->
-<!-- • The Confirm Cancellation button should lead to the CancellationConfirmation.jsp page. -->
-<!-- • The Discard Cancellation button should lead to the Home page. -->
-<!-- • This page should have a link to the ViewOrders.jsp page. -->
-<!-- • It should have logout option upon clicking that takes to the Login page. -->
+<!-- This page lets the customer to cancel the selected item in an order but not necessarily the entire order. -->
+<!-- There must be two buttons here: “Confirm Cancellation” and “Discard Cancellation”. -->
+<!-- The Confirm Cancellation button should lead to the CancellationConfirmation.jsp page. -->
+<!-- The Discard Cancellation button should lead to the Home page. -->
+<!-- This page should have a link to the ViewOrders.jsp page. -->
+<!-- It should have logout option upon clicking that takes to the Login page. -->

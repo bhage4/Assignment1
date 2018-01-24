@@ -11,21 +11,16 @@
 </body>
 </html>
 
-<!-- This page displays a list of movie showings that satisfy the search query (movie name -->
-<!-- matches and the movie is shown at the selected theatre). -->
-<!-- • For Assignment 1, you should only display random results since no query is being -->
-<!-- executed. -->
-<!-- • The random data you generate should be of tabular format with the following columns: -->
-<!-- o Names of the theatre building showing the movie -->
-<!-- o Theatre number in the building showing the movie -->
-<!-- o Showtime of the movie -->
-<!-- o Number of available seats -->
-<!-- o Price -->
-<!-- o Thumbnail of the movie poster -->
-<!-- • Each result must have a “View Details” button (this takes to the -->
-<!-- MovieDetailsAndSelection.jsp page) to view more details and purchase seats for the -->
-<!-- movie. -->
-<!-- • For this assignment, use placeholder values for all variables. -->
-<!-- • This page should also have a link to the ViewOrder.jsp page. -->
-<!-- 4 -->
-<!-- • It should have logout option upon clicking that takes to the Login page. -->
+<!-- This page displays a list of movie showings that satisfy the search query (movie name matches and the movie is shown at the selected theatre). -->
+<!-- For Assignment 1, you should only display random results since no query is being executed. -->
+<!-- The random data you generate should be of tabular format with the following columns: -->
+	<!-- Names of the theatre building showing the movie -->
+	<!-- Theatre number in the building showing the movie -->
+	<!-- Showtime of the movie -->
+	<!-- Number of available seats -->
+	<!-- Price -->
+	<!-- Thumbnail of the movie poster -->
+<!-- Each result must have a “View Details” button (this takes to the MovieDetailsAndSelection.jsp page) to view more details and purchase seats for the movie. -->
+<!-- For this assignment, use placeholder values for all variables. -->
+<!-- This page should also have a link to the ViewOrder.jsp page. -->
+<!-- It should have logout option upon clicking that takes to the Login page. -->
