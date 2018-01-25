@@ -2,28 +2,27 @@
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Home Page</title>
-</head>
-<body>
-	<nav>
-		<a href="ViewOrders.jsp">View Orders</a>
-		
-		<div class="dropdown">
-			<button class="dropbtn">Dropdown</button>
-				<div class="dropdown-content">
-					<a href="#">Link 1</a><!-- Movie Theatre Locations -->
-		  		</div>
-		</div>
-		
-		<input type="text" name="movieSearch">
-		<button type="button" href="MovieSearchResults.jsp">Search</button>
-		<a href="Login.jsp">Logout</a>
-	</nav>
-	<h1>Home Page</h1>
-
-</body>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<title>Home Page</title>
+	</head>
+	<body>
+		<nav>
+			<a href="ViewOrders.jsp">View Orders</a>
+			
+			<div class="dropdown">
+				<button class="dropbtn">Dropdown</button>
+					<div class="dropdown-content">
+						<a href="#">Link 1</a><!-- Movie Theatre Locations -->
+			  		</div>
+			</div>
+			
+			<input type="text" name="movieSearch">
+			<a class="btn" href="MovieSearchResults.jsp">Search</a>
+			<a href="Login.jsp">Logout</a>
+		</nav>
+		<h1>Home Page</h1>
+	</body>
 </html>
 
 <!--  DONE: This page is the welcome page for the customers and can be designed as per the student's wish. -->

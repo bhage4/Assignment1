@@ -2,13 +2,16 @@
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
-</head>
-<body>
-
-</body>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<title>Insert title here</title>
+	</head>
+	<body>
+		<a class="btn" href="CustomerTransactionConfirmation.jsp">Confirm Payment</a>
+		<a class="btn" href="ViewAndCheckoutShoppingCart.jsp">Cancel Payment</a>
+		<a href="ViewOrders.jsp">View Orders</a>
+		<a href="Login.jsp">Logout</a>
+	</body>
 </html>
 
 <!-- This page displays a list of items in the shopping cart. Each item in the list must be displayed with the following information -->
