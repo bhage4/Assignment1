@@ -4,23 +4,27 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+ 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 		<title>Home Page</title>
 	</head>
 	<body>
-		<nav>
+		<div>
 			<a href="ViewOrders.jsp">View Orders</a>
 			
 			<div class="dropdown">
-				<button class="dropbtn">Dropdown</button>
-					<div class="dropdown-content">
-						<a href="#">Link 1</a><!-- Movie Theatre Locations -->
-			  		</div>
+				<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown</button>
+					<span class="caret"></span></button>
+				    <ul class="dropdown-menu">
+				      <li><a href="#">Link 1</a></li><!--movie theatre locations-->
+				    </ul>
 			</div>
-			
+						
 			<input type="text" name="movieSearch">
 			<a class="btn" href="MovieSearchResults.jsp">Search</a>
 			<a href="Login.jsp">Logout</a>
-		</nav>
+		</div>
 		<h1>Home Page</h1>
 	</body>
 </html>
