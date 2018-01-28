@@ -37,7 +37,7 @@
 		<h2> Register here</h2>
 		
 		<!--NOTE: I'm having trouble with the redirection here for some reason-nothing links to the registration servlet??-->
-		<form action="Registration.java" name=registrationForm onsubmit="return validateForm()" method="post">
+		<form action="Registration.java" name="registrationForm" onsubmit="return validateForm()" method="post">
 		
 			User Name: <input type=text name=userName><br>
 			Password: <input type=password name=password><br>

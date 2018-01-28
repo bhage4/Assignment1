@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<workbench progressCount="43" version="2.0">
+<workbench progressCount="39" version="2.0">
 <workbenchAdvisor/>
 <window height="768" maximized="true" width="1024" x="104" y="92">
 <fastViewData fastViewLocation="1024"/>
@@ -112,8 +112,8 @@
 <perspective_action id="org.eclipse.jdt.ui.JavaPerspective"/>
 <perspective_action id="org.eclipse.ui.resourcePerspective"/>
 <perspective_action id="org.eclipse.wst.web.ui.webDevPerspective"/>
-<hide_toolbar_item_id id="org.eclipse.jdt.ui.actions.OpenProjectWizard"/>
 <hide_toolbar_item_id id="org.eclipse.ui.edit.text.toggleShowSelectedElementOnly"/>
+<hide_toolbar_item_id id="org.eclipse.jdt.ui.actions.OpenProjectWizard"/>
 <view id="org.eclipse.ui.navigator.ProjectExplorer"/>
 <view id="org.eclipse.ui.views.AllMarkersView"/>
 <view id="org.eclipse.ui.views.PropertySheet"/>
