@@ -4,9 +4,83 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Search Results</title>
 </head>
 <body>
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+</style>
+</head>
+<body>
+<a type="button" class="btn btn-info" href="CustomerHomePage.jsp">Home</a>
+<a type="button" class="btn btn-danger" href="Login.jsp">Log out</a>
+<table>
+  <tr>
+    <th>Theater Name</th>
+    <th>Screen Number</th>
+    <th>Showtime</th>
+    <th>Available Seats</th>
+    <th>Price</th>
+    <th>Poster</th>
+    <th></th>
+  </tr>
+  <tr>
+    <td>Marcus Grande</td>
+    <td>5</td>
+    <td>6:30pm</td>
+    <td>34</td>
+    <td>$10.50</td>
+    <td><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR83_t_x7tsPJuDTDr-ki38X9wMJAP7sFDTq_aql1FmDpmqEnlRng"></td>
+    <td><a type="button" class="btn btn-warning" href="ViewOrders.jsp">View Orders</a></td>
+  </tr>
+  <tr>
+    <td>Community Playhouse</td>
+    <td>2</td>
+    <td>4:15pm</td>
+    <td>10</td>
+    <td>$6.00</td>
+    <td><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR83_t_x7tsPJuDTDr-ki38X9wMJAP7sFDTq_aql1FmDpmqEnlRng"></td>
+    <td><a type="button" class="btn btn-warning" href="ViewOrders.jsp">View Orders</a></td>
+  </tr>
+  <tr>
+    <td>Marcus Grande East</td>
+    <td>12</td>
+    <td>12:30pm</td>
+    <td>8</td>
+    <td>$8.00</td>
+    <td><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT2k7b8gFohCLPcg1C6rChgur99xh1G2FtnnoJ7-7S6H14pBIP37w"></td>
+    <td><a type="button" class="btn btn-warning" href="ViewOrders.jsp">View Orders</a></td>
+  </tr>
+  <tr>
+    <td>AMC Cinema</td>
+    <td>7</td>
+    <td>2:00pm</td>
+    <td>40</td>
+    <td>$10.00</td>
+    <td><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT2k7b8gFohCLPcg1C6rChgur99xh1G2FtnnoJ7-7S6H14pBIP37w"></td>
+    <td><a type="button" class="btn btn-warning" href="ViewOrders.jsp">View Orders</a></td>
+  </tr>
+</table>
+
+</body>
+</html>
 
 </body>
 </html>

@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ page import="model.Users" %>
+<%@ page import="model.Registration" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -30,6 +32,13 @@
 	        alert("Password and Confirmation of Password must match");
 	        return false;
 	    }
+	    
+	    Users user = new User(x,y);
+	    if(!checkUniqueUser(user)){
+	    	alert("This is not a unique username. Please choose another.");
+	    	return false;
+	    }
+	    
 	}
 </script>
 </head>
@@ -57,5 +66,5 @@
 </html>
 
 <!-- DONE The page checks if the password and confirmation password match (agent side using JavaScript). -->
-<!--  Clicking the submit button on the form should call the Registration servlet. It should check whether the user already exists or not. -->
-<!--  No session generation of the fields is required for this assignment. -->
+<!--  DONE Clicking the submit button on the form should call the Registration servlet. It should check whether the user already exists or not. -->
+<!--  DONE No session generation of the fields is required for this assignment. -->

@@ -97,5 +97,41 @@ public class Registration extends HttpServlet{
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 	}
+	
+	//Checks unique username
+	public boolean checkUniqueUser(Users aUser){
+		ServletContext sc = this.getServletContext();
+		String propFilePath = sc.getRealPath("/WEB-INF/users.properties");
+		
+		Properties p = new Properties();
+
+		FileInputStream fis = null;
+
+		try {
+			fis = new FileInputStream(propFilePath);
+
+			p.load(fis);
+
+			// Check whether the username exists or not
+			if(p.containsKey(userName)) {
+				return false;
+			} else {
+				return true;
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		} finally {
+			if(fis != null) {
+				try {
+					fis.close();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+	}
 
 }
