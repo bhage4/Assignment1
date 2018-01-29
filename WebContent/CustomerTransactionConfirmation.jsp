@@ -4,13 +4,56 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-		<title>Insert title here</title>
+		<title>Transaction Confirmation</title>
+		<style>
+		table {
+		    font-family: arial, sans-serif;
+		    border-collapse: collapse;
+		    width: 100%;
+		}
+		
+		td, th {
+		    border: 1px solid #dddddd;
+		    text-align: left;
+		    padding: 8px;
+		}
+		
+		tr:nth-child(even) {
+		    background-color: #dddddd;
+		}
+		</style>
 	</head>
 	<body>
 		<a href="CustomerHomePage.jsp">Home</a>
 		<a href="ViewOrders.jsp">View Orders</a>
 		<a href="Login.jsp">Logout</a>
-		Your Order Has Been Placed
+		<h2>Your Order Has Been Placed</h2>
+        <h3>Details:</h3>
+		<table>
+		<tr>
+		  <th>Movie Name</th>
+		  <th>Ticket Quantity</th>
+		  <th>Total Price</th>
+		  <th>Theater Name</th>
+		</tr>
+		<tr>
+		  <td>Interstellar</td>
+		  <td>3</td>
+		  <td>$24.00</td>
+		  <td>AMC West</td>
+		</tr>
+		<tr>
+		  <td>Dark Knight</td>
+		  <td>2</td>
+		  <td>$18.00</td>
+		  <td>Marcus Grande Cinema</td>
+		</tr>
+		</table><br>
+		<strong>Total Cost:</strong> $42.00<br><br>
+		<strong>Shipping Address:</strong>
+		<br>
+		Street: <input type="text" name="shipStreet"> City: <input type="text" name="shipCity"> State: <input type="date" name="shipStreet"> Zip Code: <input type="text" name="shipZip">
+		<br><br>
 	</body>
 </html>
 
