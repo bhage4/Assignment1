@@ -6,10 +6,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Search Results</title>
 </head>
-<body>
-<!DOCTYPE html>
-<html>
-<head>
 <style>
 table {
     font-family: arial, sans-serif;
@@ -27,7 +23,6 @@ tr:nth-child(even) {
     background-color: #dddddd;
 }
 </style>
-</head>
 <body>
 <a type="button" class="btn btn-info" href="CustomerHomePage.jsp">Home</a>
 <a type="button" class="btn btn-danger" href="Login.jsp">Log out</a>
@@ -78,9 +73,6 @@ tr:nth-child(even) {
     <td><a type="button" class="btn btn-warning" href="ViewOrders.jsp">View Orders</a></td>
   </tr>
 </table>
-
-</body>
-</html>
 
 </body>
 </html>
