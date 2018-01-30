@@ -11,22 +11,26 @@
 		<title>Home Page</title>
 	</head>
 	<body>
-		<div>
-			<a href="ViewOrders.jsp">View Orders</a>
-			
+		
+			<div id="topsection"><div class="innertube"><h1>Home Page 
+			<a type="button" class="btn btn-info" href="ViewOrders.jsp">View Orders</a>
+			<a type="button" class="btn btn-danger" href="Login.jsp">Log out</a></h1></div></div>
+			<br>
 			<div class="dropdown">
-				<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown</button>
+				<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Theatre Locations</button>
 					<span class="caret"></span></button>
 				    <ul class="dropdown-menu">
-				      <li><a href="#">Link 1</a></li><!--movie theatre locations-->
+				      <li><a href="#">Marcus Grande</a></li><!--movie theatre locations-->
+				      <li><a href="#">Community Playhouse</a></li>
+				      <li><a href="#">Marcus Grande East</a></li>
+				      <li><a href="#">AMC Cinema</a></li>
 				    </ul>
 			</div>
-						
+			<br>
 			<input type="text" name="movieSearch">
-			<a class="btn" href="MovieSearchResults.jsp">Search</a>
-			<a href="Login.jsp">Logout</a>
-		</div>
-		<h1>Home Page</h1>
+			<a class="btn btn-primary" href="MovieSearchResults.jsp">Search</a>
+			
+		
 	</body>
 </html>
 
@@ -35,6 +39,6 @@
 <!--  DONE: It should have logout option upon clicking that takes to the Login page. -->
 <!--  The page must also provide a section where the user can search for movies. -->
 <!--  This section must include the following items: -->
-	<!--  A drop-down menu consisting of available movie theatre locations. -->
+	<!--  DONE: A drop-down menu consisting of available movie theatre locations. -->
 	<!--  DONE: A text box to enter a search term (a movie). -->
 	<!--  DONE: A search button which when clicked must lead to the MovieSearchResults.jsp page. -->
