@@ -1,37 +1,35 @@
 package model;
 
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Properties;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.Users;
-
-public class Registration extends HttpServlet{
-
-	//	Each registered user’s login/password info will be kept in the Java Properties files used
-	//	by the login servlet.
-	//	• The servlet will save the user’s records through the Users class.
-	//	• After inserting the record, the servlet redirects the user to the Login jsp page.
+/**
+ * Servlet implementation class Registration
+ */
+@WebServlet("/Registration")
+public class Registration extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
-	public Registration() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public Registration() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String userName = request.getParameter("userName");
 		String password = request.getParameter("password");
@@ -81,14 +79,17 @@ public class Registration extends HttpServlet{
 		// Uncomment the following block to do registration via the User object
 		
 		// Registration via the Users object
-		Users aUser = new Users(userName, password);
+		if(userName != null && password != null){
+			Users aUser = new Users(userName, password);
+			
+			//First check whether the user already exists via methods from Users class
+			aUser.validateUser(propFilePath);
 
-		//First check whether the user already exists via methods from Users class
-		aUser.validateUser(propFilePath);
+			// Register the Users object
+			aUser.registerUser(aUser, propFilePath);			
+		}
 
-		// Register the Users object
-		aUser.registerUser(aUser, propFilePath);
-
+		
 		response.sendRedirect("Login.jsp"); 
 
 
@@ -97,6 +98,7 @@ public class Registration extends HttpServlet{
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 	}
