@@ -4,30 +4,16 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="NiceLayout.css">
 <title>Movie Details</title>
-<style>
-table {
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-}
-
-td, th {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
-}
-
-tr:nth-child(even) {
-    background-color: #dddddd;
-}
-</style>
 </head>
 <body>
+<div id="topsection"><div class="innertube"><h1>
 <a type="button" class="btn btn-info" href="CustomerHomePage.jsp">Home</a>
 <a type="button" class="btn btn-info" href="MovieSearchResults.jsp">Back</a>
 <a type="button" class="btn btn-danger" href="ViewAndCheckoutShoppingCart.jsp">Add to Cart</a>
-<a type="button" class="btn btn-danger" href="Login.jsp">Log out</a>
+<a type="button" class="btn btn-danger" href="Login.jsp">Log out</a></h1></div></div>
 <h2>Movie Details</h2>
 <table>
   <tr>

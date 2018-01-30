@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.Users;
+
 public class Registration extends HttpServlet{
 
 	//	Each registered user’s login/password info will be kept in the Java Properties files used
@@ -82,6 +84,7 @@ public class Registration extends HttpServlet{
 		Users aUser = new Users(userName, password);
 
 		//First check whether the user already exists via methods from Users class
+		aUser.validateUser(propFilePath);
 
 		// Register the Users object
 		aUser.registerUser(aUser, propFilePath);
@@ -113,7 +116,7 @@ public class Registration extends HttpServlet{
 			p.load(fis);
 
 			// Check whether the username exists or not
-			if(p.containsKey(userName)) {
+			if(p.containsKey(aUser.getUserName())) {
 				return false;
 			} else {
 				return true;

@@ -4,14 +4,37 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="NiceLayout.css">
 		<title>Cancel Order</title>
 	</head>
 	<body>
-		<a class="btn" href="CancellationConfirmation.jsp">Confirm Cancellation</a>
-		<a class="btn" href="CustomerHomePage.jsp">Discard Cancellation</a>
-		<a href="ViewOrders.jsp">View Orders</a>
-		<a href="Login.jsp">Logout</a>
-	</body>
+		<div id="topsection"><div class="innertube"><h1>
+		<a type="button" class="btn btn-info" href="ViewOrders.jsp">View Orders</a>
+		<a type="button" class="btn btn-danger" href="Login.jsp">Log out</a></h1></div></div>
+	
+	<h3>Order Number: 123098923</h3>
+<table>
+  <tr>
+    <th>Movie Name</th>
+    <th>Ticket Quantity</th>
+    <th>Total Price</th>
+    <th>Theater Name/Number</th>
+    <th>Date and Time</th>
+  </tr>
+  <tr>
+    <td>Interstellar</td>
+    <td>2</td>
+    <td>$18.00</td>
+    <td>AMC East 12</td>
+    <td>Feb. 02, 2018 @ 4:30pm</td>
+  </tr>
+</table>
+<br>
+<a class="btn btn-warning" href="CancellationConfirmation.jsp">Confirm Cancellation</a>
+<a class="btn btn-warning" href="CustomerHomePage.jsp">Discard Cancellation</a>
+</body>
+	
 </html>
 
 <!-- This page must display the movie information and the order it belongs to. -->

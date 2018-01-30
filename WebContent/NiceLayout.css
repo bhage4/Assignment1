@@ -17,9 +17,25 @@ line-height: 1.5em;
 b{font-size: 110%;}
 em{color: red;}
 
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
 
 #topsection{
-background: #EAEAEA;
+background: #008080;
 height: 90px; /*Height of top section*/
 }
 

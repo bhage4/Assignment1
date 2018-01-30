@@ -3,30 +3,16 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
+		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="NiceLayout.css">
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 		<title>Transaction Confirmation</title>
-		<style>
-		table {
-		    font-family: arial, sans-serif;
-		    border-collapse: collapse;
-		    width: 100%;
-		}
-		
-		td, th {
-		    border: 1px solid #dddddd;
-		    text-align: left;
-		    padding: 8px;
-		}
-		
-		tr:nth-child(even) {
-		    background-color: #dddddd;
-		}
-		</style>
 	</head>
 	<body>
-		<a href="CustomerHomePage.jsp">Home</a>
-		<a href="ViewOrders.jsp">View Orders</a>
-		<a href="Login.jsp">Logout</a>
+		<div id="topsection"><div class="innertube"><h1>
+		<a type="button" class="btn btn-info" href="CustomerHomePage.jsp">Home</a>
+		<a type="button" class="btn btn-info" href="ViewOrders.jsp">View Orders</a>
+		<a type="button" class="btn btn-danger" href="Login.jsp">Log out</a></h1></div></div>
 		<h2>Your Order Has Been Placed</h2>
         <h3>Details:</h3>
 		<table>
