@@ -57,11 +57,11 @@ Number: <input type="text" name="cardNumber"> Security Code: <input type="text" 
 First Name: <input type="text" name="firstName"> Last Name: <input type="text" name="lastName"><br><br>
 <strong>Billing Address:</strong>
 <br>
-Street: <input type="text" name="billStreet"> City: <input type="text" name="billCity"> State: <input type="date" name="billStreet"> Zip Code: <input type="text" name="billZip">
+Street: <input type="text" name="billStreet"> City: <input type="text" name="billCity"> State: <input type="text" name="billStreet"> Zip Code: <input type="text" name="billZip">
 <br><br>
 <strong>Shipping Address:</strong>
 <br>
-Street: <input type="text" name="shipStreet"> City: <input type="text" name="shipCity"> State: <input type="date" name="shipStreet"> Zip Code: <input type="text" name="shipZip">
+Street: <input type="text" name="shipStreet"> City: <input type="text" name="shipCity"> State: <input type="text" name="shipStreet"> Zip Code: <input type="text" name="shipZip">
 <br><br>
 <a class="btn" href="CustomerTransactionConfirmation.jsp">Confirm Payment</a>
 <a class="btn" href="ViewAndCheckoutShoppingCart.jsp">Cancel Payment</a>

@@ -5,12 +5,43 @@
 	<head>
 		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-		<title>Insert title here</title>
-	</head>
+		<title>Confirm Cancellation</title>
+	<style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+</style>
+</head>
 	<body>
 		<a type="button" class="btn btn-info" href="CustomerHomePage.jsp">Home</a>
-		<a type="button" class="btn btn-warning" href="ViewOrders.jsp">View Orders</a>
+		<a type="button" class="btn btn-info" href="ViewOrders.jsp">View Orders</a>
 		<a type="button" class="btn btn-danger" href="Login.jsp">Log out</a>
+		<table>
+		  <tr>
+		    <th>Movie Name</th>
+		    <th>Ticket Quantity</th>
+		    <th>Total Price</th>
+		    <th>Refunded?</th>
+		  </tr>
+		  <tr>
+		    <td>Interstellar</td>
+		    <td>2</td>
+		    <td>$18.00</td>
+		    <td>Yes</td>
+		  </tr>
+		</table>
 	</body>
 </html>
 

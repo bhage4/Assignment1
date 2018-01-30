@@ -52,7 +52,7 @@
 		<strong>Total Cost:</strong> $42.00<br><br>
 		<strong>Shipping Address:</strong>
 		<br>
-		Street: <input type="text" name="shipStreet"> City: <input type="text" name="shipCity"> State: <input type="date" name="shipStreet"> Zip Code: <input type="text" name="shipZip">
+		Street: <input type="text" name="shipStreet"> City: <input type="text" name="shipCity"> State: <input type="text" name="shipStreet"> Zip Code: <input type="text" name="shipZip">
 		<br><br>
 	</body>
 </html>
