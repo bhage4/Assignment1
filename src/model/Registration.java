@@ -84,14 +84,11 @@ public class Registration extends HttpServlet{
 		Users aUser = new Users(userName, password);
 
 		//First check whether the user already exists via methods from Users class
-		aUser.validateUser(propFilePath);
-
-		// Register the Users object
-		aUser.registerUser(aUser, propFilePath);
-
-		response.sendRedirect("Login.jsp"); 
-
-
+		if(aUser.checkUniqueUserName(propFilePath)){
+			// Register the Users object
+			aUser.registerUser(propFilePath);
+			response.sendRedirect("Login.jsp"); 
+		}
 	}
 
 	/**
@@ -100,41 +97,4 @@ public class Registration extends HttpServlet{
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 	}
-	
-	//Checks unique username
-	public boolean checkUniqueUser(Users aUser){
-		ServletContext sc = this.getServletContext();
-		String propFilePath = sc.getRealPath("/WEB-INF/users.properties");
-		
-		Properties p = new Properties();
-
-		FileInputStream fis = null;
-
-		try {
-			fis = new FileInputStream(propFilePath);
-
-			p.load(fis);
-
-			// Check whether the username exists or not
-			if(p.containsKey(aUser.getUserName())) {
-				return false;
-			} else {
-				return true;
-			}
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return false;
-		} finally {
-			if(fis != null) {
-				try {
-					fis.close();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-		}
-	}
-
 }

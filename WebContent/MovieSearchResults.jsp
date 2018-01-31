@@ -11,6 +11,7 @@
 <body>
 <div id="topsection"><div class="innertube"><h1>
 <a type="button" class="btn btn-info" href="CustomerHomePage.jsp">Home</a>
+<a type="button" class="btn btn-warning" href="ViewOrders.jsp">View Order</a>
 <a type="button" class="btn btn-danger" href="Login.jsp">Log out</a></h1></div></div>
 <table>
   <tr>
@@ -21,7 +22,6 @@
     <th>Price</th>
     <th>Poster</th>
     <th></th>
-    <th></th>
   </tr>
   <tr>
     <td>Marcus Grande</td>
@@ -31,7 +31,6 @@
     <td>$10.50</td>
     <td><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR83_t_x7tsPJuDTDr-ki38X9wMJAP7sFDTq_aql1FmDpmqEnlRng"></td>
     <td><a type="button" class="btn btn-warning" href="MovieDetailsSelection.jsp">View Details</a></td>
-    <td><a type="button" class="btn btn-warning" href="ViewOrders.jsp">View Orders</a></td>
   </tr>
   <tr>
     <td>Community Playhouse</td>
@@ -41,7 +40,6 @@
     <td>$6.00</td>
     <td><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR83_t_x7tsPJuDTDr-ki38X9wMJAP7sFDTq_aql1FmDpmqEnlRng"></td>
     <td><a type="button" class="btn btn-warning" href="MovieDetailsSelection.jsp">View Details</a></td>
-    <td><a type="button" class="btn btn-warning" href="ViewOrders.jsp">View Orders</a></td>
   </tr>
   <tr>
     <td>Marcus Grande East</td>
@@ -51,7 +49,6 @@
     <td>$8.00</td>
     <td><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT2k7b8gFohCLPcg1C6rChgur99xh1G2FtnnoJ7-7S6H14pBIP37w"></td>
     <td><a type="button" class="btn btn-warning" href="MovieDetailsSelection.jsp">View Details</a></td>
-    <td><a type="button" class="btn btn-warning" href="ViewOrders.jsp">View Orders</a></td>
   </tr>
   <tr>
     <td>AMC Cinema</td>
@@ -61,7 +58,6 @@
     <td>$10.00</td>
     <td><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT2k7b8gFohCLPcg1C6rChgur99xh1G2FtnnoJ7-7S6H14pBIP37w"></td>
     <td><a type="button" class="btn btn-warning" href="MovieDetailsSelection.jsp">View Details</a></td>
-    <td><a type="button" class="btn btn-warning" href="ViewOrders.jsp">View Orders</a></td>
   </tr>
 </table>
 

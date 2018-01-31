@@ -33,12 +33,6 @@
 	        return false;
 	    }
 	    
-	    Users user = new User(x,y);
-	    if(!validateUser(user)){
-	    	alert("This is not a unique username. Please choose another.");
-	    	return false;
-	    }
-	    
 	}
 </script>
 </head>

@@ -30,7 +30,7 @@ public class Users {
 		this.password = password;
 	}
 
-	public void registerUser(Users aUser, String propFilePath) {
+	public void registerUser(String propFilePath) {
 
 		Properties p = new Properties();
 		FileInputStream fis = null;
@@ -38,7 +38,7 @@ public class Users {
 		try {
 			fis = new FileInputStream(propFilePath);
 			p.load(fis);
-			p.setProperty(aUser.getUserName(), aUser.getPassword());
+			p.setProperty(this.getUserName(), this.getPassword());
 			p.store(new FileOutputStream(propFilePath), null);
 
 		} catch (FileNotFoundException e) {
@@ -97,6 +97,40 @@ public class Users {
 			}
 		}
 	}
-	// removeUser
+	
+	//Checks unique username
+	public boolean checkUniqueUser(String propFilePath){
+		
+		Properties p = new Properties();
+
+		FileInputStream fis = null;
+
+		try {
+			fis = new FileInputStream(propFilePath);
+
+			p.load(fis);
+
+			// Check whether the username exists or not
+			if(p.containsKey(this.getUserName())) {
+				return false;
+			} else {
+				return true;
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		} finally {
+			if(fis != null) {
+				try {
+					fis.close();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+// removeUser
 
 }
