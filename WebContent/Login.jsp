@@ -24,7 +24,7 @@
 	</head>
 	<body>
 		<!--TODO: Why am I having trouble redirecting to the servlets from forms?-->
-		<form action=Login.java name="loginForm" onsubmit="return validateForm()" method="post">
+		<form action=Login name="loginForm" onsubmit="return validateForm()" method="post">
 		
 			User Name: <input type=text name=userName><br>
 			Password: <input type=password name=password><br>

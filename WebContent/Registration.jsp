@@ -40,7 +40,7 @@
 		<h2> Register here</h2>
 		
 		<!--NOTE: I'm having trouble with the redirection here for some reason-nothing links to the registration servlet??-->
-		<form action="/model/Registration" name="registrationForm" onsubmit="return validateForm()">
+		<form action=Registration name="registrationForm" onsubmit="return validateForm()">
 		
 			User Name: <input type=text name=userName><br>
 			Password: <input type=password name=password><br>
