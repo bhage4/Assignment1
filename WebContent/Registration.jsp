@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@ page import="model.Users" %>
-<%@ page import="model.Registration" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="NiceLayout.css">
 <title>Register a New User</title>
 <script>
 	function validateForm() {
@@ -37,23 +37,18 @@
 </script>
 </head>
 <body>
-		<h2> Register here</h2>
-		
-		<!--NOTE: I'm having trouble with the redirection here for some reason-nothing links to the registration servlet??-->
+		<div id="topsection"><div class="innertube"><h1>
+		<a type="button" class="btn btn-info" href="Login.jsp">Back to Login</a>  Register Below:</h1></div></div>
+		<br>
 		<form action=Registration name="registrationForm" onsubmit="return validateForm()">
 		
 			User Name: <input type=text name=userName><br>
 			Password: <input type=password name=password><br>
-			Confirm Password: <input type=password name=confirmPassword><br>
-			<input type=submit value=Register> <br> 
+			Confirm Password: <input type=password name=confirmPassword><br><br>
+			<input class="btn btn-success" type=submit value=Register> <br> 
 		
 		</form>
 		
-		<br>
-		<br>
-		
-		<!-- Navigation links --> 
-		<a href="Login.jsp"> Home Page </a> <br>
 		
 	
 	</body>

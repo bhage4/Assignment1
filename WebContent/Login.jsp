@@ -4,6 +4,8 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="NiceLayout.css">
 		<title>Welcome! Log in here</title>
 			<script>
 				function validateForm() {
@@ -23,16 +25,18 @@
 			</script>
 	</head>
 	<body>
-		<!--TODO: Why am I having trouble redirecting to the servlets from forms?-->
+		<div id="topsection"><div class="innertube"><h1> Welcome to Movie App!
+		<a type="button" class="btn btn-info" href="Registration.jsp">Register</a></h1></div></div>
+		<br>
+	
 		<form action=Login name="loginForm" onsubmit="return validateForm()" method="post">
 		
 			User Name: <input type=text name=userName><br>
-			Password: <input type=password name=password><br>
-			<input type=submit value="Log in"> <br> 
+			Password: <input type=password name=password><br><br>
+			<input class="btn btn-warning" type=submit value="Log in">
 		
 		</form>
-		<br>
-		<a href="Registration.jsp">Register</a>	
+	
 	</body>
 </html>
 
