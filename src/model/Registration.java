@@ -87,7 +87,6 @@ public class Registration extends HttpServlet {
    			if(aUser.checkUniqueUser(propFilePath)){
    				// Register the Users object
    				aUser.registerUser(propFilePath);
-   				response.sendRedirect("Login.jsp"); 
    			}			
    		}
 
