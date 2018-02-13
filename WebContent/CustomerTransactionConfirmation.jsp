@@ -48,3 +48,13 @@
 <!-- The page has a “Home” button that when clicked leads to the Customer Home page. -->
 <!-- This page should have a link to the ViewOrders.jsp page. -->
 <!-- It should have logout option upon clicking that takes to the Login page -->
+
+<!-- On Success: -->
+<!-- 5 -->
+<!-- ! The page displays all the information passed on by the previous servlet. -->
+<!-- ! Display Success/Failure message. -->
+<!-- ! The page has a Print button that allows the customer to print the order -->
+<!-- showing all the order details. -->
+<!-- o On Failure: -->
+<!-- ! The page displays a message: “Transaction was not successful”. -->
+<!-- ! Display failure reason (Incorrect details/insufficient funds, etc.) -->

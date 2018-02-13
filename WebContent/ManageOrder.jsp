@@ -64,3 +64,8 @@
 <!-- It should have logout option upon clicking that takes to the Login page. -->
 <!-- It should have “Home” button that lead to the CustomerHomePage.jsp page. -->
 <!-- It should have “ViewOrders” button that lead to the ViewOrders.jsp page. -->
+
+<!-- This page must display the orders passed by the Manage Order servlet. -->
+<!-- o Each order item must have a “Cancel” button if the showtime of the movie has -->
+<!-- not yet passed. Clicking this button must lead to the Cancel Order servlet, passing -->
+<!-- the correct order item  -->

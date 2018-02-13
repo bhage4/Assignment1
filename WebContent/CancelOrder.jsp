@@ -44,3 +44,9 @@
 <!-- The Discard Cancellation button should lead to the Home page. -->
 <!-- This page should have a link to the ViewOrders.jsp page. -->
 <!-- It should have logout option upon clicking that takes to the Login page. -->
+
+<!-- This page must display the full information for the order item received from the -->
+<!-- Cancel Order servlet. -->
+<!-- o When the “Confirm Cancellation” button is clicked, the Cancel Order Transaction -->
+<!-- servlet is called with the order-item. -->
+<!-- o The “Discard Cancel” button should lead back to the Manage Order page. -->

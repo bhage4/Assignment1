@@ -53,3 +53,6 @@
 <!-- A View button also must be displayed along with each order which up on clicking should lead to the ManageOrder.jsp page. -->
 <!-- It should have logout option upon clicking that takes to the Login page. -->
 <!-- It should have “Home” button that lead to the CustomerHomePage.jsp page. -->
+
+<!-- The page must display the details passed by the View Orders servlet. -->
+<!-- o Each order must have a “View” which leads to the Manage Order servlet. -->

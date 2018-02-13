@@ -33,9 +33,13 @@ tr:nth-child(even) {
     background-color: #dddddd;
 }
 
+form {
+	text-align: center;
+}
+
 
 #topsection{
-background: #008080;
+background: #80ff80;
 height: 90px; /*Height of top section*/
 }
 

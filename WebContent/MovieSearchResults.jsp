@@ -77,3 +77,17 @@
 <!-- For this assignment, use placeholder values for all variables. -->
 <!-- This page should also have a link to the ViewOrder.jsp page. -->
 <!-- It should have logout option upon clicking that takes to the Login page. -->
+
+<!-- Displays the Movie object received from the Theatre and Movie Search Query -->
+<!-- servlet in a suitable format to the user with the following information: -->
+<!-- ! Movie name -->
+<!-- ! Name of the theatre building showing the movie -->
+<!-- ! Showtime of the movie -->
+<!-- ! Price -->
+<!-- ! Number of available seats -->
+<!-- ! Movie poster thumbnail -->
+<!-- o Each entry must also have a “View Movie Details” button that allows the -->
+<!-- customer to view more movie details and add tickets for the movie to the -->
+<!-- shopping cart. -->
+<!-- o Clicking on the “View Movie Details” button calls the Movie Search Results -->
+<!-- servlet and passes the movie object. -->

@@ -71,3 +71,10 @@ Street: <input type="text" name="shipStreet"> City: <input type="text" name="shi
 <!-- Clicking the “Cancel Payment” button should lead to the View&CheckoutShoppingCart.jsp page. -->
 <!-- This page should have a link to the ViewOrders.jsp page. -->
 <!-- It should have logout option upon clicking that takes to the Login page. -->
+
+<!-- o Displays the movie ticket items present in the shopping cart session object along -->
+<!-- with the total cost in a suitable format. -->
+<!-- o Clicking the “Confirm Payment” calls the Customer Transaction Confirmation -->
+<!-- servlet with the total cost, billing address, and the customer’s credit card details. -->
+<!-- o Clicking the “Cancel Payment” button should lead back to the View & Checkout -->
+<!-- Shopping Cart jsp page. -->

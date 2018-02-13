@@ -29,7 +29,7 @@
     <td>Feb. 01, 2018 @ 9:00pm</td>
     <td>2</td>
     <td>$25.00</td>
-    <td><a type="button" class="btn btn-warning" onclick="deleteOrder()">Delete Order</a></td>
+    <td><a type="button" class="btn btn-warning" onclick="deleteOrder()" href="CancelOrder.jsp">Delete Order</a></td>
   </tr>
   <tr>
     <td>Ferris Bueller's Day Off</td>
@@ -38,7 +38,7 @@
     <td>Jan. 31, 2018 @ 6:00pm</td>
     <td>4</td>
     <td>$40.00</td>
-    <td><a type="button" class="btn btn-warning" onclick="deleteOrder()">Delete Order</a></td>
+    <td><a type="button" class="btn btn-warning" onclick="deleteOrder()" href="CancelOrder.jsp">Delete Order</a></td>
   </tr>
   <tr>
     <td></td>
@@ -71,3 +71,10 @@
 <!-- This page should have a “Checkout” button that leads to the CustomerTransaction.jsp page. -->
 <!-- It should have logout option upon clicking that takes to the Login page. -->
 <!-- It should have “Home” button that lead to the CustomerHomePage.jsp. -->
+
+<!-- Displays the shopping cart items present in the shopping cart session object in a -->
+<!-- suitable format. -->
+<!-- o A delete button should be displayed for each shopping cart item, upon clicking -->
+<!-- should make a delete request to the Update Shopping Cart servlet. -->
+<!-- o Clicking the “Check Out” button should redirect the customer to the Customer -->
+<!-- Transaction jsp page. -->

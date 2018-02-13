@@ -1,4 +1,4 @@
-package model;
+package models;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -131,5 +131,12 @@ public class Users {
 		}
 	}
 // removeUser
+	
+//	Stores user information such as name, address, phone number, etc.
+//	• Validates user information
+//	o Ensures phone number is in sane format
+//	o A non-trivial check for e-mail address validity
+//	o Validates formatting of zip-code
+//	o Any additional validation as needed 
 
 }

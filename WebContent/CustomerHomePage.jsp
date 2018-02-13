@@ -42,3 +42,11 @@
 	<!--  DONE: A drop-down menu consisting of available movie theatre locations. -->
 	<!--  DONE: A text box to enter a search term (a movie). -->
 	<!--  DONE: A search button which when clicked must lead to the MovieSearchResults.jsp page. -->
+	
+<!-- The user should fill out the query and upon clicking the search button should call -->
+<!-- the Theatre And Movie Search Query servlet. -->
+<!-- 2 -->
+<!-- o Existing theatre buildings should be provided in a drop-down menu (after being -->
+<!-- read from the database using the TheatreDB class) -->
+<!-- o Should include a date selection that allows the user to select the day they wish to -->
+<!-- see the movies being shown -->

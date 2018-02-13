@@ -79,3 +79,31 @@
 <!-- The “Back” button takes you back to the Movie Search Results page. -->
 <!-- The “Home” button takes you back to the CustomerHomePage.jsp page. -->
 <!-- The logout option should be available in this page as well. -->
+
+
+<!-- o The movie is received from the Movie Search Results page. -->
+<!-- o Displays the movie information data received from the Movie Search Results -->
+<!-- servlet in a suitable format with the following data: -->
+<!-- ! Movie details -->
+<!-- ! Movie name -->
+<!-- ! Movie description -->
+<!-- ! Movie rating (e.g., G, PG, PG-13, R) -->
+<!-- ! Movie poster -->
+<!-- ! Theatre name and showroom number -->
+<!-- ! Showtime -->
+<!-- ! Price per seat -->
+<!-- 3 -->
+<!-- ! Number of available seats -->
+<!-- ! Viewer Reviews -->
+<!-- ! Display an overall rating out of 5 stars -->
+<!-- ! Display list of viewer reviews with the following details -->
+<!-- ! Name of the person -->
+<!-- ! Review date -->
+<!-- ! Rating out of 5 stars -->
+<!-- ! The contents of the review -->
+<!-- o Customer Reviews should be pulled from the database using the ReviewsDB class -->
+<!-- o The page must have the option to select the ticket quantity. -->
+<!-- o Clicking the “Add to Cart” button calls the Update Shopping Cart servlet, passing -->
+<!-- the movie, ticket quantity and other necessary information. -->
+<!-- o A button “Add Review” should be present that takes the user to the -->
+<!-- CustomerReview JSP page, sending the movie information with it -->
