@@ -27,9 +27,10 @@
 				    </ul>
 			</div>
 			<br>
-			<input type="text" name="movieSearch">
-			<a class="btn btn-primary" href="MovieSearchResults.jsp">Search</a>
-			
+			<form action=TheaterMovieSearchQuery name="movieSearchForm">
+				<input type="text" name="movieSearch">
+				<input class="btn btn-warning" type=submit value="Search">
+			</form>
 		
 	</body>
 </html>
