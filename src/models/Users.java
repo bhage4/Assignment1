@@ -3,7 +3,6 @@ package models;
 import java.sql.Date;
 
 public class Users {
-
 	private String userName;
 	private String password;
 	private String firstName;
@@ -18,6 +17,27 @@ public class Users {
 	private String userType; //Turn this into enum
 	private String status; //Enum also?
 	private int numOfVisits;
+	
+	public Users(String userName, String password, String firstName,
+			String lastName, String address, String city, String state,
+			int postalCode, String email, int phoneNumber, Date birthday,
+			String userType, String status, int numOfVisits) {
+		super();
+		this.userName = userName;
+		this.password = password;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.address = address;
+		this.city = city;
+		this.state = state;
+		this.postalCode = postalCode;
+		this.email = email;
+		this.phoneNumber = phoneNumber;
+		this.birthday = birthday;
+		this.userType = userType;
+		this.status = status;
+		this.numOfVisits = numOfVisits;
+	}
 	
 	public String getUserName() {
 		return userName;

@@ -2,14 +2,10 @@ package data.access.layer;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 public class Database {
 	Connection conn = null;
-	Statement stmt = null;
-	PreparedStatement ps = null;
 	
 	// JDBC driver name and database URL
 	static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";  
@@ -19,7 +15,7 @@ public class Database {
 	static final String USER = "jkostal";
 	static final String PASS = "WU3bgR";
 	
-	public void databaseConnect() {
+	public Connection databaseConnect() {
 		try{
 			//Register the JDBC driver
 			Class.forName("com.mysql.jdbc.Driver");			
@@ -33,6 +29,7 @@ public class Database {
 		} catch (SQLException e){
 			e.printStackTrace();
 		}
+		return conn;
 	}
 	
 	public void closeConnection(){
