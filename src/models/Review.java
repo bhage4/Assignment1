@@ -1,9 +1,59 @@
 package models;
 
-public class Review {
+import java.sql.Date;
 
-//	Stores the contents and rating of a review
-//	• Stores a reference to the user submitting the review
-//	• Stores a reference to the movie the review is for
+public class Review {
+	private int id;
+	private int movieId;
+	private int userId;
+	private Date reviewDate;
+	private String rating;
+	private String review;
 //	• Validates that the contents of the review do not exceed the maximum review size
+	public Review(int id, int movieId, int userId, Date reviewDate,
+			String rating, String review) {
+		super();
+		this.id = id;
+		this.movieId = movieId;
+		this.userId = userId;
+		this.reviewDate = reviewDate;
+		this.rating = rating;
+		this.review = review;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public int getMovieId() {
+		return movieId;
+	}
+	public void setMovieId(int movieId) {
+		this.movieId = movieId;
+	}
+	public int getUserId() {
+		return userId;
+	}
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
+	public Date getReviewDate() {
+		return reviewDate;
+	}
+	public void setReviewDate(Date reviewDate) {
+		this.reviewDate = reviewDate;
+	}
+	public String getRating() {
+		return rating;
+	}
+	public void setRating(String rating) {
+		this.rating = rating;
+	}
+	public String getReview() {
+		return review;
+	}
+	public void setReview(String review) {
+		this.review = review;
+	}
 }
