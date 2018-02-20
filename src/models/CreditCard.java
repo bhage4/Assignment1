@@ -12,7 +12,8 @@ public class CreditCard {
 	private int userId;
 	private String ccv;
 	private Date expirationDate;	//(int year, int month, int day)
-	
+//	Validate credit card account details.
+
 	public int getId() {
 		return id;
 	}

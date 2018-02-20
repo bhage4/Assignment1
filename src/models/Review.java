@@ -9,7 +9,9 @@ public class Review {
 	private Date reviewDate;
 	private String rating;
 	private String review;
-//	• Validates that the contents of the review do not exceed the maximum review size
+	
+	private static int maxReviewSize = 100;
+
 	public Review(int id, int movieId, int userId, Date reviewDate,
 			String rating, String review) {
 		super();
@@ -54,6 +56,8 @@ public class Review {
 		return review;
 	}
 	public void setReview(String review) {
-		this.review = review;
+		if(review.length() <= maxReviewSize){
+			this.review = review;
+		}
 	}
 }

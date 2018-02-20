@@ -20,7 +20,6 @@ public class ReviewDB {
 	
 	public void addReview(Review aReview){
 		db = new Database();
-		
 		try {
 			conn = db.databaseConnect();
 

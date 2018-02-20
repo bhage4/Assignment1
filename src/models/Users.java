@@ -17,6 +17,11 @@ public class Users {
 	private String userType; //Turn this into enum
 	private String status; //Enum also?
 	private int numOfVisits;
+//	• Validates user information
+//	o Ensures phone number is in sane format
+//	o A non-trivial check for e-mail address validity- what does this mean?
+//	o Validates formatting of zip-code- must be 5 or 9 digits, should do this in jsp page?
+//	o Any additional validation as needed 
 	
 	public Users(String userName, String password, String firstName,
 			String lastName, String address, String city, String state,
@@ -123,11 +128,5 @@ public class Users {
 	}
 	public void setNumOfVisits(int numOfVisits) {
 		this.numOfVisits = numOfVisits;
-	}	
-//	• Validates user information
-//	o Ensures phone number is in sane format
-//	o A non-trivial check for e-mail address validity- what does this mean?
-//	o Validates formatting of zip-code- must be 5 or 9 digits, should do this in jsp page?
-//	o Any additional validation as needed 
-
+	}
 }
