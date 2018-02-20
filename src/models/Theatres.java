@@ -9,6 +9,9 @@ public class Theatres {
 	private int zipCode;
 	private int ownerId;
 
+	public Theatres() {
+		super();
+	}
 	public Theatres(int id, String name, String address, String city,
 			String state, int zipCode, int ownerId) {
 		super();

@@ -7,6 +7,9 @@ public class Movie {
 	private String thumbnail;
 	private String rating;
 	
+	public Movie() {
+		super();
+	}
 	public Movie(int id, String title, String description, String thumbnail,
 			String rating) {
 		super();

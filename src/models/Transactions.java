@@ -4,6 +4,10 @@ public class Transactions {
 	private CreditCard card;
 	private double balance;
 	
+	public Transactions() {
+		super();
+	}
+
 	public Transactions(CreditCard card, double balance) {
 		super();
 		this.card = card;

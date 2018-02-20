@@ -12,6 +12,9 @@ public class Review {
 	
 	private static int maxReviewSize = 100;
 
+	public Review() {
+		super();
+	}
 	public Review(int id, int movieId, int userId, Date reviewDate,
 			String rating, String review) {
 		super();

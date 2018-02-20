@@ -5,6 +5,10 @@ public class Showroom {
 	private int availableSeats;
 	private int theaterId;
 
+	public Showroom() {
+		super();
+	}
+
 	public Showroom(int id, int availableSeats, int theaterId) {
 		super();
 		this.id = id;

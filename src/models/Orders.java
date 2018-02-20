@@ -12,6 +12,10 @@ public class Orders {
 //	• Validates billing address
 //	• Ensures the desired ticket quantity will not exceed the showroom capacity 
 	
+	public Orders() {
+		super();
+	}
+
 	public Orders(int id, int customerId, double totalCost, Date orderDate,
 			String creditCardNumber, String billingAddress) {
 		super();

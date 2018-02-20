@@ -14,6 +14,23 @@ public class CreditCard {
 	private Date expirationDate;	//(int year, int month, int day)
 //	Validate credit card account details.
 
+	public CreditCard() {
+		super();
+	}
+	public CreditCard(int id, String cardHolderName, int cardNumber,
+			double balance, String cardType, int userId, String ccv,
+			Date expirationDate) {
+		super();
+		this.id = id;
+		this.cardHolderName = cardHolderName;
+		this.cardNumber = cardNumber;
+		this.balance = balance;
+		this.cardType = cardType;
+		this.userId = userId;
+		this.ccv = ccv;
+		this.expirationDate = expirationDate;
+	}
+	
 	public int getId() {
 		return id;
 	}

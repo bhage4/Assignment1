@@ -22,7 +22,11 @@ public class Users {
 	//	o A non-trivial check for e-mail address validity- what does this mean?
 //	o Validates formatting of zip-code- must be 5 or 9 digits, should do this in jsp page?
 	
-	public Users(String username, String password){
+	public Users() {
+		super();
+	}
+
+	public Users(String userName, String password){
 		super();
 		this.userName = userName;
 		this.password = password;

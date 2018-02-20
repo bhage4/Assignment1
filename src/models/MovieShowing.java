@@ -11,6 +11,10 @@ public class MovieShowing {
 	private Time startTime;
 	private Time endTime;
 	
+	public MovieShowing() {
+		super();
+	}
+
 	public MovieShowing(int id, int movieId, int showroomId, double price,
 			int numberPurchased, Time startTime, Time endTime) {
 		super();
