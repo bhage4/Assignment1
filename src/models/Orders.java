@@ -7,7 +7,7 @@ public class Orders {
 	private int customerId;
 	private double totalCost;
 	private Date orderDate;
-	private String creditCardNumber;
+	private int creditCardNumber;
 	private String billingAddress;
 //	• Validates billing address
 //	• Ensures the desired ticket quantity will not exceed the showroom capacity 
@@ -17,7 +17,7 @@ public class Orders {
 	}
 
 	public Orders(int id, int customerId, double totalCost, Date orderDate,
-			String creditCardNumber, String billingAddress) {
+			int creditCardNumber, String billingAddress) {
 		super();
 		this.id = id;
 		this.customerId = customerId;
@@ -59,11 +59,11 @@ public class Orders {
 		this.orderDate = orderDate;
 	}
 
-	public String getCreditCardNumber() {
+	public int getCreditCardNumber() {
 		return creditCardNumber;
 	}
 
-	public void setCreditCardNumber(String creditCardNumber) {
+	public void setCreditCardNumber(int creditCardNumber) {
 		this.creditCardNumber = creditCardNumber;
 	}
 

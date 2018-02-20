@@ -9,7 +9,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import models.Orders;
-import models.Theatres;
 
 public class OrdersDB {
 	private Database db;
@@ -17,10 +16,41 @@ public class OrdersDB {
 	private Connection conn;
 	private PreparedStatement ps;
 	
+	public List<Orders> getOrdersForUser(int userId){
+		db = new Database();
+		List<Orders> orders = new ArrayList<Orders>();
+		
+		String sql = "SELECT * FROM orders WHERE CustomerId=?";
+		try {
+			conn = db.databaseConnect();
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, userId);
+			  
+			ResultSet rs = ps.executeQuery();
+				  
+			while(rs.next()){
+				int id = rs.getInt("id");
+				double cost = rs.getInt("TotalCost");
+				Date orderDate = null;//orderDate.valueOf(rs.getString("OrderDate"));
+				String billingAddress = rs.getString("BillingAddress");
+				int cardNum = rs.getInt("CreditCardNumber");
+				
+				Orders order = new Orders(id, userId, cost, orderDate, cardNum, billingAddress);
+				orders.add(order);
+			}
+			
+			rs.close();
+			db.closeConnection();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return orders;
+	}
+	
 	public List<Orders> getAllOrders(){
 		db = new Database();
 		
-		List<Orders> theaters = new ArrayList<Orders>();
+		List<Orders> orders = new ArrayList<Orders>();
 		String sql = "SELECT * FROM orders";
 		try {
 			conn = db.databaseConnect();
@@ -32,9 +62,9 @@ public class OrdersDB {
 				int id = rs.getInt("id");
 				int customerId = rs.getInt("customerId");
 				double cost = rs.getDouble("totalCost");
-				Date orderDate = orderDate.valueOf(rs.getString("OrderDate"));
-				String address = rs.getInt("BillingAddress");
-				String creditCardNumber = rs.getString("CreditCardNumber");
+				Date orderDate = null;//orderDate.valueOf(rs.getString("OrderDate"));
+				String address = rs.getString("BillingAddress");
+				int creditCardNumber = rs.getInt("CreditCardNumber");
 				
 				Orders order = new Orders(id, customerId, cost, orderDate, creditCardNumber, address);
 				orders.add(order);			
@@ -71,11 +101,11 @@ public class OrdersDB {
 			conn = db.databaseConnect();
 			ps = conn.prepareStatement(sql);
 			
-			ps.setString(1, order.getCustomerId());
-			ps.setString(2, order.getTotalCost());
-			ps.setString(3, order.getOrderDate());
+			ps.setInt(1, order.getCustomerId());
+			ps.setDouble(2, order.getTotalCost());
+			ps.setDate(3, order.getOrderDate());
 			ps.setString(4, order.getBillingAddress());
-			ps.setString(5, order.getCreditCardNumber());
+			ps.setInt(5, order.getCreditCardNumber());
 			
 			ps.executeUpdate();
 			db.closeConnection();
