@@ -18,11 +18,15 @@ public class Users {
 	private String userType; //Turn this into enum
 	private String status; //Enum also?
 	private int numOfVisits;
-//	• Validates user information
-//	o Ensures phone number is in sane format
-//	o A non-trivial check for e-mail address validity- what does this mean?
+
+	//	o A non-trivial check for e-mail address validity- what does this mean?
 //	o Validates formatting of zip-code- must be 5 or 9 digits, should do this in jsp page?
-//	o Any additional validation as needed 
+	
+	public Users(String username, String password){
+		super();
+		this.userName = userName;
+		this.password = password;
+	}
 	
 	public Users(int id, String userName, String password, String firstName,
 			String lastName, String address, String city, String state,
