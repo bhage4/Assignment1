@@ -32,7 +32,7 @@ public class OrdersDB {
 				int id = rs.getInt("id");
 				int customerId = rs.getInt("customerId");
 				double cost = rs.getDouble("totalCost");
-				Date orderDate = Date.valueOf(rs.getString("OrderDate"));
+				Date orderDate = orderDate.valueOf(rs.getString("OrderDate"));
 				String address = rs.getInt("BillingAddress");
 				String creditCardNumber = rs.getString("CreditCardNumber");
 				

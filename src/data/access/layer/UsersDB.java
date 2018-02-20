@@ -35,7 +35,7 @@ public class UsersDB {
 		}
 	}
 	
-	public Users getUserByUsername(String username){
+	public Users getUser(String username){
 		db = new Database();
 		
 		String sql = "SELECT * FROM users WHERE Username=?";
@@ -46,6 +46,7 @@ public class UsersDB {
 			  
 			ResultSet rs = ps.executeQuery();
 				  
+			int id = rs.getInt("Id");
 			String firstName = rs.getString("FirstName");
 			String lastName = rs.getString("LastName");
 			String address = rs.getString("Address");
@@ -60,7 +61,7 @@ public class UsersDB {
 			int numOfVisits = rs.getInt("NumOfVisits");
 			String password = rs.getString("Password");
 			
-			Users user = new Users(username, password, firstName, lastName, address, city, state, postalCode, emailAddress, phoneNumber, birthday, type, status, numOfVisits);
+			Users user = new Users(id, username, password, firstName, lastName, address, city, state, postalCode, emailAddress, phoneNumber, birthday, type, status, numOfVisits);
 			
 			rs.close();
 			db.closeConnection();
@@ -68,6 +69,44 @@ public class UsersDB {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		return null;
+	}
+	
+	public Users getUser(int id){
+		db = new Database();
+		
+		String sql = "SELECT * FROM users WHERE id=?";
+		try {
+			conn = db.databaseConnect();
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, id);
+			  
+			ResultSet rs = ps.executeQuery();
+				 
+			String username = rs.getString("Username");
+			String firstName = rs.getString("FirstName");
+			String lastName = rs.getString("LastName");
+			String address = rs.getString("Address");
+			String city = rs.getString("City");
+			String state = rs.getString("State");
+			int postalCode = rs.getInt("PostalCode");
+			String emailAddress = rs.getString("EmailAddress");
+			int phoneNumber = rs.getInt("PhoneNumber");
+			Date birthday = Date.valueOf(rs.getString("Birthday"));	//Does this work for Bethany
+			String type = rs.getString("Type");
+			String status = rs.getString("Status");
+			int numOfVisits = rs.getInt("NumOfVisits");
+			String password = rs.getString("Password");
+			
+			Users user = new Users(id, username, password, firstName, lastName, address, city, state, postalCode, emailAddress, phoneNumber, birthday, type, status, numOfVisits);
+			
+			rs.close();
+			db.closeConnection();
+			return user;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 	
 	public boolean checkIfExists(String username){
@@ -87,6 +126,7 @@ public class UsersDB {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		return true;
 	}
 	
 	public boolean validatePassword(String password, String username){
@@ -106,6 +146,7 @@ public class UsersDB {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		return false;
 	}
 	
 	public String checkUserType(String username){
@@ -125,5 +166,6 @@ public class UsersDB {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		return null;
 	}
 }

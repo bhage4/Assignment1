@@ -43,6 +43,35 @@ public class TheatersDB {
 		return null;
 	}
 	
+	public Theatres getTheater(int id){
+		db = new Database();
+		
+		String sql = "SELECT * FROM theatreBuildings WHERE Id=?";
+		try {
+			conn = db.databaseConnect();
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, id);
+			  
+			ResultSet rs = ps.executeQuery();
+				
+			String name = rs.getString("name");
+			String address = rs.getString("address");
+			int owner = rs.getInt("ownerId");
+			String city = rs.getString("city");
+			String state = rs.getString("state");
+			int zip = rs.getInt("postalCode");
+			
+			Theatres theater = new Theatres(id, name, address, city, state, zip, owner);
+			
+			db.closeConnection();
+			rs.close();
+			return theater;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
 	public List<Theatres> searchTheaters(String parameter){
 		return null;
 	}

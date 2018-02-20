@@ -7,6 +7,15 @@ public class Movie {
 	private String thumbnail;
 	private String rating;
 	
+	public Movie(int id, String title, String description, String thumbnail,
+			String rating) {
+		super();
+		this.id = id;
+		this.title = title;
+		this.description = description;
+		this.thumbnail = thumbnail;
+		this.rating = rating;
+	}
 	public int getId() {
 		return id;
 	}

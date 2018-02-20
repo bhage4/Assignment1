@@ -3,6 +3,7 @@ package models;
 import java.sql.Date;
 
 public class Users {
+	private int id;
 	private String userName;
 	private String password;
 	private String firstName;
@@ -23,7 +24,7 @@ public class Users {
 //	o Validates formatting of zip-code- must be 5 or 9 digits, should do this in jsp page?
 //	o Any additional validation as needed 
 	
-	public Users(String userName, String password, String firstName,
+	public Users(int id, String userName, String password, String firstName,
 			String lastName, String address, String city, String state,
 			int postalCode, String email, int phoneNumber, Date birthday,
 			String userType, String status, int numOfVisits) {
@@ -44,6 +45,12 @@ public class Users {
 		this.numOfVisits = numOfVisits;
 	}
 	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	public String getUserName() {
 		return userName;
 	}
