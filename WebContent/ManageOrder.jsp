@@ -9,10 +9,11 @@
 <title>Manage Order</title>
 </head>
 <body>
-<div id="topsection"><div class="innertube"><h1>
-<a type="button" class="btn btn-info" href="CustomerHomePage.jsp">Home</a>
-<a type="button" class="btn btn-info" href="ViewOrders.jsp">View Orders</a>
-<a type="button" class="btn btn-danger" href="Login.jsp">Log out</a></h1></div></div>
+	<div id="topsection"><div class="innertube"><h1>
+	<a type="button" class="btn btn-info" href="CustomerHomePage.jsp">Home</a>
+	<a type="button" class="btn btn-info" href="ViewOrders.jsp">View Orders</a>
+	<a type="button" class="btn btn-info" href="ViewAndCheckoutShoppingCart.jsp">Shopping Cart</a>
+	<a type="button" class="btn btn-danger" href="Login.jsp">Log out</a></h1></div></div>
 <h3>Order Number: 123098923</h3>
 <h3>Order Total: $42.00</h3>
 <h3>Order Date: 01/30/2018</h3>

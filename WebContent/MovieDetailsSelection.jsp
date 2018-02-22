@@ -10,10 +10,11 @@
 </head>
 <body>
 <div id="topsection"><div class="innertube"><h1>
-<a type="button" class="btn btn-info" href="CustomerHomePage.jsp">Home</a>
-<a type="button" class="btn btn-info" href="MovieSearchResults.jsp">Back</a>
-<a type="button" class="btn btn-danger" href="ViewAndCheckoutShoppingCart.jsp">Add to Cart</a>
-<a type="button" class="btn btn-danger" href="Login.jsp">Log out</a></h1></div></div>
+	<a type="button" class="btn btn-info" href="CustomerHomePage.jsp">Home</a>
+	<a type="button" class="btn btn-info" href="ViewOrders.jsp">View Orders</a>
+	<a type="button" class="btn btn-success" href="ViewAndCheckoutShoppingCart.jsp">Add to Cart</a>
+	<a type="button" class="btn btn-danger" href="Login.jsp">Log out</a>
+	<a type="button" class="btn btn-info" href="MovieSearchResults.jsp">Back</a></h1></div></div>
 <h2>Movie Details</h2>
 <table>
   <tr>
