@@ -34,6 +34,7 @@ public class Registration extends HttpServlet {
    			}			
    		}
    		response.sendRedirect("Login.jsp"); 
+   		
    	}
 
    	@Override

@@ -12,10 +12,13 @@
 	</head>
 	<body>
 		
-			<div id="topsection"><div class="innertube"><h1>Home Page 
+			<div id="topsection"><div class="innertube"><h1>
+			<a type="button" class="btn btn-info disabled" href="CustomerHomePage.jsp">Home</a>
 			<a type="button" class="btn btn-info" href="ViewOrders.jsp">View Orders</a>
+			<a type="button" class="btn btn-info" href="ViewAndCheckoutShoppingCart.jsp">Shopping Cart</a>
 			<a type="button" class="btn btn-danger" href="Login.jsp">Log out</a></h1></div></div>
 			<br>
+			<div>
 			<div class="dropdown">
 				<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Theatre Locations</button>
 					<span class="caret"></span></button>
@@ -25,6 +28,12 @@
 				      <li><a href="#">Marcus Grande East</a></li>
 				      <li><a href="#">AMC Cinema</a></li>
 				    </ul>
+			</div>
+			Select Date:<select name="date">
+				<option value="day1">03-14-2018
+		  		<option value="day2">03-15-2018
+		  		<option value="day3">03-16-2018
+			</select>
 			</div>
 			<br>
 			<form action=TheaterMovieSearchQuery name="movieSearchForm">

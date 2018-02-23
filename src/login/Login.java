@@ -1,12 +1,17 @@
 package login;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import data.access.layer.UsersDB;
+import models.Users;
 
 @WebServlet("/Login")
 public class Login extends HttpServlet {
@@ -23,11 +28,20 @@ public class Login extends HttpServlet {
 
 		UsersDB udb = new UsersDB();
 
+		boolean exists = udb.checkIfExists(userName);
 		boolean isValid = udb.validatePassword(password, userName);
 
-		if(isValid) {			
+		if(isValid && exists) {	
+			Users user = new Users(userName,password);
+			HttpSession session = request.getSession();
+			
+			session.setAttribute("user", user);
+			
 			// Redirect to home page
-			response.sendRedirect("CustomerHomePage.jsp");
+			String address = "CustomerHomePage.jsp";
+		    RequestDispatcher dispatcher =
+		      request.getRequestDispatcher(address);
+		    dispatcher.forward(request, response);
 		} else {
 			response.sendRedirect("Registration.jsp"); //Redirect to register page
 		}

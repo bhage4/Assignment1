@@ -12,7 +12,9 @@
 		<div id="topsection"><div class="innertube"><h1>
 		<a type="button" class="btn btn-info" href="CustomerHomePage.jsp">Home</a>
 		<a type="button" class="btn btn-info" href="ViewOrders.jsp">View Orders</a>
+		<a type="button" class="btn btn-info" href="ViewAndCheckoutShoppingCart.jsp">Shopping Cart</a>
 		<a type="button" class="btn btn-danger" href="Login.jsp">Log out</a></h1></div></div>
+		
 		<h2>Your Order Has Been Placed</h2>
         <h3>Details:</h3>
 		<table>

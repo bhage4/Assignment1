@@ -26,14 +26,15 @@
 	</head>
 	<body>
 		<div id="topsection"><div class="innertube"><h1> Welcome to Movie App!
-		<a type="button" class="btn btn-info" href="Registration.jsp">Register</a></h1></div></div>
+		</h1></div></div>
 		<br>
 	
 		<form action=Login name="loginForm" onsubmit="return validateForm()" method="post">
 		
 			User Name: <input type=text name=userName><br>
 			Password: <input type=password name=password><br><br>
-			<input class="btn btn-warning" type=submit value="Log in">
+			<input class="btn btn-warning" type=submit value="Log in"><br><br>
+			<a type="button" class="btn btn-info" href="Registration.jsp">Register</a>
 		
 		</form>
 	

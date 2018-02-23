@@ -10,10 +10,11 @@
 <title>Orders</title>
 </head>
 <body>
-<div id="topsection"><div class="innertube"><h1>
-<a type="button" class="btn btn-info" href="CustomerHomePage.jsp">Home</a>
-<a type="button" class="btn btn-danger" href="Login.jsp">Log out</a>
-</h1></div></div>
+	<div id="topsection"><div class="innertube"><h1>
+	<a type="button" class="btn btn-info" href="CustomerHomePage.jsp">Home</a>
+	<a type="button" class="btn btn-info disabled" href="ViewOrders.jsp">View Orders</a>
+	<a type="button" class="btn btn-info" href="ViewAndCheckoutShoppingCart.jsp">Shopping Cart</a>
+	<a type="button" class="btn btn-danger" href="Login.jsp">Log out</a></h1></div></div>
 
 <table>
   <tr>
