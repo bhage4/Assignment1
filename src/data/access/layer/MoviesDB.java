@@ -4,9 +4,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Time;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import models.Movie;
+import models.MovieShowing;
 
 public class MoviesDB {
 	private Database db;
@@ -25,9 +28,9 @@ public class MoviesDB {
 			ResultSet rs = ps.executeQuery();
 				  
 			int id = rs.getInt("id");
-			String description = rs.getString("description");
-			String thumbnail = rs.getString("thumbnail");
-			String rating = rs.getString("rating");
+			String description = rs.getString("Description");
+			String thumbnail = rs.getString("Thumbnail");
+			String rating = rs.getString("Rating");
 			
 			Movie movie = new Movie(id, title, description, thumbnail, rating);
 			
@@ -51,10 +54,10 @@ public class MoviesDB {
 			  
 			ResultSet rs = ps.executeQuery();
 				  
-			String title = rs.getString("title");
-			String description = rs.getString("description");
-			String thumbnail = rs.getString("thumbnail");
-			String rating = rs.getString("rating");
+			String title = rs.getString("MovieName");
+			String description = rs.getString("Description");
+			String thumbnail = rs.getString("Thumbnail");
+			String rating = rs.getString("Rating");
 			
 			Movie movie = new Movie(id, title, description, thumbnail, rating);
 			
@@ -67,8 +70,59 @@ public class MoviesDB {
 		return null;
 	}
 	
-	public List<Movie> searchMovies(String parameter){	//Not really sure how to set this up for now... Maybe use hashmap for search terms?
-		return null;
+	public List<Movie> searchMovies(HashMap parameters){
+		String name = (String) parameters.get("name");
+		String rating = (String) parameters.get("rating");
+		
+		List<Movie> movies = new ArrayList<Movie>();
+		String sql = "SELECT * FROM movies";
+		
+		int count=0;
+		String[] terms = new String[2];
+
+		if(name != null || rating != null){
+			sql += " WHERE";
+		}
+		if(name != null){
+			sql += " name=?";
+			count++;
+			terms[0] = name;
+		}
+		if(rating != null){
+			if(count>0){
+				sql += ",";
+			}
+			sql += " rating=?";
+			count++;
+			terms[1] = rating;
+		}
+		try {
+			conn = db.databaseConnect();
+			ps = conn.prepareStatement(sql);
+			
+			for(int i=1; i<=count; i++){
+				ps.setString(i, terms[i-1]);
+			}
+			  
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next()){
+				int id = rs.getInt("id");
+				String thisName = rs.getString("MovieName");
+				String description = rs.getString("Description");
+				String thumbnail = rs.getString("Thumbnail");
+				String thisRating = rs.getString("Rating");
+				
+				Movie movie = new Movie(id, thisName, description, thumbnail, rating);
+				movies.add(movie);			
+			}	
+			
+			db.closeConnection();
+			rs.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return movies;
 	}
 	
 	public List<Movie> getAllMovies(){
@@ -84,10 +138,10 @@ public class MoviesDB {
 			
 			while(rs.next()){
 				int id = rs.getInt("id");
-				String title = rs.getString("title");
-				String description = rs.getString("description");
-				String thumbnail = rs.getString("thumbnail");
-				String rating = rs.getString("rating");
+				String title = rs.getString("MovieName");
+				String description = rs.getString("Description");
+				String thumbnail = rs.getString("Thumbnail");
+				String rating = rs.getString("Rating");
 				
 				Movie movie = new Movie(id, title, description, thumbnail, rating);
 				movies.add(movie);			

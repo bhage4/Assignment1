@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import data.access.layer.Database;
 import models.Theatres;
@@ -72,7 +73,36 @@ public class TheatersDB {
 		return null;
 	}
 	
-	public List<Theatres> searchTheaters(String parameter){
+	public List<Theatres> searchTheaters(HashMap parameters){
+		String name = (String) parameters.get("name");
+		
+		List<Theatres> theaters = new ArrayList<Theatres>();
+		String sql = "SELECT * FROM theatreBuildings WHERE name=?";
+		try {
+			conn = db.databaseConnect();
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, name);
+			  
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next()){
+				int id = rs.getInt("id");
+				String address = rs.getString("address");
+				int owner = rs.getInt("ownerId");
+				String city = rs.getString("city");
+				String state = rs.getString("state");
+				int zip = rs.getInt("postalCode");
+				
+				Theatres theater = new Theatres(id, name, address, city, state, zip, owner);
+				theaters.add(theater);
+			}		
+			
+			db.closeConnection();
+			rs.close();
+			return theaters;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		return null;
 	}
 	
