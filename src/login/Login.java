@@ -29,7 +29,7 @@ public class Login extends HttpServlet {
 		UsersDB udb = new UsersDB();
 
 		boolean exists = udb.checkIfExists(userName);
-		boolean isValid = udb.validatePassword(password, userName);
+		boolean isValid = udb.validatePassword(userName, password);
 
 		if(isValid && exists) {	
 			Users user = new Users(userName,password);

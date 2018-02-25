@@ -11,6 +11,7 @@ import java.util.List;
 
 import models.Review;
 import models.Theatres;
+import models.Users;
 
 public class ReviewDB {
 	private Database db;
@@ -26,7 +27,7 @@ public class ReviewDB {
 			stmt = conn.createStatement();
 			String sql = String.format("INSERT INTO customerreviews (movieId, userId, ReviewDate, Rating, Review)"
 				+" VALUES ('{0}', '{1}', '{2}', '{3}', '{4}')",
-				aReview.getMovieId(), aReview.getUserId(), aReview.getReviewDate().toString(), aReview.getRating(), aReview.getReview());
+				aReview.getMovieId(), aReview.getUser().getId(), aReview.getReviewDate().toString(), aReview.getRating(), aReview.getReview());
 			
 			stmt.executeUpdate(sql);
 			db.closeConnection();
@@ -51,13 +52,13 @@ public class ReviewDB {
 			while(rs.next()){
 				Date reviewDate = Date.valueOf(rs.getString("ReviewDate"));
 				String rating = rs.getString("Rating");
-				String review = rs.getString("Review");
+				String reviewStr = rs.getString("Review");
 				int userId = rs.getInt("userId");
-				int reviewId = rs.getString("id");
+				int reviewId = Integer.parseInt(rs.getString("id"));
 				
-				Users user = new User(id);
+				Users user = new Users(userId);
 				
-				Review review = new Review(reviewId, movieId, user, reviewDate, rating, review);
+				Review review = new Review(reviewId, movieId, user, reviewDate, rating, reviewStr);
 				reviews.add(review);			
 			}
 			rs.close();
