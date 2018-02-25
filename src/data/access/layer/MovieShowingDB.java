@@ -63,7 +63,7 @@ public class MovieShowingDB {
 		if(movieId != null){
 			sql += " movieId=?";
 			count++;
-			terms[0] = movieId;
+			terms[count-1] = movieId;
 		}
 		if(showRoomId != null){
 			if(count>0){
@@ -71,7 +71,7 @@ public class MovieShowingDB {
 			}
 			sql += " showroomID=?";
 			count++;
-			terms[1] = showRoomId;
+			terms[count-1] = showRoomId;
 		}
 		try {
 			conn = db.databaseConnect();

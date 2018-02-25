@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.List;
 import data.access.layer.Database;
 import models.Theatres;
+import models.Showroom;
 
 public class TheatersDB {
 	private Database db;
@@ -135,5 +136,31 @@ public class TheatersDB {
 			e.printStackTrace();
 		}
 		return theaters;
+	}
+	
+	public Showroom getShowroom(int theaterId){
+		db = new Database();
+		
+		String sql = "SELECT * FROM Showrooms WHERE theatreBuilding=?";
+		try {
+			conn = db.databaseConnect();
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, theaterId);
+			  
+			ResultSet rs = ps.executeQuery();
+				
+			int id = rs.getInt("Id");
+			int seats = rs.getInt("availableSeats");
+			int roomNumber = rs.getInt("roomNumber");
+			
+			Showroom room = new Showroom(id, seats, roomNumber, theaterId);
+			
+			db.closeConnection();
+			rs.close();
+			return room;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 }

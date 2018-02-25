@@ -3,16 +3,18 @@ package models;
 public class Showroom {
 	private int id;
 	private int availableSeats;
+	private int roomNumber;
 	private int theaterId;
 
 	public Showroom() {
 		super();
 	}
 
-	public Showroom(int id, int availableSeats, int theaterId) {
+	public Showroom(int id, int availableSeats, int roomNumber, int theaterId) {
 		super();
 		this.id = id;
 		this.availableSeats = availableSeats;
+		this.roomNumber = roomNumber;
 		this.theaterId = theaterId;
 	}
 
@@ -30,6 +32,14 @@ public class Showroom {
 
 	public void setAvailableSeats(int availableSeats) {
 		this.availableSeats = availableSeats;
+	}
+
+	public int getRoomNumber() {
+		return roomNumber;
+	}
+
+	public void setRoomNumber(int roomNumber) {
+		this.roomNumber = roomNumber;
 	}
 
 	public int getTheaterId() {

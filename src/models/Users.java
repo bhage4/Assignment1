@@ -25,6 +25,10 @@ public class Users {
 	public Users() {
 		super();
 	}
+	
+	public Users(int id){
+		this.id = id;
+	}
 
 	public Users(String userName, String password){
 		super();

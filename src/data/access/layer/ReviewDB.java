@@ -55,11 +55,20 @@ public class ReviewDB {
 				int userId = rs.getInt("userId");
 				int reviewId = rs.getString("id");
 				
-				Review review = new Review(reviewId, movieId, userId, reviewDate, rating, review);
+				Users user = new User(id);
+				
+				Review review = new Review(reviewId, movieId, user, reviewDate, rating, review);
 				reviews.add(review);			
 			}
 			rs.close();
 			db.closeConnection();
+			
+			UsersDB udb = new UsersDB();
+			for(Review review : reviews){
+				int id = review.getUser().getId();
+				review.setUser(udb.getUser(id));
+			}
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

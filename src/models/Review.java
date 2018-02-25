@@ -1,11 +1,12 @@
 package models;
 
 import java.sql.Date;
+import models.Users;
 
 public class Review {
 	private int id;
 	private int movieId;
-	private int userId;
+	private Users user;
 	private Date reviewDate;
 	private String rating;
 	private String review;
@@ -15,12 +16,12 @@ public class Review {
 	public Review() {
 		super();
 	}
-	public Review(int id, int movieId, int userId, Date reviewDate,
+	public Review(int id, int movieId, Users user, Date reviewDate,
 			String rating, String review) {
 		super();
 		this.id = id;
 		this.movieId = movieId;
-		this.userId = userId;
+		this.user = user;
 		this.reviewDate = reviewDate;
 		this.rating = rating;
 		this.review = review;
@@ -37,11 +38,11 @@ public class Review {
 	public void setMovieId(int movieId) {
 		this.movieId = movieId;
 	}
-	public int getUserId() {
-		return userId;
+	public Users getUser() {
+		return user;
 	}
-	public void setUserId(int userId) {
-		this.userId = userId;
+	public void setUser(Users user) {
+		this.user = user;
 	}
 	public Date getReviewDate() {
 		return reviewDate;

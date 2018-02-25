@@ -16,7 +16,7 @@ public class MoviesDB {
 	private Connection conn;
 	private PreparedStatement ps;
 	
-	public Movie getMovieDetails(String title){
+	public Movie getMovie(String title){
 		db = new Database();
 		
 		String sql = "SELECT * FROM movies WHERE MovieName=?";
@@ -43,7 +43,7 @@ public class MoviesDB {
 		return null;
 	}
 	
-	public Movie getMovieDetails(int id){
+	public Movie getMovie(int id){
 		db = new Database();
 		
 		String sql = "SELECT * FROM movies WHERE id=?";
@@ -86,7 +86,7 @@ public class MoviesDB {
 		if(name != null){
 			sql += " name=?";
 			count++;
-			terms[0] = name;
+			terms[count-1] = name;
 		}
 		if(rating != null){
 			if(count>0){
@@ -94,7 +94,7 @@ public class MoviesDB {
 			}
 			sql += " rating=?";
 			count++;
-			terms[1] = rating;
+			terms[count-1] = rating;
 		}
 		try {
 			conn = db.databaseConnect();
