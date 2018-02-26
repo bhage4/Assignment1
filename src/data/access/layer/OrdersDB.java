@@ -36,8 +36,11 @@ public class OrdersDB {
 				Date orderDate = null;//orderDate.valueOf(rs.getString("OrderDate"));
 				String billingAddress = rs.getString("BillingAddress");
 				int cardNum = rs.getInt("CreditCardNumber");
+				int showingId = rs.getInt("ShowingId");
+				int ticketsOrdered = rs.getInt("TicketsOrdered");
 				
-				Orders order = new Orders(id, userId, cost, orderDate, cardNum, billingAddress);
+				Orders order = new Orders(id, userId, showingId, ticketsOrdered, cost, orderDate, cardNum, billingAddress);
+				
 				orders.add(order);
 			}
 			
@@ -67,8 +70,10 @@ public class OrdersDB {
 				Date orderDate = null;//orderDate.valueOf(rs.getString("OrderDate"));
 				String address = rs.getString("BillingAddress");
 				int creditCardNumber = rs.getInt("CreditCardNumber");
+				int showingId = rs.getInt("ShowingId");
+				int ticketsOrdered = rs.getInt("TicketsOrdered");
 				
-				Orders order = new Orders(id, customerId, cost, orderDate, creditCardNumber, address);
+				Orders order = new Orders(id, customerId, showingId, ticketsOrdered, cost, orderDate, creditCardNumber, address);
 				orders.add(order);			
 			}
 			db.closeConnection();
@@ -81,8 +86,8 @@ public class OrdersDB {
 	
 	public void addOrder(Orders order){
 		db = new Database();
-		
-		String sql = "INSERT INTO orders (customerId, totalCost, OrderDate, BillingAddress, CreditCardNumber) VALUES (?, ?, ?, ?, ?)";
+		//TODO: fix this sql statement
+		String sql = "INSERT INTO orders (customerId, totalCost, OrderDate, BillingAddress, CreditCardNumber, ShowingId, TicketsOrdered) VALUES ((SELECT Id from users where users.Id = ?), ?, ?, ?, ?, (SELECT Id from movieShowing where movieShowing.Id = ?), ?)";
 		try {
 			conn = db.databaseConnect();
 			ps = conn.prepareStatement(sql);
@@ -92,6 +97,8 @@ public class OrdersDB {
 			ps.setDate(3, order.getOrderDate());
 			ps.setString(4, order.getBillingAddress());
 			ps.setInt(5, order.getCreditCardNumber());
+			ps.setInt(6, order.getShowingId());
+			ps.setInt(7, order.getTicketsOrdered());
 			
 			ps.executeUpdate();
 			db.closeConnection();

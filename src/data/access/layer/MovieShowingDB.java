@@ -27,6 +27,8 @@ public class MovieShowingDB {
 			
 			ResultSet rs = ps.executeQuery();
 			
+			rs.first();
+			
 			double price = rs.getDouble("Price");
 			int numberPurchased = rs.getInt("NumberPurchased");
 			Time startTime = rs.getTime("StartTime");

@@ -21,17 +21,16 @@ public class CreditCardsDB {
 
 			//stmt = conn.createStatement();
 			
-			String sql = "INSERT INTO creditcards (CardHolderName, CreditCardNumber, Balance, CardType, UserId, CVV, ExpirationDate)"
-				+" VALUES (?, ?, ?, ?, (SELECT users.Id from users where Id = ?), ?, ?)";
+			String sql = "INSERT INTO creditcards (CardHolderName, CreditCardNumber, CardType, UserId, CVV, ExpirationDate)"
+				+" VALUES (?, ?, ?, (SELECT users.Id from users where Id = ?), ?, ?)";
 			
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setString(1, aCard.getCardHolderName());
 			ps.setInt(2, aCard.getCardNumber());
-			ps.setDouble(3, aCard.getBalance());
-			ps.setString(4, aCard.getCardType());
-			ps.setInt(5, aCard.getUserId());
-			ps.setString(6, aCard.getCcv());
-			ps.setDate(7, aCard.getExpirationDate());
+			ps.setString(3, aCard.getCardType());
+			ps.setInt(4, aCard.getUserId());
+			ps.setString(5, aCard.getCcv());
+			ps.setDate(6, aCard.getExpirationDate());
 			
 			ps.executeUpdate();
 							
