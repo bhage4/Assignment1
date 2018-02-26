@@ -1,6 +1,8 @@
 package order;
 
 import java.io.IOException;
+import java.util.HashMap;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,35 +22,43 @@ public class UpdateShoppingCart extends HttpServlet {
         super();
     }
 
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
 		Movie movie = (Movie) request.getAttribute("movie");
 		Theatres theater = (Theatres) request.getAttribute("theater");
 		MovieShowing showing = (MovieShowing) request.getAttribute("showing");
-		int quantity = (Integer) request.getAttribute("quantity");
+		String type = (String) request.getAttribute("type");
 		
 		HttpSession session = request.getSession();
+		
+		if(type.equals("add")){
+			int quantity = (Integer) request.getAttribute("quantity");
+			double price = quantity * showing.getPrice();
+			
+			HashMap cart = new HashMap(7);
+			cart.put("movieId", movie.getId());
+			cart.put("ticketQuantity", quantity);
+			cart.put("movieName", movie.getTitle());
+			cart.put("moviePoster", movie.getThumbnail());
+			cart.put("theaterName", theater.getName());
+			cart.put("showtime", showing.getStartTime());
+			cart.put("price", price);
+			
+			session.setAttribute("cart", cart);
+		}
+		else if(type.equals("delete")){
+			
+		}
+		
+		
+		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 	}
-	
-//	Create a shopping cart session object if it doesn’t exist already. This shopping cart
-//	session object is to be used for storing the shopping cart items temporarily. It
-//	must be able to store the following information of each order item in the shopping
-//	cart:
-//	! Movie Identifier
-//	! Requested ticket quantity by customer
-//	4
-//	! Movie name
-//	! Movie poster thumbnail (link)
-//	! Theatre name
-//	! Showtime
-//	! Price
-//	o After receiving the movie and requested quantity of tickets to the shopping cart,
-//	obtain the remaining movie information from the Movie object and store the
-//	information in the shopping cart session object.
+
 //	o This servlet should also handle delete requests to delete the items from the
 //	shopping cart, which means removing from the shopping cart session object.
 //	o After handling an update (add or delete) request, it should verify the availability

@@ -29,10 +29,10 @@
 		<input type="hidden" name="movie" value="${ movie }" />
 	    <input type="hidden" name="theater" value="${ theater }" />
 	    <input type="hidden" name="showing" value="${ showing }" />
+	    <input type="hidden" name="type" value="add" />
 		<input type="number" name="quantity">
 		<input class="btn btn-warning" type=submit value="Add to Cart">
 	</form>
-	<!--Add Review-->
 	<table>
 	  <tr>
 	    <th>Name</th>
@@ -45,14 +45,14 @@
 	    <th>Available Seats</th>
 	  </tr>
 	  <tr>
-	    <td>${ movie.title }</td>
-	    <td>${ movie.description }</td>
-	    <td>${ movie.rating }</td>
+	    <td>"${ movie.title }"</td>
+	    <td>"${ movie.description }"</td>
+	    <td>"${ movie.rating }"</td>
 	    <td><img src="${ movie.thumbnail }"></td>
-	    <td>${ theater.name } ${ room.roomNumber }</td>
-	    <td>${ showing.startTime }</td>
-	    <td>$ ${ showing.price }</td>
-	    	<c:set var="seats" value=${ room.availableSeats - showing.numberPurchased }/>
+	    <td>"${ theater.name }" "${ room.roomNumber }"</td>
+	    <td>"${ showing.startTime }"</td>
+	    <td>$ "${ showing.price }"</td>
+	    	<c:set var="seats" value="${ room.availableSeats - showing.numberPurchased }"/>
 	    <td>${ seats }</td>
 	  </tr>
 	</table>
@@ -67,19 +67,13 @@
 		</tr>
 		<c:forEach items="${reviews}" var="review">
 		  <tr>
-		    <td>${ review.user.userName }</td>
-		    <td>${ review.reviewDate }</td>
-		    <td>${ review.rating }</td>
-		    <td>${ review.review }</td>
+		    <td>"${ review.user.userName }"</td>
+		    <td>"${ review.reviewDate }"</td>
+		    <td>"${ review.rating }"</td>
+		    <td>"${ review.review }"</td>
 		  </tr>
 	    </c:forEach>
 	</table>
 	<a href="/CustomerReview.jsp">Add Review</a>
 </body>
 </html>
-
-<!-- o The page must have the option to select the ticket quantity. -->
-<!-- o Clicking the “Add to Cart” button calls the Update Shopping Cart servlet, passing -->
-<!-- the movie, ticket quantity and other necessary information. -->
-<!-- o A button “Add Review” should be present that takes the user to the -->
-<!-- CustomerReview JSP page, sending the movie information with it -->

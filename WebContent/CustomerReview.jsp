@@ -23,7 +23,8 @@
 			<option value=5 selected>5</option>
 		</select>
 		/5<br><br>
-		<textarea name="content" rows="7" cols="40"></textarea><br><br>
+		<textarea name="content" rows="7" cols="40"></textarea><br>
+		Your review my not be longer than 100 characters<br><br>
 		<input type="submit">
 	</form>
 	<a href="/MovieDetailsSelection.jsp">Cancel</a>

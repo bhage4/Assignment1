@@ -29,9 +29,9 @@
   </tr>
   <c:forEach items="${orders}" var="order">
   <tr>
-    <td>${ order.id }</td>
-    <td>${ order.totalCost }</td>
-    <td>${ order.orderDate }</td>
+    <td>"${ order.id }"</td>
+    <td>"${ order.totalCost }"</td>
+    <td>"${ order.orderDate }"</td>
     <td><form action=ManageOrder name="manageOrder">
 	    		<input type="hidden" name="order" value="${ order }" />
 				<input class="btn btn-warning" type=submit value="Manage Order">

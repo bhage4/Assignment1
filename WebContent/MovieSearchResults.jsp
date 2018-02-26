@@ -35,11 +35,11 @@
   <c:forEach items="${showingList}" var="showing">
 	  <c:set var="seats" value=${ room.availableSeats - showing.numberPurchased }/>
 	  <tr>
-	  	<td>${ movie.title }</td>
-	    <td>${ theater.name }</td>
-	    <td>${ showing.startTime }</td>
-	    <td>${ showing.price }</td>
-	    <td>${ seats }</td>
+	  	<td>"${ movie.title }"</td>
+	    <td>"${ theater.name }"</td>
+	    <td>"${ showing.startTime }"</td>
+	    <td>"${ showing.price }"</td>
+	    <td>"${ seats }"</td>
 	    <td><img src="${ movie.thumbnail }"></td>
 	    <td><form action=MovieSearchResults name="moviesearchresults">
 	    		<input type="hidden" name="movie" value="${ movie }" />
@@ -51,6 +51,5 @@
 	  </tr>
   </c:forEach>
 </table>
-
 </body>
 </html>
