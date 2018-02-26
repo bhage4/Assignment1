@@ -26,6 +26,14 @@ public class Review {
 		this.rating = rating;
 		this.review = review;
 	}
+	
+	public boolean validateReview(){
+		if(this.review.length() > maxReviewSize){
+			return false;
+		}
+		return true;
+	}
+	
 	public int getId() {
 		return id;
 	}
@@ -60,8 +68,6 @@ public class Review {
 		return review;
 	}
 	public void setReview(String review) {
-		if(review.length() <= maxReviewSize){
-			this.review = review;
-		}
+		this.review = review;
 	}
 }

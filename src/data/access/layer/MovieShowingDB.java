@@ -16,6 +16,35 @@ public class MovieShowingDB {
 	private Connection conn;
 	private PreparedStatement ps;
 	
+	public MovieShowing getShowing(int id){
+		db = new Database();
+		
+		String sql = "SELECT * FROM movieShowing WHERE id=?";
+		try {
+			conn = db.databaseConnect();
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, id);
+			
+			ResultSet rs = ps.executeQuery();
+			
+			double price = rs.getDouble("Price");
+			int numberPurchased = rs.getInt("NumberPurchased");
+			Time startTime = rs.getTime("StartTime");
+			Time endTime = rs.getTime("EndTime");
+			int movieId = rs.getInt("movieID");
+			int showroomId = rs.getInt("showroomID");
+			
+			MovieShowing showing = new MovieShowing(id, movieId, showroomId, price, numberPurchased, startTime, endTime);
+
+			db.closeConnection();
+			rs.close();
+			return showing;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
 	public List<MovieShowing> getAllShowings(){
 		db = new Database();
 		

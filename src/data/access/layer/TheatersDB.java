@@ -138,18 +138,18 @@ public class TheatersDB {
 		return theaters;
 	}
 	
-	public Showroom getShowroom(int theaterId){
+	public Showroom getShowroom(int id){
 		db = new Database();
 		
-		String sql = "SELECT * FROM Showrooms WHERE theatreBuilding=?";
+		String sql = "SELECT * FROM Showrooms WHERE id=?";
 		try {
 			conn = db.databaseConnect();
 			ps = conn.prepareStatement(sql);
-			ps.setInt(1, theaterId);
+			ps.setInt(1, id);
 			  
 			ResultSet rs = ps.executeQuery();
 				
-			int id = rs.getInt("Id");
+			int theaterId = rs.getInt("theatreBuilding");
 			int seats = rs.getInt("availableSeats");
 			int roomNumber = rs.getInt("roomNumber");
 			

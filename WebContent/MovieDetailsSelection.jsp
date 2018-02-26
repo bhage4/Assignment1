@@ -73,6 +73,7 @@
 		  </tr>
 	    </c:forEach>
 	</table>
+	<a href="/CustomerReview.jsp">Add Review</a>
 </body>
 </html>
 

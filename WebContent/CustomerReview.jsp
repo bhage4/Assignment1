@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Customer Review</title>
 </head>
 <body>
 	<div id="topsection"><div class="innertube"><h1>
@@ -13,13 +13,21 @@
 	<a type="button" class="btn btn-info" href="ViewAndCheckoutShoppingCart.jsp">Shopping Cart</a>
 	<a type="button" class="btn btn-danger" href="Login.jsp">Log out</a></h1></div></div>
 
+	<form action=CustomerReview name="customerReview">
+		Rate the movie out of 5 stars:
+		<select name="stars">
+			<option value=1>1</option>
+			<option value=2>2</option>
+			<option value=3>3</option>
+			<option value=4>4</option>
+			<option value=5 selected>5</option>
+		</select>
+		/5<br><br>
+		<textarea name="content" rows="7" cols="40"></textarea><br><br>
+		<input type="submit">
+	</form>
+	<a href="/MovieDetailsSelection.jsp">Add Review</a>
 </body>
 </html>
 
-<!-- o This is a new page required by this assignment -->
-<!-- o It should have fields that allow users to enter a textual review of the movie, as -->
-<!-- well as an entry that allows users to rate the movie out of 5 stars -->
-<!-- o It needs a submit button that takes the information entered by the user and sends it -->
-<!-- to the Customer Review servlet -->
-<!-- o It also needs a cancel button that redirects the user to the -->
-<!-- ViewMovieDetailsAndSelection page for the received movie -->
+<!-- It also needs a cancel button that redirects the user to MovieDetailsSelection.jsp for the received movie -->

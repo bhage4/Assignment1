@@ -1,6 +1,8 @@
 package models;
 
 import java.sql.Date;
+import java.util.regex.Matcher;
+
 
 public class Users {
 	private int id;
@@ -19,8 +21,25 @@ public class Users {
 	private String status; //Enum also?
 	private int numOfVisits;
 
-	//	o A non-trivial check for e-mail address validity- what does this mean?
-//	o Validates formatting of zip-code- must be 5 or 9 digits, should do this in jsp page?
+//TODO: A non-trivial check for e-mail address validity- what does this mean?
+	
+	public boolean isValidEmailAddress() {
+		String regex = "^([_a-zA-Z0-9-]+(\\.[_a-zA-Z0-9-]+)*@[a-zA-Z0-9-]+(\\.[a-zA-Z0-9-]+)*(\\.[a-zA-Z]{1,6}))?$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(this.email);
+        if (!matcher.matches()) {
+            return false;
+        }
+        return true;
+	}
+	
+	public boolean validateZip(){
+		int zipLength = String.valueOf(this.postalCode).length();
+		if(zipLength > 9 || zipLength < 5){
+			return false;
+		}
+		return true;
+	}
 	
 	public Users() {
 		super();

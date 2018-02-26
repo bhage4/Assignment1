@@ -32,6 +32,11 @@ public class CreditCardsDB {
 		}
 	}
 	
+	public CreditCard getCard(int cardNumber){
+		
+		return null;
+	}
+	
 	public List<CreditCard> searchCards(String parameters){
 		return null;
 	}

@@ -1,34 +1,61 @@
 package models;
 
 import java.sql.Date;
+import data.access.layer.CreditCardsDB;
 
 public class CreditCard {
 	
 	private int id;
 	private String cardHolderName;
 	private int cardNumber;
-	private double balance;
 	private String cardType;
 	private int userId;
 	private String ccv;
 	private Date expirationDate;	//(int year, int month, int day)
-//	Validate credit card account details.
 
 	public CreditCard() {
 		super();
 	}
 	public CreditCard(int id, String cardHolderName, int cardNumber,
-			double balance, String cardType, int userId, String ccv,
+			String cardType, int userId, String ccv,
 			Date expirationDate) {
 		super();
 		this.id = id;
 		this.cardHolderName = cardHolderName;
 		this.cardNumber = cardNumber;
-		this.balance = balance;
 		this.cardType = cardType;
 		this.userId = userId;
 		this.ccv = ccv;
 		this.expirationDate = expirationDate;
+	}
+	
+	public boolean validateCreditCardInfo(){
+		int cardLength = String.valueOf(this.cardNumber).length();
+		if(cardLength > 19 || cardLength < 13){
+			return false;
+		}
+		
+		int ccvLength = String.valueOf(this.ccv).length();
+		if(ccvLength != 3){
+			return false;
+		}
+		
+		CreditCardsDB ccdb = new CreditCardsDB();
+		CreditCard card = ccdb.getCard(this.cardNumber);
+		
+		if(!card.getCardHolderName().equalsIgnoreCase(this.cardHolderName)){
+			return false;
+		}
+		if(!card.getCardType().equalsIgnoreCase(this.cardType)){
+			return false;
+		}
+		if(!card.getCcv().equals(this.ccv)){
+			return false;
+		}
+		if(!card.getExpirationDate().equals(this.expirationDate)){
+			return false;
+		}
+		return true;
 	}
 	
 	public int getId() {
@@ -48,12 +75,6 @@ public class CreditCard {
 	}
 	public void setCardNumber(int cardNumber) {
 		this.cardNumber = cardNumber;
-	}
-	public double getBalance() {
-		return balance;
-	}
-	public void setBalance(double balance) {
-		this.balance = balance;
 	}
 	public String getCardType() {
 		return cardType;
