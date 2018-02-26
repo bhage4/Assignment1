@@ -38,9 +38,6 @@ public class MovieSearchResults extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		session.setAttribute("showing", showing);
-		session.setAttribute("movie", movie);
-		session.setAttribute("showroom", room);
-		session.setAttribute("theater", theater);
 		session.setAttribute("reviews", reviews);
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("MovieDetailsSelection.jsp");

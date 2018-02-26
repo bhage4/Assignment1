@@ -26,7 +26,7 @@
 		<textarea name="content" rows="7" cols="40"></textarea><br><br>
 		<input type="submit">
 	</form>
-	<a href="/MovieDetailsSelection.jsp">Add Review</a>
+	<a href="/MovieDetailsSelection.jsp">Cancel</a>
 </body>
 </html>
 
