@@ -16,6 +16,8 @@ public class TheatersDB {
 	private Connection conn;
 	private PreparedStatement ps;
 	
+	//TODO: test this class
+	
 	public Theatres getTheater(String name){
 		db = new Database();
 		
@@ -26,6 +28,8 @@ public class TheatersDB {
 			ps.setString(1, name);
 			  
 			ResultSet rs = ps.executeQuery();
+			
+			rs.first();
 				
 			int id = rs.getInt("id");
 			String address = rs.getString("address");
@@ -55,6 +59,8 @@ public class TheatersDB {
 			ps.setInt(1, id);
 			  
 			ResultSet rs = ps.executeQuery();
+			
+			rs.first();
 				
 			String name = rs.getString("name");
 			String address = rs.getString("address");
@@ -148,6 +154,8 @@ public class TheatersDB {
 			ps.setInt(1, theaterId);
 			  
 			ResultSet rs = ps.executeQuery();
+			
+			rs.first();
 				
 			int id = rs.getInt("Id");
 			int seats = rs.getInt("availableSeats");

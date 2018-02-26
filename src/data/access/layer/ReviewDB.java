@@ -19,17 +19,23 @@ public class ReviewDB {
 	private Connection conn;
 	private PreparedStatement ps;
 	
+	//TODO: test this class
+	
 	public void addReview(Review aReview){
 		db = new Database();
+		
+		String sql = "INSERT INTO customerreviews (movieId, userId, ReviewDate, Rating, Review) VALUES (?, ?, ?, ?, ?)";
 		try {
 			conn = db.databaseConnect();
-
-			stmt = conn.createStatement();
-			String sql = String.format("INSERT INTO customerreviews (movieId, userId, ReviewDate, Rating, Review)"
-				+" VALUES ('{0}', '{1}', '{2}', '{3}', '{4}')",
-				aReview.getMovieId(), aReview.getUser().getId(), aReview.getReviewDate().toString(), aReview.getRating(), aReview.getReview());
+			ps = conn.prepareStatement(sql);
 			
-			stmt.executeUpdate(sql);
+			ps.setInt(1, aReview.getMovieId());
+			ps.setDouble(2, aReview.getUser().getId());
+			ps.setDate(3, aReview.getReviewDate());
+			ps.setString(4, aReview.getRating());
+			ps.setString(5, aReview.getReview());
+			
+			ps.executeUpdate();
 			db.closeConnection();
 		} 
 		catch (SQLException ex) {
