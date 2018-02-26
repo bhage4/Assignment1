@@ -43,13 +43,7 @@ public class CustomerReview extends HttpServlet {
 	    dispatcher.forward(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		// TODO Auto-generated method stub
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 	}
-	
-//	The servlet should redirect the user to the ReviewConfirmation page with a success or failure message, accordingly. 
-
 }

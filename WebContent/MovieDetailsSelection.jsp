@@ -1,12 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@ page import="models.MovieShowing, models.Movie, models.Showroom, models.Theatres, models.Review, java.util.List" %>
+<%@ page import="models.MovieShowing, models.Movie, models.Showroom, models.Theatres, models.Review, java.util.List, javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpSession" %>
 <%
-	MovieShowing showing = (MovieShowing) session.getAttribute("showing");
-	List<Review> reviews = (List<Review>) session.getAttribute("reviews");
-	Movie movie = (Movie) session.getAttribute("movie");
-	Showroom room = (Showroom) session.getAttribute("showroom");
-	Theatres theater = (Theatres) session.getAttribute("theater");
+	HttpSession thisSession = request.getSession();
+	MovieShowing showing = (MovieShowing) thisSession.getAttribute("showing");
+	List<Review> reviews = (List<Review>) thisSession.getAttribute("reviews");
+	Movie movie = (Movie) thisSession.getAttribute("movie");
+	Showroom room = (Showroom) thisSession.getAttribute("showroom");
+	Theatres theater = (Theatres) thisSession.getAttribute("theater");
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
