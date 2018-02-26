@@ -2,6 +2,7 @@ package data.access.layer;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
@@ -18,13 +19,23 @@ public class CreditCardsDB {
 		try {
 			conn = db.databaseConnect();
 
-			stmt = conn.createStatement();
+			//stmt = conn.createStatement();
 			
-			String sql = String.format("INSERT INTO creditcards (CardHolderName, CreditCardNumber, Balance, CardType, UserId, CCV, ExpirationDate)"
-				+" VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}'')",
-				aCard.getCardHolderName(), aCard.getCardNumber(), aCard.getBalance(), aCard.getCardType(), aCard.getUserId(), aCard.getCcv(), aCard.getExpirationDate());
+			String sql = "INSERT INTO creditcards (CardHolderName, CreditCardNumber, Balance, CardType, UserId, CVV, ExpirationDate)"
+				+" VALUES (?, ?, ?, ?, (SELECT users.Id from users where Id = ?), ?, ?)";
 			
-			stmt.executeUpdate(sql);
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, aCard.getCardHolderName());
+			ps.setInt(2, aCard.getCardNumber());
+			ps.setDouble(3, aCard.getBalance());
+			ps.setString(4, aCard.getCardType());
+			ps.setInt(5, aCard.getUserId());
+			ps.setString(6, aCard.getCcv());
+			ps.setDate(7, aCard.getExpirationDate());
+			
+			ps.executeUpdate();
+							
+			//stmt.executeUpdate(sql);
 			db.closeConnection();
 		}
 		catch (SQLException ex) {

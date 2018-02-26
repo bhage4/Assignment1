@@ -14,7 +14,7 @@ public class UsersDB {
 	private Connection conn;
 	private PreparedStatement ps;
 	
-	public void addUser(Users aUser) {
+	public void addUser(Users aUser) { //TODO: update to use prepared statements
 		db = new Database();
 		
 		try {

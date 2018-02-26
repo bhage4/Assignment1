@@ -76,7 +76,7 @@ public class MovieShowingDB {
 		return showings;
 	}
 	
-	public List<MovieShowing> searchShowings(HashMap parameters){
+	public List<MovieShowing> searchShowings(HashMap parameters){ 
 		String movieId = (String) parameters.get("movieId");
 		String showRoomId = (String) parameters.get("showRoomId");
 		

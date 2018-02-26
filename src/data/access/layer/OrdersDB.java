@@ -16,6 +16,8 @@ public class OrdersDB {
 	private Connection conn;
 	private PreparedStatement ps;
 	
+	//TODO: test this class
+	
 	public List<Orders> getOrdersForUser(int userId){
 		db = new Database();
 		List<Orders> orders = new ArrayList<Orders>();
@@ -79,15 +81,19 @@ public class OrdersDB {
 	
 	public void addOrder(Orders order){
 		db = new Database();
+		
+		String sql = "INSERT INTO orders (customerId, totalCost, OrderDate, BillingAddress, CreditCardNumber) VALUES (?, ?, ?, ?, ?)";
 		try {
 			conn = db.databaseConnect();
-
-			stmt = conn.createStatement();
-			String sql = String.format("INSERT INTO orders (customerId, totalCost, OrderDate, BillingAddress, CreditCardNumber)"
-				+" VALUES ('{0}', '{1}', '{2}', '{3}', '{4}')",
-				order.getCustomerId(), order.getTotalCost(), order.getOrderDate().toString(), order.getBillingAddress(), order.getCreditCardNumber());
+			ps = conn.prepareStatement(sql);
 			
-			stmt.executeUpdate(sql);
+			ps.setInt(1, order.getCustomerId());
+			ps.setDouble(2, order.getTotalCost());
+			ps.setDate(3, order.getOrderDate());
+			ps.setString(4, order.getBillingAddress());
+			ps.setInt(5, order.getCreditCardNumber());
+			
+			ps.executeUpdate();
 			db.closeConnection();
 		} 
 		catch (SQLException ex) {
@@ -96,6 +102,8 @@ public class OrdersDB {
 	}
 	
 	public void updateOrder(Orders order){
+		db = new Database();
+		
 		String sql = "UPDATE orders SET customerId=?, totalCost=?, OrderDate=?, BillingAddress=?, CreditCardNumber=? WHERE id=?";
 		try {
 			conn = db.databaseConnect();

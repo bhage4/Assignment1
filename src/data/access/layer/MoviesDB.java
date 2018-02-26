@@ -26,6 +26,8 @@ public class MoviesDB {
 			ps.setString(1, title);
 			  
 			ResultSet rs = ps.executeQuery();
+			
+			rs.first();
 				  
 			int id = rs.getInt("id");
 			String description = rs.getString("Description");
@@ -53,6 +55,8 @@ public class MoviesDB {
 			ps.setInt(1, id);
 			  
 			ResultSet rs = ps.executeQuery();
+			
+			rs.first();
 				  
 			String title = rs.getString("MovieName");
 			String description = rs.getString("Description");
@@ -70,7 +74,7 @@ public class MoviesDB {
 		return null;
 	}
 	
-	public List<Movie> searchMovies(HashMap parameters){
+	public List<Movie> searchMovies(HashMap parameters){ //untested by Bethany
 		String name = (String) parameters.get("name");
 		String rating = (String) parameters.get("rating");
 		
