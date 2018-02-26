@@ -1,5 +1,6 @@
 package search;
 
+import java.sql.Date;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
@@ -33,6 +34,7 @@ public class TheaterMovieSearchQuery extends HttpServlet {
 		
 		String movieName = request.getParameter("name");
 		String theaterName = request.getParameter("theater");
+		Date viewDate = null;//Date.valueOf(request.getParameter("date"));
 		
 		MoviesDB mdb = new MoviesDB();
 		Movie movie = mdb.getMovie(movieName);
@@ -44,6 +46,7 @@ public class TheaterMovieSearchQuery extends HttpServlet {
 		HashMap params = new HashMap(2);
 		params.put("movieId", movie.getId());
 		params.put("showRoomId", room.getId());
+		params.put("date", viewDate);
 		
 		MovieShowingDB msdb = new MovieShowingDB();
 		List<MovieShowing> showings = msdb.searchShowings(params);

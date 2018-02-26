@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.List;
 import models.MovieShowing;
 import models.Theatres;
+import java.sql.Timestamp;
 
 public class MovieShowingDB {
 	private Database db;
@@ -81,14 +82,15 @@ public class MovieShowingDB {
 	public List<MovieShowing> searchShowings(HashMap parameters){ 
 		String movieId = (String) parameters.get("movieId");
 		String showRoomId = (String) parameters.get("showRoomId");
+		Timestamp date = (Timestamp) parameters.get("date");
 		
 		List<MovieShowing> showings = new ArrayList<MovieShowing>();
 		String sql = "SELECT * FROM movieShowing";
 		
 		int count=0;
-		String[] terms = new String[2];
+		String[] terms = new String[3];
 
-		if(movieId != null || showRoomId != null){
+		if(movieId != null || showRoomId != null || date != null){
 			sql += " WHERE";
 		}
 		if(movieId != null){
@@ -103,6 +105,14 @@ public class MovieShowingDB {
 			sql += " showroomID=?";
 			count++;
 			terms[count-1] = showRoomId;
+		}
+		if(date != null){
+			if(count>0){
+				sql += ",";
+			}
+			sql += " date=?";
+			count++;
+			terms[count-1] = date.toString();
 		}
 		try {
 			conn = db.databaseConnect();

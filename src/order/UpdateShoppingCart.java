@@ -2,14 +2,13 @@ package order;
 
 import java.io.IOException;
 import java.util.HashMap;
-
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 import models.Movie;
 import models.MovieShowing;
 import models.Theatres;
@@ -36,14 +35,17 @@ public class UpdateShoppingCart extends HttpServlet {
 			int quantity = (Integer) request.getAttribute("quantity");
 			double price = quantity * showing.getPrice();
 			
-			HashMap cart = new HashMap(7);
-			cart.put("movieId", movie.getId());
-			cart.put("ticketQuantity", quantity);
-			cart.put("movieName", movie.getTitle());
-			cart.put("moviePoster", movie.getThumbnail());
-			cart.put("theaterName", theater.getName());
-			cart.put("showtime", showing.getStartTime());
-			cart.put("price", price);
+			HashMap cartItem = new HashMap(7);
+			cartItem.put("movieId", movie.getId());
+			cartItem.put("ticketQuantity", quantity);
+			cartItem.put("movieName", movie.getTitle());
+			cartItem.put("moviePoster", movie.getThumbnail());
+			cartItem.put("theaterName", theater.getName());
+			cartItem.put("showtime", showing.getStartTime());
+			cartItem.put("price", price);
+			
+			List<HashMap> cart = (List<HashMap>) session.getAttribute("cart");
+			cart.add(cartItem);
 			
 			session.setAttribute("cart", cart);
 		}
