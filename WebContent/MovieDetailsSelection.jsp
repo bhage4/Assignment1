@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c"  uri="http://java.sun.com/jstl/core_rt" %>
 <%@ page import="models.MovieShowing, models.Movie, models.Showroom, models.Theatres, models.Review, java.util.List, javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpSession" %>
 <%
 	HttpSession thisSession = request.getSession();
@@ -74,6 +75,7 @@
 		  </tr>
 	    </c:forEach>
 	</table>
-	<a href="/CustomerReview.jsp">Add Review</a>
+	<br>
+	<a type="button" class="btn btn-success" href="CustomerReview.jsp">Add Review</a>
 </body>
 </html>
