@@ -3,19 +3,19 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ taglib prefix="c"  uri="http://java.sun.com/jstl/core_rt" %>
 <%@ page import="models.Theatres, models.MovieShowing, data.access.layer.MovieShowingDB, data.access.layer.TheatersDB, java.util.List, java.text.SimpleDateFormat, java.util.ArrayList" %>
-<%
-	TheatersDB tdb = new TheatersDB();
-	List<Theatres> theaters = tdb.getAllTheaters();
+<%-- <% --%>
+<!-- // 	TheatersDB tdb = new TheatersDB(); -->
+<!-- // 	List<Theatres> theaters = tdb.getAllTheaters(); -->
 	
-	MovieShowingDB msdb = new MovieShowingDB();
-	List<MovieShowing> showings = msdb.getAllShowings();
+<!-- // 	MovieShowingDB msdb = new MovieShowingDB(); -->
+<!-- // 	List<MovieShowing> showings = msdb.getAllShowings(); -->
 	
-	List<String> showTimes = new ArrayList<String>();
-	for(MovieShowing showing: showings){
-		String time = new SimpleDateFormat("yyyy/MM/dd").format(showing.getStartTime());
-		showTimes.add(time);
-	}
-%>
+<!-- // 	List<String> showTimes = new ArrayList<String>(); -->
+<!-- // 	for(MovieShowing showing: showings){ -->
+<!-- // 		String time = new SimpleDateFormat("yyyy/MM/dd").format(showing.getStartTime()); -->
+<!-- // 		showTimes.add(time); -->
+<!-- // 	} -->
+<%-- %> --%>
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">

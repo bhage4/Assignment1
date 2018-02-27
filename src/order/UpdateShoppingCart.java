@@ -3,6 +3,8 @@ package order;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import models.Movie;
 import models.MovieShowing;
+import models.Orders;
 import models.Theatres;
 
 @WebServlet("/UpdateShoppingCart")
@@ -52,24 +55,24 @@ public class UpdateShoppingCart extends HttpServlet {
 				session.setAttribute("cart", cart);
 				
 				int totalPrice = 0;
-				for(Hashmap item: cart){
-					totalPrice += item.get("price");
+				for(HashMap item: cart){
+					totalPrice += (Integer) item.get("price");
 				}
 				session.setAttribute("totalPrice", totalPrice);
 			}			
 		}
 		else if(type.equals("delete")){
 			int i=0;
-			int price = 0;
-			for(Hashmap item: cart){
-				if(item.get("movieId") == movie.getId() && item.get("ticketQuantity") == quantity){
-					price = item.get("price");
+			double price = 0;
+			for(HashMap item: cart){
+				if((Integer)item.get("movieId") == movie.getId() && (Integer) item.get("ticketQuantity") == quantity){
+					price = (Double) item.get("price");
 					cart.remove(i);
 					break;
 				}
 				i++;
 			}
-			int totalPrice = session.getAttribute("totalPrice");
+			double totalPrice = (Double) session.getAttribute("totalPrice");
 			totalPrice -= price;
 			
 			session.setAttribute("totalPrice", totalPrice);
