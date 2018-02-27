@@ -3,19 +3,19 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ taglib prefix="c"  uri="http://java.sun.com/jstl/core_rt" %>
 <%@ page import="models.Theatres, models.MovieShowing, data.access.layer.MovieShowingDB, data.access.layer.TheatersDB, java.util.List, java.text.SimpleDateFormat, java.util.ArrayList" %>
-<%
-	TheatersDB tdb = new TheatersDB();
-	List<Theatres> theaters = tdb.getAllTheaters();
+<%-- <% --%>
+<!-- // 	TheatersDB tdb = new TheatersDB(); -->
+<!-- // 	List<Theatres> theaters = tdb.getAllTheaters(); -->
 	
-	MovieShowingDB msdb = new MovieShowingDB();
-	List<MovieShowing> showings = msdb.getAllShowings();
+<!-- // 	MovieShowingDB msdb = new MovieShowingDB(); -->
+<!-- // 	List<MovieShowing> showings = msdb.getAllShowings(); -->
 	
-	List<String> showTimes = new ArrayList<String>();
-	for(MovieShowing showing: showings){
-		String time = new SimpleDateFormat("yyyy/MM/dd").format(showing.getStartTime());
-		showTimes.add(time);
-	}
-%>
+<!-- // 	List<String> showTimes = new ArrayList<String>(); -->
+<!-- // 	for(MovieShowing showing: showings){ -->
+<!-- // 		String time = new SimpleDateFormat("yyyy/MM/dd").format(showing.getStartTime()); -->
+<!-- // 		showTimes.add(time); -->
+<!-- // 	} -->
+<%-- %> --%>
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -30,9 +30,11 @@
 		<a type="button" class="btn btn-info disabled" href="CustomerHomePage.jsp">Home</a>
 		<a type="button" class="btn btn-info" href="ViewOrders.jsp">View Orders</a>
 		<a type="button" class="btn btn-info" href="ViewAndCheckoutShoppingCart.jsp">Shopping Cart</a>
-		<a type="button" class="btn btn-danger" href="Login.jsp">Log out</a></h1></div></div>
+		<a type="button" class="btn btn-danger" href="Login.jsp">Log out</a>&#9;Welcome, ${ user.userName }</h1></div></div>
 		<br>
-		
+		<h2> Search for a Movie!</h2>
+		<h3>    Suggested searches: Interstellar, Black Panther, Jurassic Park</h3>
+		<br>
 		<form action=TheaterMovieSearchQuery name="movieSearchForm">
 			Movie Name: <input type="text" name="name">
 			Theater: <select name="theaterSelected">
@@ -42,7 +44,7 @@
 			</select>
 			Date: <select name="dateSelected">
 				<c:forEach  items="${showTimes}" var="showTime">
-					<option value="${ showTime }">"${ showTime }"</option>
+					<option value="${ showTime.value }">"${ showTime.value }"</option>
 				</c:forEach>
 			</select>
 			<input class="btn btn-warning" type=submit value="Search">

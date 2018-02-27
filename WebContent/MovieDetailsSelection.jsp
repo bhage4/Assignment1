@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c"  uri="http://java.sun.com/jstl/core_rt" %>
 <%@ page import="models.MovieShowing, models.Movie, models.Showroom, models.Theatres, models.Review, java.util.List, javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpSession" %>
 <%
 	HttpSession thisSession = request.getSession();
@@ -23,14 +24,14 @@
 	<a type="button" class="btn btn-info" href="ViewOrders.jsp">View Orders</a>
 	<a type="button" class="btn btn-success" href="ViewAndCheckoutShoppingCart.jsp">Add to Cart</a>
 	<a type="button" class="btn btn-danger" href="Login.jsp">Log out</a>
-	<a type="button" class="btn btn-info" href="MovieSearchResults.jsp">Back</a></h1></div></div>
+	<a type="button" class="btn btn-info" href="MovieSearchResults.jsp">Back</a>&#9;Welcome, ${ user.userName }</h1></div></div>
 <h2>Movie Details</h2>
 	<form action=UpdateShoppingCart name="updateShoppingCart">
 		<input type="hidden" name="movieId" value="${ movie.id }" />
 	    <input type="hidden" name="theaterId" value="${ theater.id }" />
 	    <input type="hidden" name="showingId" value="${ showing.id }" />
 	    <input type="hidden" name="type" value="add" />
-		<input type="number" name="quantity">
+		Number of Tickets: <input type="number" name="quantity">
 		<input class="btn btn-warning" type=submit value="Add to Cart">
 	</form>
 	<table>
@@ -74,6 +75,7 @@
 		  </tr>
 	    </c:forEach>
 	</table>
-	<a href="/CustomerReview.jsp">Add Review</a>
+	<br>
+	<a type="button" class="btn btn-success" href="CustomerReview.jsp">Add Review</a>
 </body>
 </html>

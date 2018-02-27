@@ -3,13 +3,13 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ taglib prefix="c"  uri="http://java.sun.com/jstl/core_rt" %>
 <%@ page import="models.MovieShowing, models.Movie, models.Showroom, models.Theatres, java.util.List, javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpSession" %>
-<%
-	HttpSession thisSession = request.getSession();
-	List<MovieShowing> showings = (List<MovieShowing>) thisSession.getAttribute("showingList");
-	Movie movie = (Movie) thisSession.getAttribute("movie");
-	Showroom room = (Showroom) thisSession.getAttribute("showroom");
-	Theatres theater = (Theatres) thisSession.getAttribute("theater");
-%>
+<% 
+		HttpSession thisSession = request.getSession();
+	 	List<MovieShowing> showings = (List<MovieShowing>) thisSession.getAttribute("showingList");
+	 	Movie movie = (Movie) thisSession.getAttribute("movie");
+	 	Showroom room = (Showroom) thisSession.getAttribute("showroom");
+	 	Theatres theater = (Theatres) thisSession.getAttribute("theater"); 
+ %>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -22,7 +22,7 @@
 	<a type="button" class="btn btn-info" href="CustomerHomePage.jsp">Home</a>
 	<a type="button" class="btn btn-info" href="ViewOrders.jsp">View Orders</a>
 	<a type="button" class="btn btn-info" href="ViewAndCheckoutShoppingCart.jsp">Shopping Cart</a>
-	<a type="button" class="btn btn-danger" href="Login.jsp">Log out</a></h1></div></div>
+	<a type="button" class="btn btn-danger" href="Login.jsp">Log out</a>&#9;Welcome, ${ user.userName }</h1></div></div>
 <table>
   <tr>
   	<th> Movie Name</th>
@@ -42,6 +42,7 @@
 	    <td>"${ showing.price }"</td>
 	    <td>"${ seats }"</td>
 	    <td><img src="${ movie.thumbnail }"></td>
+<<<<<<< HEAD
 	    <td><form action=MovieSearchResults name="moviesearchresults">
 	    		<input type="hidden" name="movieId" value="${ movie.id }" />>
 	    		<input type="hidden" name="showingId" value="${ showing.id }" />

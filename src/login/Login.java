@@ -1,7 +1,9 @@
 package login;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -12,8 +14,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import data.access.layer.MovieShowingDB;
 import data.access.layer.TheatersDB;
 import data.access.layer.UsersDB;
+import models.MovieShowing;
 import models.Theatres;
 import models.Users;
 
@@ -42,10 +46,20 @@ public class Login extends HttpServlet {
 			TheatersDB tdb = new TheatersDB();
 			List<Theatres> theatersList = tdb.getAllTheaters();
 			
+			MovieShowingDB msdb = new MovieShowingDB();
+			List<MovieShowing> showings = msdb.getAllShowings();
+			
+			HashMap<String, String> showTimes = new HashMap<String, String>();
+			for(MovieShowing showing: showings){
+				String time = new SimpleDateFormat("yyyy-MM-dd").format(showing.getStartTime());
+				showTimes.putIfAbsent(time, time);
+			}
+			
 			HttpSession session = request.getSession();
 			
 			session.setAttribute("user", user);
 			session.setAttribute("theaters", theatersList);
+			session.setAttribute("showTimes", showTimes);
 			
 			// Redirect to home page
 			String address = "CustomerHomePage.jsp";
