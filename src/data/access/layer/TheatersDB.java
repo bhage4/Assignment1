@@ -125,13 +125,13 @@ public class TheatersDB {
 			ResultSet rs = ps.executeQuery();
 			
 			while(rs.next()){
-				String name = rs.getString("name");
-				int id = rs.getInt("id");
-				String address = rs.getString("address");
+				String name = rs.getString("Name");
+				int id = rs.getInt("Id");
+				String address = rs.getString("Address");
 				int owner = rs.getInt("ownerId");
-				String city = rs.getString("city");
-				String state = rs.getString("state");
-				int zip = rs.getInt("postalCode");
+				String city = rs.getString("City");
+				String state = rs.getString("State");
+				int zip = rs.getInt("PostalCode");
 				
 				Theatres theater = new Theatres(id, name, address, city, state, zip, owner);
 				theaters.add(theater);			

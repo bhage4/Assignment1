@@ -24,21 +24,20 @@
 		<a type="button" class="btn btn-danger" href="Login.jsp">Log out</a></h1></div></div>
 		<br>
 		
-		Select Date:<select name="date">
-			<option value="day1">03-14-2018
-	  		<option value="day2">03-15-2018
-	  		<option value="day3">03-16-2018
-		</select>
-		</div>
-		<br>
 		<form action=TheaterMovieSearchQuery name="movieSearchForm">
-			Name: <input type="text" name="name">
+			Movie Name: <input type="text" name="name">
 			Theater: <select name="theaterSelected">
 				<c:forEach  items="${theaters}" var="theater">
 					<option value="${ theater.name }">"${ theater.name }"</option>
 				</c:forEach>
 			</select>
-			Date: <input type="date" name="date">
+			
+			Select Date:<select name="date">
+			<option value="2018-03-14">03-14-2018
+	  		<option value="2018-03-15">03-15-2018
+	  		<option value="2018-03-16">03-16-2018
+			</select>
+			
 			<input class="btn btn-warning" type=submit value="Search">
 		</form>
 	</body>

@@ -34,7 +34,7 @@ public class TheaterMovieSearchQuery extends HttpServlet {
 		
 		String movieName = request.getParameter("name");
 		String theaterName = request.getParameter("theater");
-		Date viewDate = null;//Date.valueOf(request.getParameter("date"));
+		Date viewDate = Date.valueOf(request.getParameter("date"));
 		
 		MoviesDB mdb = new MoviesDB();
 		Movie movie = mdb.getMovie(movieName);

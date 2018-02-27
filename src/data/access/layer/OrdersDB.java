@@ -86,7 +86,6 @@ public class OrdersDB {
 	
 	public void addOrder(Orders order){
 		db = new Database();
-		//TODO: fix this sql statement
 		String sql = "INSERT INTO orders (customerId, totalCost, OrderDate, BillingAddress, CreditCardNumber, ShowingId, TicketsOrdered) VALUES ((SELECT Id from users where users.Id = ?), ?, ?, ?, ?, (SELECT Id from movieShowing where movieShowing.Id = ?), ?)";
 		try {
 			conn = db.databaseConnect();
