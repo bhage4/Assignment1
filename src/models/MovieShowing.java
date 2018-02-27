@@ -1,6 +1,6 @@
 package models;
 
-import java.sql.Time;
+import java.sql.Timestamp;
 
 public class MovieShowing {
 	private int id;
@@ -8,15 +8,15 @@ public class MovieShowing {
 	private int showroomId;
 	private double price;
 	private int numberPurchased;
-	private Time startTime;
-	private Time endTime;
+	private Timestamp startTime;
+	private Timestamp endTime;
 	
 	public MovieShowing() {
 		super();
 	}
 
 	public MovieShowing(int id, int movieId, int showroomId, double price,
-			int numberPurchased, Time startTime, Time endTime) {
+			int numberPurchased, Timestamp startTime, Timestamp endTime) {
 		super();
 		this.id = id;
 		this.movieId = movieId;
@@ -57,16 +57,16 @@ public class MovieShowing {
 	public void setNumberPurchased(int numberPurchased) {
 		this.numberPurchased = numberPurchased;
 	}
-	public Time getStartTime() {
+	public Timestamp getStartTime() {
 		return startTime;
 	}
-	public void setStartTime(Time startTime) {
+	public void setStartTime(Timestamp startTime) {
 		this.startTime = startTime;
 	}
-	public Time getEndTime() {
+	public Timestamp getEndTime() {
 		return endTime;
 	}
-	public void setEndTime(Time endTime) {
+	public void setEndTime(Timestamp endTime) {
 		this.endTime = endTime;
 	}
 }

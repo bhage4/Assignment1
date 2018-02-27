@@ -2,10 +2,13 @@
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ taglib prefix="c"  uri="http://java.sun.com/jstl/core_rt" %>
-<%@ page import="models.Theatres, data.access.layer.TheatersDB, java.util.List" %>
+<%@ page import="models.Theatres, models.MovieShowing, data.access.layer.MovieShowingDB, data.access.layer.TheatersDB, java.util.List" %>
 <%
 	TheatersDB tdb = new TheatersDB();
 	List<Theatres> theaters = tdb.getAllTheaters();
+	
+	MovieShowingDB msdb = new MovieShowingDB();
+	List<MovieShowing> showings = msdb.getAllShowings();
 %>
 <html>
 	<head>
@@ -31,13 +34,11 @@
 					<option value="${ theater.name }">"${ theater.name }"</option>
 				</c:forEach>
 			</select>
-			
-			Select Date:<select name="date">
-			<option value="2018-03-14">03-14-2018
-	  		<option value="2018-03-15">03-15-2018
-	  		<option value="2018-03-16">03-16-2018
+			Date: <select name="dateSelected">
+				<c:forEach  items="${showings}" var="showing">
+					<option value="${ showing.startTime.getTime() }">"${ showing.startTime.getTime() }"</option>
+				</c:forEach>
 			</select>
-			
 			<input class="btn btn-warning" type=submit value="Search">
 		</form>
 	</body>

@@ -33,8 +33,8 @@ public class MovieShowingDB {
 			
 			double price = rs.getDouble("Price");
 			int numberPurchased = rs.getInt("NumberPurchased");
-			Time startTime = rs.getTime("StartTime");
-			Time endTime = rs.getTime("EndTime");
+			Timestamp startTime = rs.getTimestamp("StartTime");
+			Timestamp endTime = rs.getTimestamp("EndTime");
 			int movieId = rs.getInt("movieID");
 			int showroomId = rs.getInt("showroomID");
 			
