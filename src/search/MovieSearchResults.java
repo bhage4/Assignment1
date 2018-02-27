@@ -25,8 +25,8 @@ public class MovieSearchResults extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
-		int movieId = (Integer) request.getAttribute("movieId");
-		int showingId = (Integer) request.getAttribute("showingId");
+		int movieId = Integer.parseInt(request.getParameter("movieId"));
+		int showingId = Integer.parseInt(request.getParameter("showingId"));
 		
 		ReviewDB rdb = new ReviewDB();
 		List<Review> reviews = rdb.getReviews(movieId);

@@ -3,10 +3,7 @@ package order;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
-<<<<<<< HEAD
-=======
 
->>>>>>> ebf44dd71e38711536091a9cbf185873a13a63e1
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
