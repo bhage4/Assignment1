@@ -33,7 +33,7 @@
     <td>"${ order.totalCost }"</td>
     <td>"${ order.orderDate }"</td>
     <td><form action=ManageOrder name="manageOrder">
-	    		<input type="hidden" name="order" value="${ order }" />
+	    		<input type="hidden" name="orderId" value="${ order.id }" />
 				<input class="btn btn-warning" type=submit value="Manage Order">
 			</form></td>
   </tr>

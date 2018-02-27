@@ -28,5 +28,3 @@
 
 </body>
 </html>
-
-<!-- This page should let the user know if their review was successfully submitted or updated, or a failure message if something went wrong -->

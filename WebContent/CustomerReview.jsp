@@ -30,5 +30,3 @@
 	<a href="/MovieDetailsSelection.jsp">Cancel</a>
 </body>
 </html>
-
-<!-- It also needs a cancel button that redirects the user to MovieDetailsSelection.jsp for the received movie -->
