@@ -28,45 +28,58 @@ public class UpdateShoppingCart extends HttpServlet {
 		Theatres theater = (Theatres) request.getAttribute("theater");
 		MovieShowing showing = (MovieShowing) request.getAttribute("showing");
 		String type = (String) request.getAttribute("type");
+		int quantity = (Integer) request.getAttribute("quantity");
 		
 		HttpSession session = request.getSession();
+		List<HashMap> cart = (List<HashMap>) session.getAttribute("cart");
 		
 		if(type.equals("add")){
-			int quantity = (Integer) request.getAttribute("quantity");
 			double price = quantity * showing.getPrice();
 			
-			HashMap cartItem = new HashMap(7);
-			cartItem.put("movieId", movie.getId());
-			cartItem.put("ticketQuantity", quantity);
-			cartItem.put("movieName", movie.getTitle());
-			cartItem.put("moviePoster", movie.getThumbnail());
-			cartItem.put("theaterName", theater.getName());
-			cartItem.put("showtime", showing.getStartTime());
-			cartItem.put("price", price);
-			
-			List<HashMap> cart = (List<HashMap>) session.getAttribute("cart");
-			cart.add(cartItem);
-			
-			session.setAttribute("cart", cart);
+			Orders order = new Orders();
+			if(order.checkValidQuantity(quantity)){
+				HashMap cartItem = new HashMap(7);
+				cartItem.put("movieId", movie.getId());
+				cartItem.put("ticketQuantity", quantity);
+				cartItem.put("movieName", movie.getTitle());
+				cartItem.put("moviePoster", movie.getThumbnail());
+				cartItem.put("theaterName", theater.getName());
+				cartItem.put("showtime", showing.getStartTime());
+				cartItem.put("price", price);
+				
+				cart.add(cartItem);
+				
+				session.setAttribute("cart", cart);
+				
+				int totalPrice = 0;
+				for(Hashmap item: cart){
+					totalPrice += item.get("price");
+				}
+				session.setAttribute("totalPrice", totalPrice);
+			}			
 		}
 		else if(type.equals("delete")){
+			int i=0;
+			int price = 0;
+			for(Hashmap item: cart){
+				if(item.get("movieId") == movie.getId() && item.get("ticketQuantity") == quantity){
+					price = item.get("price");
+					cart.remove(i);
+					break;
+				}
+				i++;
+			}
+			int totalPrice = session.getAttribute("totalPrice");
+			totalPrice -= price;
 			
+			session.setAttribute("totalPrice", totalPrice);
+			session.setAttribute("cart", cart);
 		}
-		
-		
-		
+		RequestDispatcher dispatcher = request.getRequestDispatcher("ViewAndCheckoutShoppingCart.jsp");
+	    dispatcher.forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 	}
-
-//	o This servlet should also handle delete requests to delete the items from the
-//	shopping cart, which means removing from the shopping cart session object.
-//	o After handling an update (add or delete) request, it should verify the availability
-//	of the movie tickets for the specified showing based on the requested quantity. If
-//	success, compute the total cost of the entire shopping cart.
-//	o Now redirect the customer to the View & Checkout Shopping Cart jsp page with
-//	all the above shopping cart information stored in the session object.
-
 }
