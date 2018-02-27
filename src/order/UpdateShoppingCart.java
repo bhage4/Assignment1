@@ -54,7 +54,8 @@ public class UpdateShoppingCart extends HttpServlet {
 			
 			Orders order = new Orders();
 			if(order.checkValidQuantity(quantity)){
-				HashMap cartItem = new HashMap(7);
+				HashMap cartItem = new HashMap(8);
+				cartItem.put("orderId", order.getId());
 				cartItem.put("movieId", movie.getId());
 				cartItem.put("ticketQuantity", quantity);
 				cartItem.put("movieName", movie.getTitle());

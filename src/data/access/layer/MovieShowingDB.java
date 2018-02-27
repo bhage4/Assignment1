@@ -147,4 +147,23 @@ public class MovieShowingDB {
 		}
 		return null;
 	}
+	
+	public void updatePurchased(MovieShowing showing){
+		db = new Database();
+		
+		String sql = "UPDATE movieShowing SET NumberPurchased=? WHERE Id=?";
+		try {
+			conn = db.databaseConnect();
+			ps = conn.prepareStatement(sql);
+			
+			ps.setInt(1, showing.getNumberPurchased());
+			ps.setInt(2, showing.getId());
+			
+			ps.executeUpdate();
+			db.closeConnection();
+		} 
+		catch (SQLException ex) {
+			ex.printStackTrace();
+		}
+	}
 }
