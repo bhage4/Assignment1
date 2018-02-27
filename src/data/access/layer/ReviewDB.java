@@ -24,7 +24,7 @@ public class ReviewDB {
 	public void addReview(Review aReview){
 		db = new Database();
 		
-		String sql = "INSERT INTO customerreviews (movieId, userId, ReviewDate, Rating, Review) VALUES (?, ?, ?, ?, ?)";
+		String sql = "INSERT INTO customerreviews (movieId, userId, ReviewDate, Rating, Review) VALUES ((SELECT id from movies where movies.id = ?), (SELECT Id from users where users.Id = ?), ?, ?, ?)";
 		try {
 			conn = db.databaseConnect();
 			ps = conn.prepareStatement(sql);
