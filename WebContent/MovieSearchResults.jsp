@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib prefix="c"  uri="http://java.sun.com/jstl/core_rt" %>
 <%@ page import="models.MovieShowing, models.Movie, models.Showroom, models.Theatres, java.util.List, javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpSession" %>
 <%
 	HttpSession thisSession = request.getSession();
@@ -33,7 +34,7 @@
     <th></th>
   </tr>
   <c:forEach items="${showingList}" var="showing">
-	  <c:set var="seats" value=${ room.availableSeats - showing.numberPurchased }/>
+	  <c:set var="seats" value="${ room.availableSeats - showing.numberPurchased }"/>
 	  <tr>
 	  	<td>"${ movie.title }"</td>
 	    <td>"${ theater.name }"</td>
@@ -46,7 +47,7 @@
 	    		<input type="hidden" name="room" value="${ room }" />
 	    		<input type="hidden" name="theater" value="${ theater }" />
 	    		<input type="hidden" name="showing" value="${ showing }" />
-				<input class="btn btn-warning" type=submit value="View Details">
+				<input class="btn btn-warning" type=submit value="View Movie Details">
 			</form></td>
 	  </tr>
   </c:forEach>

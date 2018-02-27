@@ -33,7 +33,7 @@ public class TheaterMovieSearchQuery extends HttpServlet {
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
 		
 		String movieName = request.getParameter("name");
-		String theaterName = request.getParameter("theater");
+		String theaterName = request.getParameter("theaterSelected");
 		Date viewDate = Date.valueOf(request.getParameter("date"));
 		
 		MoviesDB mdb = new MoviesDB();

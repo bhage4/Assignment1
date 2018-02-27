@@ -1,6 +1,7 @@
 package data.access.layer;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -80,9 +81,10 @@ public class MovieShowingDB {
 	}
 	
 	public List<MovieShowing> searchShowings(HashMap parameters){ 
-		String movieId = (String) parameters.get("movieId");
-		String showRoomId = (String) parameters.get("showRoomId");
-		Timestamp date = (Timestamp) parameters.get("date");
+		db = new Database();
+		String movieId = String.valueOf(parameters.get("movieId"));
+		String showRoomId = String.valueOf(parameters.get("showRoomId"));
+		Date date = (Date) (parameters.get("date"));
 		
 		List<MovieShowing> showings = new ArrayList<MovieShowing>();
 		String sql = "SELECT * FROM movieShowing";
@@ -100,7 +102,7 @@ public class MovieShowingDB {
 		}
 		if(showRoomId != null){
 			if(count>0){
-				sql += ",";
+				sql += "and";
 			}
 			sql += " showroomID=?";
 			count++;
@@ -108,11 +110,11 @@ public class MovieShowingDB {
 		}
 		if(date != null){
 			if(count>0){
-				sql += ",";
+				sql += "and";
 			}
-			sql += " date=?";
+			sql += " StartTime like ?";
 			count++;
-			terms[count-1] = date.toString();
+			terms[count-1] = "%" + date.toString() + "%";
 		}
 		try {
 			conn = db.databaseConnect();
