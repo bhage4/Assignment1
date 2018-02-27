@@ -58,7 +58,6 @@
 	  </tr>
 	</table>
 	<h2>Reviews</h2>
-	<h3>4.5/5 Star Rating</h3>
 	<table>
 		<tr>
 		    <th>Name</th>

@@ -18,6 +18,36 @@ public class OrdersDB {
 	
 	//TODO: test this class
 	
+	public Orders getOrder(int id){
+		db = new Database();
+		
+		String sql = "SELECT * FROM orders WHERE id=?";
+		try {
+			conn = db.databaseConnect();
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, id);
+			
+			ResultSet rs = ps.executeQuery();
+			
+			int customerId = rs.getInt("customerId");
+			double cost = rs.getDouble("totalCost");
+			Date orderDate = orderDate.valueOf(rs.getString("OrderDate"));
+			String address = rs.getString("BillingAddress");
+			int creditCardNumber = rs.getInt("CreditCardNumber");
+			int showingId = rs.getInt("ShowingId");
+			int ticketsOrdered = rs.getInt("TicketsOrdered");
+			
+			Orders order = new Orders(id, customerId, showingId, ticketsOrdered, cost, orderDate, creditCardNumber, address);
+
+			db.closeConnection();
+			rs.close();
+			return order;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
 	public List<Orders> getOrdersForUser(int userId){
 		db = new Database();
 		List<Orders> orders = new ArrayList<Orders>();
@@ -33,7 +63,7 @@ public class OrdersDB {
 			while(rs.next()){
 				int id = rs.getInt("id");
 				double cost = rs.getInt("TotalCost");
-				Date orderDate = null;//orderDate.valueOf(rs.getString("OrderDate"));
+				Date orderDate = orderDate.valueOf(rs.getString("OrderDate"));
 				String billingAddress = rs.getString("BillingAddress");
 				int cardNum = rs.getInt("CreditCardNumber");
 				int showingId = rs.getInt("ShowingId");
@@ -67,7 +97,7 @@ public class OrdersDB {
 				int id = rs.getInt("id");
 				int customerId = rs.getInt("customerId");
 				double cost = rs.getDouble("totalCost");
-				Date orderDate = null;//orderDate.valueOf(rs.getString("OrderDate"));
+				Date orderDate = orderDate.valueOf(rs.getString("OrderDate"));
 				String address = rs.getString("BillingAddress");
 				int creditCardNumber = rs.getInt("CreditCardNumber");
 				int showingId = rs.getInt("ShowingId");
