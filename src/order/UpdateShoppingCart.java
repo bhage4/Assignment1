@@ -88,11 +88,7 @@ public class UpdateShoppingCart extends HttpServlet {
 				}
 				i++;
 			}
-<<<<<<< HEAD
-			int totalPrice = (Integer) session.getAttribute("totalPrice");
-=======
 			double totalPrice = (Double) session.getAttribute("totalPrice");
->>>>>>> ebf44dd71e38711536091a9cbf185873a13a63e1
 			totalPrice -= price;
 			
 			session.setAttribute("totalPrice", totalPrice);
