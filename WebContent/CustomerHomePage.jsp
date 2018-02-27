@@ -30,21 +30,21 @@
 		<a type="button" class="btn btn-info disabled" href="CustomerHomePage.jsp">Home</a>
 		<a type="button" class="btn btn-info" href="ViewOrders.jsp">View Orders</a>
 		<a type="button" class="btn btn-info" href="ViewAndCheckoutShoppingCart.jsp">Shopping Cart</a>
-		<a type="button" class="btn btn-danger" href="Login.jsp">Log out</a>&#9;Welcome, ${ user.userName }</h1></div></div>
+		&#9;Welcome, ${ user.userName }</h1><form action=Logout method=post><input type=submit class="btn btn-danger" value="Log out"></form></div></div>
 		<br>
 		<h2> Search for a Movie!</h2>
-		<h3>    Suggested searches: Interstellar, Black Panther, Jurassic Park</h3>
+		<h3>    Now Showing: Interstellar, Black Panther, Jurassic Park</h3>
 		<br>
 		<form action=TheaterMovieSearchQuery name="movieSearchForm">
 			Movie Name: <input type="text" name="name">
 			Theater: <select name="theaterSelected">
 				<c:forEach  items="${theaters}" var="theater">
-					<option value="${ theater.name }">"${ theater.name }"</option>
+					<option value="${ theater.name }">${ theater.name }</option>
 				</c:forEach>
 			</select>
 			Date: <select name="dateSelected">
 				<c:forEach  items="${showTimes}" var="showTime">
-					<option value="${ showTime.value }">"${ showTime.value }"</option>
+					<option value="${ showTime.value }">${ showTime.value }</option>
 				</c:forEach>
 			</select>
 			<input class="btn btn-warning" type=submit value="Search">

@@ -31,7 +31,7 @@ public class OrdersDB {
 			
 			int customerId = rs.getInt("customerId");
 			double cost = rs.getDouble("totalCost");
-			Date orderDate = orderDate.valueOf(rs.getString("OrderDate"));
+			Date orderDate = Date.valueOf(rs.getString("OrderDate"));
 			String address = rs.getString("BillingAddress");
 			int creditCardNumber = rs.getInt("CreditCardNumber");
 			int showingId = rs.getInt("ShowingId");
@@ -63,7 +63,7 @@ public class OrdersDB {
 			while(rs.next()){
 				int id = rs.getInt("id");
 				double cost = rs.getInt("TotalCost");
-				Date orderDate = orderDate.valueOf(rs.getString("OrderDate"));
+				Date orderDate = Date.valueOf(rs.getString("OrderDate"));
 				String billingAddress = rs.getString("BillingAddress");
 				int cardNum = rs.getInt("CreditCardNumber");
 				int showingId = rs.getInt("ShowingId");
@@ -97,7 +97,7 @@ public class OrdersDB {
 				int id = rs.getInt("id");
 				int customerId = rs.getInt("customerId");
 				double cost = rs.getDouble("totalCost");
-				Date orderDate = orderDate.valueOf(rs.getString("OrderDate"));
+				Date orderDate = Date.valueOf(rs.getString("OrderDate"));
 				String address = rs.getString("BillingAddress");
 				int creditCardNumber = rs.getInt("CreditCardNumber");
 				int showingId = rs.getInt("ShowingId");
