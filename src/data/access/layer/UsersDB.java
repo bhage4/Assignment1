@@ -135,6 +135,7 @@ public class UsersDB {
 	   
 	    Users aUser = new Users();
 		try {
+			conn = db.databaseConnect();
 			stat = conn.createStatement();
 			ResultSet rs = stat.executeQuery(SQL);
 			
