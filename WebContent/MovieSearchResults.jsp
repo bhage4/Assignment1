@@ -42,17 +42,9 @@
 	    <td>"${ showing.price }"</td>
 	    <td>"${ seats }"</td>
 	    <td><img src="${ movie.thumbnail }"></td>
-	    <td><form action=MovieSearchResults name="moviesearchresults" method=post>
-<%-- 	    		<input type="hidden" name="movie" value="${ movie }" /> --%>
-<%-- 	    		<input type="hidden" name="room" value="${ room }" /> --%>
-<%-- 	    		<input type="hidden" name="theater" value="${ theater }" /> --%>
-<%-- 	    		<input type="hidden" name="showing" value="${ showing }" /> --%>
-	    		<%
-	    		request.setAttribute("movie", "${ movie }");
-	    		request.setAttribute("room", "${ room }");
-	    		request.setAttribute("theater", "${ theater }");
-	    		request.setAttribute("showing", "${showing}"); 
-	    		%>
+	    <td><form action=MovieSearchResults name="moviesearchresults">
+	    		<input type="hidden" name="movieId" value="${ movie.id }" />>
+	    		<input type="hidden" name="showingId" value="${ showing.id }" />
 				<input class="btn btn-warning" type=submit value="View Movie Details">
 			</form></td>
 	  </tr>

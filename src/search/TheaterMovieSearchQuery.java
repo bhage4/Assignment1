@@ -36,26 +36,29 @@ public class TheaterMovieSearchQuery extends HttpServlet {
 		String theaterName = request.getParameter("theaterSelected");
 		Date viewDate = Date.valueOf(request.getParameter("dateSelected"));
 		
-		MoviesDB mdb = new MoviesDB();
-		Movie movie = mdb.getMovie(movieName);
-		
-		TheatersDB tdb = new TheatersDB();
-		Theatres theater = tdb.getTheater(theaterName);
-		Showroom room = tdb.getShowroom(theater.getId());
-		
-		HashMap params = new HashMap(2);
-		params.put("movieId", movie.getId());
-		params.put("showRoomId", room.getId());
-		params.put("date", viewDate);
-		
-		MovieShowingDB msdb = new MovieShowingDB();
-		List<MovieShowing> showings = msdb.searchShowings(params);
-		
-		HttpSession session = request.getSession();
-		session.setAttribute("showingList", showings);
-		session.setAttribute("movie", movie);
-		session.setAttribute("showroom", room);
-		session.setAttribute("theater", theater);
+		if(movieName != null && !movieName.isEmpty()){
+					
+			MoviesDB mdb = new MoviesDB();
+			Movie movie = mdb.getMovie(movieName);
+			
+			TheatersDB tdb = new TheatersDB();
+			Theatres theater = tdb.getTheater(theaterName);
+			Showroom room = tdb.getShowroom(theater.getId());
+			
+			HashMap params = new HashMap(2);
+			params.put("movieId", movie.getId());
+			params.put("showRoomId", room.getId());
+			params.put("date", viewDate);
+			
+			MovieShowingDB msdb = new MovieShowingDB();
+			List<MovieShowing> showings = msdb.searchShowings(params);
+			
+			HttpSession session = request.getSession();
+			session.setAttribute("showingList", showings);
+			session.setAttribute("movie", movie);
+			session.setAttribute("showroom", room);
+			session.setAttribute("theater", theater);
+		}
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("MovieSearchResults.jsp");
 	    dispatcher.forward(request, response);

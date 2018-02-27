@@ -27,9 +27,9 @@
 	<a type="button" class="btn btn-info" href="MovieSearchResults.jsp">Back</a>&#9;Welcome, ${ user.userName }</h1></div></div>
 <h2>Movie Details</h2>
 	<form action=UpdateShoppingCart name="updateShoppingCart">
-		<input type="hidden" name="movie" value="${ movie }" />
-	    <input type="hidden" name="theater" value="${ theater }" />
-	    <input type="hidden" name="showing" value="${ showing }" />
+		<input type="hidden" name="movieId" value="${ movie.id }" />
+	    <input type="hidden" name="theaterId" value="${ theater.id }" />
+	    <input type="hidden" name="showingId" value="${ showing.id }" />
 	    <input type="hidden" name="type" value="add" />
 		Number of Tickets: <input type="number" name="quantity">
 		<input class="btn btn-warning" type=submit value="Add to Cart">

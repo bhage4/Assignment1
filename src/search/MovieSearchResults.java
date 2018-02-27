@@ -10,13 +10,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
+import data.access.layer.MovieShowingDB;
 import data.access.layer.ReviewDB;
-import models.Movie;
 import models.MovieShowing;
 import models.Review;
-import models.Showroom;
-import models.Theatres;
 
 @WebServlet("/MovieSearchResults")
 public class MovieSearchResults extends HttpServlet {
@@ -28,13 +25,14 @@ public class MovieSearchResults extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
-		Movie movie = (Movie) request.getAttribute("movie");
-		MovieShowing showing = (MovieShowing) request.getAttribute("showing");
-		Theatres theater = (Theatres) request.getAttribute("theater");
-		Showroom room = (Showroom) request.getAttribute("room");
+		int movieId = (Integer) request.getAttribute("movieId");
+		int showingId = (Integer) request.getAttribute("showingId");
 		
 		ReviewDB rdb = new ReviewDB();
-		List<Review> reviews = rdb.getReviews(movie.getId());
+		List<Review> reviews = rdb.getReviews(movieId);
+		
+		MovieShowingDB msdb = new MovieShowingDB();
+		MovieShowing showing = msdb.getShowing(showingId);
 		
 		HttpSession session = request.getSession();
 		session.setAttribute("showing", showing);

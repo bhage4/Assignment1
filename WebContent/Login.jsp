@@ -40,7 +40,3 @@
 	
 	</body>
 </html>
-
-<!-- Clicking the submit button on the form should call the login servlet. -->
-<!-- DONE No session generation of the fields is required for this assignment. -->
-<!-- DONE Clicking the registration link should lead to the registration page. -->
