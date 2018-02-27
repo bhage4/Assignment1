@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ page import="javax.servlet.http.HttpServletRequest" %>
+<%@ taglib prefix="c"  uri="http://java.sun.com/jstl/core_rt" %>
 <%
 	boolean result = Boolean.valueOf(String.valueOf(request.getParameter("result")));
 %>
@@ -8,6 +9,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="NiceLayout.css">
 <title>Review Confirmation</title>
 </head>
 <body>
@@ -22,7 +25,7 @@
 			Your review was successfully submitted
 		</c:when>
 		<c:otherwise>
-			Oops! Your review was too long, please try submitting one with less than 100 characters.
+			Oops! Your review was not successfully submitted. If your review was too long, please try submitting one with less than 100 characters.
 		</c:otherwise>
 	</c:choose>
 

@@ -32,7 +32,9 @@
 		<a type="button" class="btn btn-info" href="ViewAndCheckoutShoppingCart.jsp">Shopping Cart</a>
 		<a type="button" class="btn btn-danger" href="Login.jsp">Log out</a></h1></div></div>
 		<br>
-		
+		<h2> Search for a Movie!</h2>
+		<h3>    Suggested searches: Interstellar, Black Panther, Jurassic Park</h3>
+		<br>
 		<form action=TheaterMovieSearchQuery name="movieSearchForm">
 			Movie Name: <input type="text" name="name">
 			Theater: <select name="theaterSelected">

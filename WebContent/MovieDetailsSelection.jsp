@@ -30,7 +30,7 @@
 	    <input type="hidden" name="theater" value="${ theater }" />
 	    <input type="hidden" name="showing" value="${ showing }" />
 	    <input type="hidden" name="type" value="add" />
-		<input type="number" name="quantity">
+		Number of Tickets: <input type="number" name="quantity">
 		<input class="btn btn-warning" type=submit value="Add to Cart">
 	</form>
 	<table>

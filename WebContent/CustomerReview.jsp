@@ -4,6 +4,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="NiceLayout.css">
 <title>Customer Review</title>
 </head>
 <body>
@@ -12,7 +14,7 @@
 	<a type="button" class="btn btn-info" href="ViewOrders.jsp">View Orders</a>
 	<a type="button" class="btn btn-info" href="ViewAndCheckoutShoppingCart.jsp">Shopping Cart</a>
 	<a type="button" class="btn btn-danger" href="Login.jsp">Log out</a></h1></div></div>
-
+	<br>
 	<form action=CustomerReview name="customerReview">
 		Rate the movie out of 5 stars:
 		<select name="stars">
@@ -25,9 +27,10 @@
 		/5<br><br>
 		<textarea name="content" rows="7" cols="40"></textarea><br>
 		Your review my not be longer than 100 characters<br><br>
-		<input type="submit">
+		<input class="btn btn-success" type="submit" value="Submit Review">
+		<a type="button" class="btn btn-danger" href="MovieDetailsSelection.jsp">Cancel</a>
 	</form>
-	<a href="/MovieDetailsSelection.jsp">Cancel</a>
+	
 </body>
 </html>
 
