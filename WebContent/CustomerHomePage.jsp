@@ -2,13 +2,19 @@
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ taglib prefix="c"  uri="http://java.sun.com/jstl/core_rt" %>
-<%@ page import="models.Theatres, models.MovieShowing, data.access.layer.MovieShowingDB, data.access.layer.TheatersDB, java.util.List" %>
+<%@ page import="models.Theatres, models.MovieShowing, data.access.layer.MovieShowingDB, data.access.layer.TheatersDB, java.util.List, java.text.SimpleDateFormat, java.util.ArrayList" %>
 <%
 	TheatersDB tdb = new TheatersDB();
 	List<Theatres> theaters = tdb.getAllTheaters();
 	
 	MovieShowingDB msdb = new MovieShowingDB();
 	List<MovieShowing> showings = msdb.getAllShowings();
+	
+	List<String> showTimes = new ArrayList<String>();
+	for(MovieShowing showing: showings){
+		String time = new SimpleDateFormat("yyyy/MM/dd").format(showing.getStartTime());
+		showTimes.add(time);
+	}
 %>
 <html>
 	<head>
@@ -35,28 +41,11 @@
 				</c:forEach>
 			</select>
 			Date: <select name="dateSelected">
-				<c:forEach  items="${showings}" var="showing">
-					<option value="${ showing.startTime.getTime() }">"${ showing.startTime.getTime() }"</option>
+				<c:forEach  items="${showTimes}" var="showTime">
+					<option value="${ showTime }">"${ showTime }"</option>
 				</c:forEach>
 			</select>
 			<input class="btn btn-warning" type=submit value="Search">
 		</form>
 	</body>
 </html>
-
-<!--  DONE: This page is the welcome page for the customers and can be designed as per the student's wish. -->
-<!--  DONE: It must have accessible links, menus or buttons for navigating to the ViewOrders.jsp page. -->
-<!--  DONE: It should have logout option upon clicking that takes to the Login page. -->
-<!--  The page must also provide a section where the user can search for movies. -->
-<!--  This section must include the following items: -->
-	<!--  DONE: A drop-down menu consisting of available movie theatre locations. -->
-	<!--  DONE: A text box to enter a search term (a movie). -->
-	<!--  DONE: A search button which when clicked must lead to the MovieSearchResults.jsp page. -->
-	
-<!-- The user should fill out the query and upon clicking the search button should call -->
-<!-- the Theatre And Movie Search Query servlet. -->
-<!-- 2 -->
-<!-- o Existing theatre buildings should be provided in a drop-down menu (after being -->
-<!-- read from the database using the TheatreDB class) -->
-<!-- o Should include a date selection that allows the user to select the day they wish to -->
-<!-- see the movies being shown -->
