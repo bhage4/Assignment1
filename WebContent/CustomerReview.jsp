@@ -13,7 +13,7 @@
 	<a type="button" class="btn btn-info" href="CustomerHomePage.jsp">Home</a>
 	<a type="button" class="btn btn-info" href="ViewOrders.jsp">View Orders</a>
 	<a type="button" class="btn btn-info" href="ViewAndCheckoutShoppingCart.jsp">Shopping Cart</a>
-	<a type="button" class="btn btn-danger" href="Login.jsp">Log out</a></h1></div></div>
+	<a type="button" class="btn btn-danger" href="Login.jsp">Log out</a>&#9;Welcome, ${ user.userName }</h1></div></div>
 	<br>
 	<form action=CustomerReview name="customerReview">
 		Rate the movie out of 5 stars:

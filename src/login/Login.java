@@ -3,6 +3,7 @@ package login;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -48,10 +49,10 @@ public class Login extends HttpServlet {
 			MovieShowingDB msdb = new MovieShowingDB();
 			List<MovieShowing> showings = msdb.getAllShowings();
 			
-			List<String> showTimes = new ArrayList<String>();
+			HashMap<String, String> showTimes = new HashMap<String, String>();
 			for(MovieShowing showing: showings){
 				String time = new SimpleDateFormat("yyyy-MM-dd").format(showing.getStartTime());
-				showTimes.add(time);
+				showTimes.putIfAbsent(time, time);
 			}
 			
 			HttpSession session = request.getSession();

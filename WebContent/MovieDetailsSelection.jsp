@@ -24,7 +24,7 @@
 	<a type="button" class="btn btn-info" href="ViewOrders.jsp">View Orders</a>
 	<a type="button" class="btn btn-success" href="ViewAndCheckoutShoppingCart.jsp">Add to Cart</a>
 	<a type="button" class="btn btn-danger" href="Login.jsp">Log out</a>
-	<a type="button" class="btn btn-info" href="MovieSearchResults.jsp">Back</a></h1></div></div>
+	<a type="button" class="btn btn-info" href="MovieSearchResults.jsp">Back</a>&#9;Welcome, ${ user.userName }</h1></div></div>
 <h2>Movie Details</h2>
 	<form action=UpdateShoppingCart name="updateShoppingCart">
 		<input type="hidden" name="movie" value="${ movie }" />

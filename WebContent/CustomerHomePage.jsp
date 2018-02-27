@@ -30,7 +30,7 @@
 		<a type="button" class="btn btn-info disabled" href="CustomerHomePage.jsp">Home</a>
 		<a type="button" class="btn btn-info" href="ViewOrders.jsp">View Orders</a>
 		<a type="button" class="btn btn-info" href="ViewAndCheckoutShoppingCart.jsp">Shopping Cart</a>
-		<a type="button" class="btn btn-danger" href="Login.jsp">Log out</a></h1></div></div>
+		<a type="button" class="btn btn-danger" href="Login.jsp">Log out</a>&#9;Welcome, ${ user.userName }</h1></div></div>
 		<br>
 		<h2> Search for a Movie!</h2>
 		<h3>    Suggested searches: Interstellar, Black Panther, Jurassic Park</h3>
@@ -44,7 +44,7 @@
 			</select>
 			Date: <select name="dateSelected">
 				<c:forEach  items="${showTimes}" var="showTime">
-					<option value="${ showTime }">"${ showTime }"</option>
+					<option value="${ showTime.value }">"${ showTime.value }"</option>
 				</c:forEach>
 			</select>
 			<input class="btn btn-warning" type=submit value="Search">
