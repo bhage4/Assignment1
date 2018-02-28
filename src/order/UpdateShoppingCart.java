@@ -1,6 +1,8 @@
 package order;
 
 import java.io.IOException;
+import java.sql.Date;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -17,8 +19,10 @@ import models.MovieShowing;
 import models.Orders;
 import models.Showroom;
 import models.Theatres;
+import models.Users;
 import data.access.layer.MovieShowingDB;
 import data.access.layer.MoviesDB;
+import data.access.layer.OrdersDB;
 import data.access.layer.TheatersDB;
 
 @WebServlet("/UpdateShoppingCart")
@@ -38,13 +42,16 @@ public class UpdateShoppingCart extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		List<HashMap> cart = (List<HashMap>) session.getAttribute("cart");
+		if(cart == null){
+			cart = new ArrayList<HashMap>();
+		}
 		
 		MoviesDB mdb = new MoviesDB();
 		Movie movie = mdb.getMovie(movieId);
 		
 		if(type.equals("add")){
-			int theaterId = (Integer) request.getAttribute("theaterId");
-			int showingId = (Integer) request.getAttribute("showingId");
+			int theaterId = Integer.parseInt(request.getParameter("theaterId"));
+			int showingId = Integer.parseInt(request.getParameter("showingId"));
 			
 			MovieShowingDB msdb = new MovieShowingDB();
 			MovieShowing showing = msdb.getShowing(showingId);
@@ -56,7 +63,13 @@ public class UpdateShoppingCart extends HttpServlet {
 			double price = quantity * showing.getPrice();
 			String theaterNameNum = theater.getName() + " " + room.getRoomNumber();
 			
-			Orders order = new Orders();
+			Users user = (Users) session.getAttribute("user");
+			
+			long millis = System.currentTimeMillis();
+			Date date = new Date(millis);
+			
+			Orders order = new Orders(user.getId(), showingId, quantity, price, date);
+			
 			if(order.checkValidQuantity(quantity)){
 				HashMap cartItem = new HashMap(8);
 				cartItem.put("orderId", order.getId());
@@ -70,11 +83,14 @@ public class UpdateShoppingCart extends HttpServlet {
 				
 				cart.add(cartItem);
 				
+				OrdersDB odb = new OrdersDB();
+				odb.addOrder(order);
+				
 				session.setAttribute("cart", cart);
 				
-				int totalPrice = 0;
+				double totalPrice = 0;
 				for(HashMap item: cart){
-					totalPrice += (Integer) item.get("price");
+					totalPrice += (Double) item.get("price");
 				}
 				session.setAttribute("totalPrice", totalPrice);
 			}			

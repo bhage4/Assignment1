@@ -20,6 +20,16 @@ public class Orders {
 		super();
 	}
 
+	public Orders(int customerId, int showingId, int ticketsOrdered,
+			double totalCost, Date orderDate) {
+		super();
+		this.customerId = customerId;
+		this.showingId = showingId;
+		this.ticketsOrdered = ticketsOrdered;
+		this.totalCost = totalCost;
+		this.orderDate = orderDate;
+	}
+
 	public Orders(int id, int customerId, int showingId, int ticketsOrdered, double totalCost, Date orderDate,
 			int creditCardNumber, String billingAddress) {
 		super();
