@@ -33,11 +33,11 @@
   </tr>
 </table>
 <br>
-<form class="centered-form" action=CancelOrder name="cancelOrder">
+<form class="centered-form" action=CancelOrder name="cancelOrder" method="post">
   	<input type="hidden" name="orderId" value="${ order.id }" />
 	<input class="btn btn-warning" type=submit value="Confirm Cancellation">
 </form>
-<form class="centered-form" action=ManageOrder name="manageOrder">
+<form class="centered-form" action=ManageOrder name="manageOrder" method="post">
   	<input type="hidden" name="orderId" value="${ order.id }" />
 	<input class="btn btn-warning" type=submit value="Discard Cancellation">
 </form>

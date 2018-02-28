@@ -34,7 +34,7 @@
 	  <td>"${ order.totalCost }"</td>
 	  <td>"${ theater.name }" "${ room.roomNumber }"</td>
 	  <td>"${ showing.startTime }"</td>
-	  <td><c:when test="${ validCancel }"> <form class="centered-form" action=CancelOrder name="cancelOrder">
+	  <td><c:when test="${ validCancel }"> <form class="centered-form" action=CancelOrder name="cancelOrder" method="post">
 	    		<input type="hidden" name="orderId" value="${ order.id }" />
 				<input class="btn btn-warning" type=submit value="Cancel Order">
 			</form>

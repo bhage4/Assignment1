@@ -15,7 +15,7 @@
 		<a type="button" class="btn btn-info" href="ViewAndCheckoutShoppingCart.jsp">Shopping Cart</a>
 		<input type=submit class="btn btn-danger" value="Log out">Welcome, ${ user.userName }</form></div></div>
 	<br>
-	<form class="centered-form" action=CustomerReview name="customerReview">
+	<form class="centered-form" action=CustomerReview name="customerReview" method="post">
 		Rate the movie out of 5 stars:
 		<select name="stars">
 			<option value=1>1</option>

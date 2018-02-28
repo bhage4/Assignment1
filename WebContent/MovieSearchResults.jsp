@@ -42,7 +42,7 @@
 	    <td>$ ${ showing.price }</td>
 	    <td>${ seats }</td>
 	    <td><img src="${ movie.thumbnail }"></td>
-	    <td><form class="centered-form" action=MovieSearchResults name="moviesearchresults">
+	    <td><form class="centered-form" action=MovieSearchResults name="moviesearchresults" method="post">
 	    		<input type="hidden" name="movieId" value="${ movie.id }" />>
 	    		<input type="hidden" name="showingId" value="${ showing.id }" />
 				<input class="btn btn-warning" type=submit value="View Movie Details">

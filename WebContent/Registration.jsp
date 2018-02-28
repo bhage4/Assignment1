@@ -40,7 +40,7 @@
 		<div id="topsection"><div class="innertube"><h1>
 		<a type="button" class="btn btn-info" href="Login.jsp">Back to Login</a>  Register Below:</h1></div></div>
 		<br>
-		<form class="centered-form" action=Registration name="registrationForm" onsubmit="return validateForm()">
+		<form class="centered-form" action=Registration name="registrationForm" onsubmit="return validateForm()" method="post">
 		
 			User Name: <input type=text name=userName><br>
 			Password: <input type=password name=password><br>

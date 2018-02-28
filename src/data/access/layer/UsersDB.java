@@ -96,6 +96,7 @@ public class UsersDB {
 			
 			while (rs.next()){
 				if(aUserName.equals( rs.getString(14) )) {
+					aUser.setId(rs.getInt(1));
 					aUser.setFirstName(rs.getString(2));
 					aUser.setLastName(rs.getString(3));
 					aUser.setAddress(rs.getString(4));

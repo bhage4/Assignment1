@@ -32,7 +32,7 @@
     <td>"${ order.id }"</td>
     <td>"${ order.totalCost }"</td>
     <td>"${ order.orderDate }"</td>
-    <td><form class="centered-form" action=ManageOrder name="manageOrder">
+    <td><form class="centered-form" action=ManageOrder name="manageOrder" method="post">
 	    		<input type="hidden" name="orderId" value="${ order.id }" />
 				<input class="btn btn-warning" type=submit value="Manage Order">
 			</form></td>

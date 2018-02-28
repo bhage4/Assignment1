@@ -33,7 +33,7 @@
 	    <td>${ item['showtime'] }</td>
 	    <td>${ item['ticketQuantity'] }</td>
 	    <td>$ ${ item['price'] }</td>
-	    <td><form class="centered-form" action=UpdateShoppingCart name="updateCart">
+	    <td><form class="centered-form" action=UpdateShoppingCart name="updateCart" method="post">
 	    		<input type="hidden" name="movieId" value="${ movie.id }" />>
 	    		<input type="hidden" name="type" value="delete" />
 	    		<input type="hidden" name="quantity" value=${ item['ticketQuantity'] } />
