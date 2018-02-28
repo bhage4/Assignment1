@@ -29,7 +29,7 @@
 		</h1></div></div>
 		<br>
 	
-		<form action=Login name="loginForm" onsubmit="return validateForm()" method="post">
+		<form class="centered-form" action=Login name="loginForm" onsubmit="return validateForm()" method="post">
 		
 			User Name: <input type=text name=userName><br>
 			Password: <input type=password name=password><br><br>

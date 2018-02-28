@@ -18,11 +18,11 @@
 <title>Search Results</title>
 </head>
 <body>
-	<div id="topsection"><div class="innertube"><h1>
-	<a type="button" class="btn btn-info" href="CustomerHomePage.jsp">Home</a>
+	<div id="topsection"><div class="innertube"><br><form action=Logout method=post>
+	<a type="button" class="btn btn-info disabled" href="CustomerHomePage.jsp">Home</a>
 	<a type="button" class="btn btn-info" href="ViewOrders.jsp">View Orders</a>
 	<a type="button" class="btn btn-info" href="ViewAndCheckoutShoppingCart.jsp">Shopping Cart</a>
-	<a type="button" class="btn btn-danger" href="Login.jsp">Log out</a>&#9;Welcome, ${ user.userName }</h1></div></div>
+	<input type=submit class="btn btn-danger" value="Log out">Welcome, ${ user.userName }</form></div></div>
 <table>
   <tr>
   	<th> Movie Name</th>
@@ -42,7 +42,7 @@
 	    <td>$ ${ showing.price }</td>
 	    <td>${ seats }</td>
 	    <td><img src="${ movie.thumbnail }"></td>
-	    <td><form action=MovieSearchResults name="moviesearchresults">
+	    <td><form class="centered-form" action=MovieSearchResults name="moviesearchresults">
 	    		<input type="hidden" name="movieId" value="${ movie.id }" />>
 	    		<input type="hidden" name="showingId" value="${ showing.id }" />
 				<input class="btn btn-warning" type=submit value="View Movie Details">

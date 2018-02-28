@@ -26,16 +26,16 @@
 		<title>Home Page</title>
 	</head>
 	<body>
-		<div id="topsection"><div class="innertube"><h1>
+		<div id="topsection"><div class="innertube"><br><form action=Logout method=post>
 		<a type="button" class="btn btn-info disabled" href="CustomerHomePage.jsp">Home</a>
 		<a type="button" class="btn btn-info" href="ViewOrders.jsp">View Orders</a>
 		<a type="button" class="btn btn-info" href="ViewAndCheckoutShoppingCart.jsp">Shopping Cart</a>
-		&#9;Welcome, ${ user.userName }</h1><form action=Logout method=post><input type=submit class="btn btn-danger" value="Log out"></form></div></div>
+		<input type=submit class="btn btn-danger" value="Log out">Welcome, ${ user.userName }</form></div></div>
 		<br>
 		<h2> Search for a Movie!</h2>
 		<h3>    Now Showing: Interstellar, Black Panther, Jurassic Park</h3>
 		<br>
-		<form action=TheaterMovieSearchQuery name="movieSearchForm">
+		<form class="centered-form" action=TheaterMovieSearchQuery name="movieSearchForm">
 			Movie Name: <input type="text" name="name">
 			Theater: <select name="theaterSelected">
 				<c:forEach  items="${theaters}" var="theater">

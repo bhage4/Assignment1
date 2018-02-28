@@ -14,11 +14,11 @@
 <title>Orders</title>
 </head>
 <body>
-	<div id="topsection"><div class="innertube"><h1>
-	<a type="button" class="btn btn-info" href="CustomerHomePage.jsp">Home</a>
-	<a type="button" class="btn btn-info disabled" href="ViewOrders.jsp">View Orders</a>
+	<div id="topsection"><div class="innertube"><br><form action=Logout method=post>
+	<a type="button" class="btn btn-info disabled" href="CustomerHomePage.jsp">Home</a>
+	<a type="button" class="btn btn-info" href="ViewOrders.jsp">View Orders</a>
 	<a type="button" class="btn btn-info" href="ViewAndCheckoutShoppingCart.jsp">Shopping Cart</a>
-	<a type="button" class="btn btn-danger" href="Login.jsp">Log out</a>&#9;Welcome, ${ user.userName }</h1></div></div>
+	<input type=submit class="btn btn-danger" value="Log out">Welcome, ${ user.userName }</form></div></div>
 
 <table>
   <tr>
@@ -32,7 +32,7 @@
     <td>"${ order.id }"</td>
     <td>"${ order.totalCost }"</td>
     <td>"${ order.orderDate }"</td>
-    <td><form action=ManageOrder name="manageOrder">
+    <td><form class="centered-form" action=ManageOrder name="manageOrder">
 	    		<input type="hidden" name="orderId" value="${ order.id }" />
 				<input class="btn btn-warning" type=submit value="Manage Order">
 			</form></td>

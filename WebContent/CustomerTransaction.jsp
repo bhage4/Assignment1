@@ -10,11 +10,11 @@
 		<title>Transaction Details</title>
 	</head>
 <body>
-	<div id="topsection"><div class="innertube"><h1>
-	<a type="button" class="btn btn-info" href="CustomerHomePage.jsp">Home</a>
+	<div id="topsection"><div class="innertube"><br><form action=Logout method=post>
+	<a type="button" class="btn btn-info disabled" href="CustomerHomePage.jsp">Home</a>
 	<a type="button" class="btn btn-info" href="ViewOrders.jsp">View Orders</a>
 	<a type="button" class="btn btn-info" href="ViewAndCheckoutShoppingCart.jsp">Shopping Cart</a>
-	<a type="button" class="btn btn-danger" href="Login.jsp">Log out</a>&#9;Welcome, ${ user.userName }</h1></div></div>
+	<input type=submit class="btn btn-danger" value="Log out">Welcome, ${ user.userName }</form></div></div>
 <table>
   <tr>
     <th>Movie Name</th>
@@ -33,7 +33,7 @@
 </table><br>
 <strong>Total Cost:</strong> $ ${ totalPrice } <br><br>
 <strong>Credit Card Information:</strong> 
-<form action=CustomerTransactionConfirmation name="confirmTransaction">
+<form class="centered-form" action=CustomerTransactionConfirmation name="confirmTransaction">
 	<select>
 	  <option value="visa">Visa</option>
 	  <option value="mastercard">Mastercard</option>
@@ -51,6 +51,6 @@
 	<br><br>
 	<input class="btn btn-warning" type=submit value="Confirm Transaction">
 </form>
-<a class="btn" href="ViewAndCheckoutShoppingCart.jsp">Cancel Payment</a>
+<a class="btn btn-danger" href="ViewAndCheckoutShoppingCart.jsp">Cancel Payment</a>
 </body>
 </html>
