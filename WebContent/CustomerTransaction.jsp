@@ -33,13 +33,8 @@
 </table><br>
 <strong>Total Cost:</strong> $ ${ totalPrice } <br><br>
 <strong>Credit Card Information:</strong> 
-<<<<<<< HEAD
-<form class="centered-form" action=CustomerTransactionConfirmation name="confirmTransaction">
-	<select name="cardType">
-=======
 <form class="centered-form" action=CustomerTransactionConfirmation name="confirmTransaction" method="post">
-	<select>
->>>>>>> ad8af3794c13d7006595cc5bc515c1c45a4d551d
+	<select name="cardType">
 	  <option value="visa">Visa</option>
 	  <option value="mastercard">Mastercard</option>
 	  <option value="discover">Discover</option>
