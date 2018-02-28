@@ -31,7 +31,7 @@ public class CustomerTransactionConfirmation extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
-		int cardNumber = Integer.parseInt(request.getParameter("cardNumber"));
+		String cardNumber = request.getParameter("cardNumber");
 		String secCode = request.getParameter("securityCode");
 		Date expDate = Date.valueOf(request.getParameter("expDate"));
 		String cardType = request.getParameter("cardType");

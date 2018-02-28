@@ -1,6 +1,9 @@
 package order;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -14,7 +17,6 @@ import models.MovieShowing;
 import models.Orders;
 import models.Showroom;
 import models.Theatres;
-
 import data.access.layer.MovieShowingDB;
 import data.access.layer.MoviesDB;
 import data.access.layer.OrdersDB;
@@ -35,20 +37,34 @@ public class CancelOrder extends HttpServlet {
 		OrdersDB odb = new OrdersDB();
 		Orders order = odb.getOrder(orderId);
 		
-		MovieShowingDB msdb = new MovieShowingDB();
-		MovieShowing showing = msdb.getShowing(order.getShowingId());
+		List<HashMap> itemInfo = new ArrayList<HashMap>();
 		
-		MoviesDB mdb = new MoviesDB();
-		Movie movie = mdb.getMovie(showing.getMovieId());
+		for(HashMap item: order.getOrderItems()){
+			HashMap map = new HashMap(5);
+			
+			MovieShowingDB msdb = new MovieShowingDB();
+			MovieShowing showing = msdb.getShowing((Integer) item.get("showingId"));
+			
+			MoviesDB mdb = new MoviesDB();
+			Movie movie = mdb.getMovie(showing.getMovieId());
+			
+			TheatersDB tdb = new TheatersDB();
+			Showroom room = tdb.getShowroom(showing.getShowroomId());
+			Theatres theater = tdb.getTheater(room.getTheaterId());
+			
+			double price = showing.getPrice() * (Double) item.get("quantity");
+			String theaterInfo = theater.getName() + " " + room.getRoomNumber();
+			
+			map.put("movieName", movie.getTitle());
+			map.put("ticketQuantity", item.get("quantity"));
+			map.put("price", price);
+			map.put("theaterInfo", theaterInfo);
+			map.put("time", showing.getStartTime());
+			
+			itemInfo.add(map);
+		}
 		
-		TheatersDB tdb = new TheatersDB();
-		Showroom room = tdb.getShowroom(showing.getShowroomId());
-		Theatres theater = tdb.getTheater(room.getTheaterId());
-		
-		request.setAttribute("showing", showing);
-		request.setAttribute("room", room);
-		request.setAttribute("theater", theater);
-		request.setAttribute("movie", movie);
+		request.setAttribute("itemInfo", itemInfo);
 		request.setAttribute("order", order);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("CancelOrder.jsp");
 	    dispatcher.forward(request, response);

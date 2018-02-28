@@ -8,7 +8,7 @@ public class CreditCard {
 	
 	private int id;
 	private String cardHolderName;
-	private int cardNumber;
+	private String cardNumber;
 	private String cardType;
 	private int userId;
 	private String ccv;
@@ -17,7 +17,7 @@ public class CreditCard {
 	public CreditCard() {
 		super();
 	}
-	public CreditCard(int id, String cardHolderName, int cardNumber,
+	public CreditCard(int id, String cardHolderName, String cardNumber,
 			String cardType, int userId, String ccv,
 			Date expirationDate) {
 		super();
@@ -30,7 +30,7 @@ public class CreditCard {
 		this.expirationDate = expirationDate;
 	}
 	
-	public CreditCard(String cardHolderName, int cardNumber, String cardType,
+	public CreditCard(String cardHolderName, String cardNumber, String cardType,
 			int userId, String ccv, Date expirationDate) {
 		super();
 		this.cardHolderName = cardHolderName;
@@ -85,10 +85,10 @@ public class CreditCard {
 	public void setCardHolderName(String cardHolderName) {
 		this.cardHolderName = cardHolderName;
 	}
-	public int getCardNumber() {
+	public String getCardNumber() {
 		return cardNumber;
 	}
-	public void setCardNumber(int cardNumber) {
+	public void setCardNumber(String cardNumber) {
 		this.cardNumber = cardNumber;
 	}
 	public String getCardType() {

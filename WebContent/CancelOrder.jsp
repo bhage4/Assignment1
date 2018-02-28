@@ -15,7 +15,7 @@
 		<a type="button" class="btn btn-info" href="ViewOrders.jsp">View Orders</a>
 		<a type="button" class="btn btn-info" href="ViewAndCheckoutShoppingCart.jsp">Shopping Cart</a>
 		<input type=submit class="btn btn-danger" value="Log out">Welcome, ${ user.userName }</form></div></div>
-	<h3>Order Number: "${ order.id }"</h3>
+	<h3>Order Number: ${ order.id }</h3>
 <table>
   <tr>
     <th>Movie Name</th>
@@ -24,16 +24,18 @@
     <th>Theater Name/Number</th>
     <th>Date and Time</th>
   </tr>
-  <tr>
-    <td>${ movie.title }</td>
-    <td>${ order.ticketsPurchased }</td>
-    <td>${ order.totalPrice }</td>
-    <td>"${ theater.name }" "${ room.roomNumber }"</td>
-	<td>"${ showing.startTime }"</td>
-  </tr>
+  <c:forEach items="${itemInfo}" var="item">
+	  <tr>
+	    <td>${ item['movieName'] }</td>
+	    <td>${ item['ticketQuantity'] }</td>
+	    <td>${ item['price'] }</td>
+	    <td>${ item['theaterInfo'] }</td>
+		<td>${ item['time'] }</td>
+	  </tr>
+  </c:forEach>
 </table>
 <br>
-<form class="centered-form" action=CancelOrder name="cancelOrder" method="post">
+<form class="centered-form" action=CancelOrderTransaction name="cancelOrder" method="post">
   	<input type="hidden" name="orderId" value="${ order.id }" />
 	<input class="btn btn-warning" type=submit value="Confirm Cancellation">
 </form>

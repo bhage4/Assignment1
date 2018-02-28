@@ -27,7 +27,7 @@ public class CreditCardsDB {
 			
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setString(1, aCard.getCardHolderName());
-			ps.setInt(2, aCard.getCardNumber());
+			ps.setString(2, aCard.getCardNumber());
 			ps.setString(3, aCard.getCardType());
 			ps.setInt(4, aCard.getUserId());
 			ps.setString(5, aCard.getCcv());
@@ -43,14 +43,14 @@ public class CreditCardsDB {
 		}
 	}
 	
-	public CreditCard getCard(int cardNumber){
+	public CreditCard getCard(String cardNumber){
 		db = new Database();
 		
 		String sql = "SELECT * FROM creditcards WHERE CreditCardNumber=?";
 		try {
 			conn = db.databaseConnect();
 			ps = conn.prepareStatement(sql);
-			ps.setInt(1, cardNumber);
+			ps.setString(1, cardNumber);
 			  
 			ResultSet rs = ps.executeQuery();
 			
@@ -74,15 +74,15 @@ public class CreditCardsDB {
 		return null;
 	}
 	
-	public Transactions getTransaction(int cardNumber){
+	public Transactions getTransaction(String cardNumber){
 		db = new Database();
 		
 		String sql = "SELECT * FROM creditcards WHERE CreditCardNumber=?";
 		try {
 			conn = db.databaseConnect();
 			ps = conn.prepareStatement(sql);
-			ps.setInt(1, cardNumber);
-			  
+			ps.setString(1, cardNumber);
+
 			ResultSet rs = ps.executeQuery();
 			
 			rs.first();
