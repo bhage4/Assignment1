@@ -4,7 +4,6 @@ import java.sql.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-
 public class Users {
 	private int id;
 	private String userName;
@@ -21,8 +20,6 @@ public class Users {
 	private String userType; //Turn this into enum
 	private String status; //Enum also?
 	private int numOfVisits;
-
-//TODO: A non-trivial check for e-mail address validity- what does this mean?
 	
 	public boolean isValidEmailAddress() {
 		String regex = "^([_a-zA-Z0-9-]+(\\.[_a-zA-Z0-9-]+)*@[a-zA-Z0-9-]+(\\.[a-zA-Z0-9-]+)*(\\.[a-zA-Z]{1,6}))?$";

@@ -1,6 +1,7 @@
 package models;
 
 import java.sql.Date;
+
 import data.access.layer.CreditCardsDB;
 
 public class CreditCard {
@@ -29,7 +30,17 @@ public class CreditCard {
 		this.expirationDate = expirationDate;
 	}
 	
-	public boolean validateCreditCardInfo(){
+	public CreditCard(String cardHolderName, int cardNumber, String cardType,
+			int userId, String ccv, Date expirationDate) {
+		super();
+		this.cardHolderName = cardHolderName;
+		this.cardNumber = cardNumber;
+		this.cardType = cardType;
+		this.userId = userId;
+		this.ccv = ccv;
+		this.expirationDate = expirationDate;
+	}
+	public boolean validateCreditCardInfo(double price){
 		int cardLength = String.valueOf(this.cardNumber).length();
 		if(cardLength > 19 || cardLength < 13){
 			return false;
@@ -41,7 +52,8 @@ public class CreditCard {
 		}
 		
 		CreditCardsDB ccdb = new CreditCardsDB();
-		CreditCard card = ccdb.getCard(this.cardNumber);
+		Transactions ta = ccdb.getTransaction(this.cardNumber);
+		CreditCard card = ta.getCard();
 		
 		if(!card.getCardHolderName().equalsIgnoreCase(this.cardHolderName)){
 			return false;
@@ -53,6 +65,9 @@ public class CreditCard {
 			return false;
 		}
 		if(!card.getExpirationDate().equals(this.expirationDate)){
+			return false;
+		}
+		if(ta.getBalance()<price){
 			return false;
 		}
 		return true;

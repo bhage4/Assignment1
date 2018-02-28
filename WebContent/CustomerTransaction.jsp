@@ -34,12 +34,13 @@
 <strong>Total Cost:</strong> $ ${ totalPrice } <br><br>
 <strong>Credit Card Information:</strong> 
 <form class="centered-form" action=CustomerTransactionConfirmation name="confirmTransaction">
-	<select>
+	<select name="cardType">
 	  <option value="visa">Visa</option>
 	  <option value="mastercard">Mastercard</option>
 	  <option value="discover">Discover</option>
 	</select><br><br>
-	Number: <input type="text" name="cardNumber"> Security Code: <input type="text" name="securityCode"> Exp. Date: <input type="date" name="expDate"><br><br>
+	Number: <input type="text" name="cardNumber"> Security Code: <input type="text" name="securityCode"> Exp. Date: <input type="text" name="expDate">
+	Add Funds: <input type="text" name="balance"><br><br>
 	First Name: <input type="text" name="firstName"> Last Name: <input type="text" name="lastName"><br><br>
 	<strong>Billing Address:</strong>
 	<br>
