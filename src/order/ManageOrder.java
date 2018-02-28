@@ -36,7 +36,7 @@ public class ManageOrder extends HttpServlet {
 		Orders order = odb.getOrder(orderId);
 		
 		MovieShowingDB msdb = new MovieShowingDB();
-		MovieShowing showing = msdb.getShowing(order.getShowingId());
+		MovieShowing showing = msdb.getShowing(order.getOrderItems()); //how do I get the showing id from the hashmap????
 		
 		MoviesDB mdb = new MoviesDB();
 		Movie movie = mdb.getMovie(showing.getMovieId());
@@ -56,7 +56,7 @@ public class ManageOrder extends HttpServlet {
 		request.setAttribute("room", room);
 		request.setAttribute("theater", theater);
 		request.setAttribute("order", order);
-		request.setAttribute("movie", movie);
+		request.setAttribute("movie", movie); //should this be a redirect below
 		RequestDispatcher dispatcher = request.getRequestDispatcher("ManageOrder.jsp");
 	    dispatcher.forward(request, response);
 	}

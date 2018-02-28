@@ -193,7 +193,7 @@ public class OrdersDB {
 	
 	public int addOrder(Orders order){
 		db = new Database();
-		String sql = "INSERT INTO orders (CustomerId, TotalCost, OrderDate, BillingAddress, CreditCardNumber) VALUES ((SELECT Id from users where users.Id = ?), ?, ?, ?, ?, (SELECT Id from movieShowing where movieShowing.Id = ?), ?)";
+		String sql = "INSERT INTO orders (CustomerId, TotalCost, OrderDate, BillingAddress, CreditCardNumber) VALUES ((SELECT Id from users where users.Id = ?), ?, ?, ?, ?)";
 		try {
 			conn = db.databaseConnect();
 			ps = conn.prepareStatement(sql);
