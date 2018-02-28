@@ -44,11 +44,11 @@
 	First Name: <input type="text" name="firstName"> Last Name: <input type="text" name="lastName"><br><br>
 	<strong>Billing Address:</strong>
 	<br>
-	Street: <input type="text" name="billStreet"> City: <input type="text" name="billCity"> State: <input type="text" name="billStreet"> Zip Code: <input type="text" name="billZip">
+	Street: <input type="text" name="billStreet"> City: <input type="text" name="billCity"> State: <input type="text" name="billState"> Zip Code: <input type="text" name="billZip">
 	<br><br>
 	<strong>Shipping Address:</strong>
 	<br>
-	Street: <input type="text" name="shipStreet"> City: <input type="text" name="shipCity"> State: <input type="text" name="shipStreet"> Zip Code: <input type="text" name="shipZip">
+	Street: <input type="text" name="shipStreet"> City: <input type="text" name="shipCity"> State: <input type="text" name="shipState"> Zip Code: <input type="text" name="shipZip">
 	<br><br>
 	<input class="btn btn-warning" type=submit value="Confirm Transaction">
 </form>

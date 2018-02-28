@@ -6,7 +6,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+
 import models.Orders;
 
 public class OrdersDB {
@@ -19,23 +21,46 @@ public class OrdersDB {
 	public Orders getOrder(int id){
 		db = new Database();
 		
-		String sql = "SELECT * FROM orders WHERE id=?";
+		String sql = "SELECT * FROM orders WHERE Id=?";
 		try {
 			conn = db.databaseConnect();
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, id);
 			
 			ResultSet rs = ps.executeQuery();
+			rs.first();
 			
-			int customerId = rs.getInt("customerId");
-			double cost = rs.getDouble("totalCost");
+			int customerId = rs.getInt("CustomerId");
+			double cost = rs.getDouble("TotalCost");
 			Date orderDate = Date.valueOf(rs.getString("OrderDate"));
 			String address = rs.getString("BillingAddress");
 			int creditCardNumber = rs.getInt("CreditCardNumber");
-			int showingId = rs.getInt("ShowingId");
-			int ticketsOrdered = rs.getInt("TicketsOrdered");
 			
-			Orders order = new Orders(id, customerId, showingId, ticketsOrdered, cost, orderDate, creditCardNumber, address);
+			List<HashMap> orderItems = new ArrayList<HashMap>();
+			
+			rs.close();
+			
+			//Get order items
+			sql = "SELECT * FROM orderitems WHERE OrderId=?";
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, id);
+			
+			rs = ps.executeQuery();
+			
+			while(rs.next()){
+				int itemId = rs.getInt("Id");
+				int showingId = rs.getInt("ShowingId");
+				int quantity = rs.getInt("Quantity");
+				
+				HashMap map = new HashMap(3);
+				map.put("itemId", itemId);
+				map.put("showingId", showingId);
+				map.put("quantity", quantity);
+				
+				orderItems.add(map);
+			}
+						
+			Orders order = new Orders(id, customerId, cost, orderDate, creditCardNumber, address, orderItems);
 
 			db.closeConnection();
 			rs.close();
@@ -59,19 +84,44 @@ public class OrdersDB {
 			ResultSet rs = ps.executeQuery();
 				  
 			while(rs.next()){
-				int id = rs.getInt("id");
+				int id = rs.getInt("Id");
 				double cost = rs.getInt("TotalCost");
 				Date orderDate = Date.valueOf(rs.getString("OrderDate"));
 				String billingAddress = rs.getString("BillingAddress");
 				int cardNum = rs.getInt("CreditCardNumber");
-				int showingId = rs.getInt("ShowingId");
-				int ticketsOrdered = rs.getInt("TicketsOrdered");
 				
-				Orders order = new Orders(id, userId, showingId, ticketsOrdered, cost, orderDate, cardNum, billingAddress);
+				List<HashMap> orderItems = new ArrayList<HashMap>();
+				
+				Orders order = new Orders(id, userId, cost, orderDate, cardNum, billingAddress, orderItems);
 				
 				orders.add(order);
 			}
 			
+			rs.close();
+			
+			for(Orders order: orders){
+				//Get order items
+				sql = "SELECT * FROM orderitems WHERE OrderId=?";
+				ps = conn.prepareStatement(sql);
+				ps.setInt(1, order.getId());
+				
+				rs = ps.executeQuery();
+				List<HashMap> items = order.getOrderItems();
+				
+				while(rs.next()){
+					int itemId = rs.getInt("Id");
+					int showingId = rs.getInt("ShowingId");
+					int quantity = rs.getInt("Quantity");
+					
+					HashMap map = new HashMap(3);
+					map.put("itemId", itemId);
+					map.put("showingId", showingId);
+					map.put("quantity", quantity);
+					
+					items.add(map);
+				}
+				order.setOrderItems(items);
+			}
 			rs.close();
 			db.closeConnection();
 		} catch (SQLException e) {
@@ -101,8 +151,37 @@ public class OrdersDB {
 				int showingId = rs.getInt("ShowingId");
 				int ticketsOrdered = rs.getInt("TicketsOrdered");
 				
-				Orders order = new Orders(id, customerId, showingId, ticketsOrdered, cost, orderDate, creditCardNumber, address);
-				orders.add(order);			
+				List<HashMap> orderItems = new ArrayList<HashMap>();
+				
+				Orders order = new Orders(id, customerId, cost, orderDate, creditCardNumber, address, orderItems);
+				
+				orders.add(order);
+			}
+			
+			rs.close();
+			
+			for(Orders order: orders){
+				//Get order items
+				sql = "SELECT * FROM orderitems WHERE OrderId=?";
+				ps = conn.prepareStatement(sql);
+				ps.setInt(1, order.getId());
+				
+				rs = ps.executeQuery();
+				List<HashMap> items = order.getOrderItems();
+				
+				while(rs.next()){
+					int itemId = rs.getInt("Id");
+					int showingId = rs.getInt("ShowingId");
+					int quantity = rs.getInt("Quantity");
+					
+					HashMap map = new HashMap(3);
+					map.put("itemId", itemId);
+					map.put("showingId", showingId);
+					map.put("quantity", quantity);
+					
+					items.add(map);
+				}
+				order.setOrderItems(items);
 			}
 			db.closeConnection();
 			rs.close();
@@ -112,9 +191,9 @@ public class OrdersDB {
 		return orders;
 	}
 	
-	public void addOrder(Orders order){
+	public int addOrder(Orders order){
 		db = new Database();
-		String sql = "INSERT INTO orders (customerId, totalCost, OrderDate, BillingAddress, CreditCardNumber, ShowingId, TicketsOrdered) VALUES ((SELECT Id from users where users.Id = ?), ?, ?, ?, ?, (SELECT Id from movieShowing where movieShowing.Id = ?), ?)";
+		String sql = "INSERT INTO orders (CustomerId, TotalCost, OrderDate, BillingAddress, CreditCardNumber) VALUES ((SELECT Id from users where users.Id = ?), ?, ?, ?, ?, (SELECT Id from movieShowing where movieShowing.Id = ?), ?)";
 		try {
 			conn = db.databaseConnect();
 			ps = conn.prepareStatement(sql);
@@ -124,21 +203,40 @@ public class OrdersDB {
 			ps.setDate(3, order.getOrderDate());
 			ps.setString(4, order.getBillingAddress());
 			ps.setInt(5, order.getCreditCardNumber());
-			ps.setInt(6, order.getShowingId());
-			ps.setInt(7, order.getTicketsOrdered());
 			
 			ps.executeUpdate();
+			
+			sql = "SELECT LAST_INSERT_ID()";
+			ps = conn.prepareStatement(sql);
+			
+			ResultSet rs = ps.executeQuery();
+			rs.first();
+			int orderId = rs.getInt(1);
+			
+			sql = "INSERT INTO orderitems (OrderId, ShowingId, Quantity) VALUES (?,?,?)";
+			
+			List<HashMap> orderItems = order.getOrderItems();
+			for(HashMap map: orderItems){
+				ps = conn.prepareStatement(sql);
+				
+				ps.setInt(1, orderId);
+				ps.setInt(2, (Integer) map.get("showingId"));
+				ps.setInt(3, (Integer) map.get("quantity"));
+			}
+			rs.close();
 			db.closeConnection();
+			return orderId;
 		} 
 		catch (SQLException ex) {
 			ex.printStackTrace();
 		}
+		return -1;
 	}
 	
 	public void updateOrder(Orders order){
 		db = new Database();
 		
-		String sql = "UPDATE orders SET customerId=?, totalCost=?, OrderDate=?, BillingAddress=?, CreditCardNumber=? WHERE id=?";
+		String sql = "UPDATE orders SET CustomerId=?, TotalCost=?, OrderDate=?, BillingAddress=?, CreditCardNumber=? WHERE Id=?";
 		try {
 			conn = db.databaseConnect();
 			ps = conn.prepareStatement(sql);

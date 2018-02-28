@@ -1,7 +1,6 @@
 package order;
 
 import java.io.IOException;
-import java.sql.Date;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -19,7 +18,6 @@ import models.MovieShowing;
 import models.Orders;
 import models.Showroom;
 import models.Theatres;
-import models.Users;
 import data.access.layer.MovieShowingDB;
 import data.access.layer.MoviesDB;
 import data.access.layer.OrdersDB;
@@ -63,15 +61,9 @@ public class UpdateShoppingCart extends HttpServlet {
 			double price = quantity * showing.getPrice();
 			String theaterNameNum = theater.getName() + " " + room.getRoomNumber();
 			
-			Users user = (Users) session.getAttribute("user");
-			
-			long millis = System.currentTimeMillis();
-			Date date = new Date(millis);
-			
-			Orders order = new Orders(user.getId(), showingId, quantity, price, date);
-			
-			if(order.checkValidQuantity(quantity)){
-				HashMap cartItem = new HashMap(8);
+			Orders order = new Orders();	
+			if(order.checkValidQuantity(quantity, showingId)){
+				HashMap cartItem = new HashMap(9);
 				cartItem.put("orderId", order.getId());
 				cartItem.put("movieId", movie.getId());
 				cartItem.put("ticketQuantity", quantity);
@@ -80,6 +72,7 @@ public class UpdateShoppingCart extends HttpServlet {
 				cartItem.put("theaterNameNum", theaterNameNum);
 				cartItem.put("showtime", showing.getStartTime());
 				cartItem.put("price", price);
+				cartItem.put("showingId", showing.getId());
 				
 				cart.add(cartItem);
 				

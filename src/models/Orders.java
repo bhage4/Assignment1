@@ -1,16 +1,18 @@
 package models;
 
 import java.sql.Date;
-import models.Users;
+import java.util.HashMap;
+import java.util.List;
+
 import data.access.layer.MovieShowingDB;
 import data.access.layer.TheatersDB;
 import data.access.layer.UsersDB;
 
+@SuppressWarnings("rawtypes")
 public class Orders {
 	private int id;
 	private int customerId;
-	private int showingId;
-	private int ticketsOrdered;
+	private List<HashMap> orderItems;	//Stores itemId, showingId, and ticketsOrdered
 	private double totalCost;
 	private Date orderDate;
 	private int creditCardNumber;
@@ -20,27 +22,25 @@ public class Orders {
 		super();
 	}
 
-	public Orders(int customerId, int showingId, int ticketsOrdered,
-			double totalCost, Date orderDate) {
+	public Orders(int customerId, double totalCost, Date orderDate, String billingAddress, List<HashMap> orderItems) {
 		super();
 		this.customerId = customerId;
-		this.showingId = showingId;
-		this.ticketsOrdered = ticketsOrdered;
 		this.totalCost = totalCost;
 		this.orderDate = orderDate;
+		this.orderItems = orderItems;
+		this.billingAddress = billingAddress;
 	}
 
-	public Orders(int id, int customerId, int showingId, int ticketsOrdered, double totalCost, Date orderDate,
-			int creditCardNumber, String billingAddress) {
+	public Orders(int id, int customerId, double totalCost, Date orderDate,
+			int creditCardNumber, String billingAddress, List<HashMap> orderItems) {
 		super();
 		this.id = id;
 		this.customerId = customerId;
-		this.showingId = showingId;
-		this.ticketsOrdered = ticketsOrdered;
 		this.totalCost = totalCost;
 		this.orderDate = orderDate;
 		this.creditCardNumber = creditCardNumber;
 		this.billingAddress = billingAddress;
+		this.orderItems = orderItems;
 	}
 	
 	public boolean checkValidAddress(int userId){
@@ -53,9 +53,9 @@ public class Orders {
 		return true;
 	}
 	
-	public boolean checkValidQuantity(int quantity){
+	public boolean checkValidQuantity(int quantity, int showingId){
 		MovieShowingDB msdb = new MovieShowingDB();
-		MovieShowing showing = msdb.getShowing(this.showingId);
+		MovieShowing showing = msdb.getShowing(showingId);
 		int numPurchased = showing.getNumberPurchased();
 		
 		TheatersDB tdb = new TheatersDB();
@@ -87,20 +87,12 @@ public class Orders {
 		this.customerId = customerId;
 	}
 
-	public int getShowingId() {
-		return showingId;
+	public List<HashMap> getOrderItems() {
+		return orderItems;
 	}
 
-	public void setShowingId(int showingId) {
-		this.showingId = showingId;
-	}
-
-	public int getTicketsOrdered() {
-		return ticketsOrdered;
-	}
-
-	public void setTicketsOrdered(int ticketsOrdered) {
-		this.ticketsOrdered = ticketsOrdered;
+	public void setOrderItems(List<HashMap> orderItems) {
+		this.orderItems = orderItems;
 	}
 
 	public double getTotalCost() {
