@@ -25,59 +25,36 @@
     <th>Total Price</th>
     <th></th>
   </tr>
-  <tr>
-    <td>The Mummy</td>
-    <td><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR83_t_x7tsPJuDTDr-ki38X9wMJAP7sFDTq_aql1FmDpmqEnlRng"></td>
-    <td>Marcus Grande 13</td>
-    <td>Feb. 01, 2018 @ 9:00pm</td>
-    <td>2</td>
-    <td>$25.00</td>
-    <td><a type="button" class="btn btn-warning" onclick="deleteOrder()" href="CancelOrder.jsp">Delete Order</a></td>
-  </tr>
-  <tr>
-    <td>Ferris Bueller's Day Off</td>
-    <td><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT2k7b8gFohCLPcg1C6rChgur99xh1G2FtnnoJ7-7S6H14pBIP37w"></td>
-    <td>AMC Cinema</td>
-    <td>Jan. 31, 2018 @ 6:00pm</td>
-    <td>4</td>
-    <td>$40.00</td>
-    <td><a type="button" class="btn btn-warning" onclick="deleteOrder()" href="CancelOrder.jsp">Delete Order</a></td>
-  </tr>
+  <c:forEach items="${cart}" var="item">
+	  <tr>
+	    <td>${ item['movieName'] }</td>
+	    <td><img src="${ item['moviePoster'] }"></td>
+	    <td>${ item['theaterNameNum'] }</td>
+	    <td>${ item['showtime'] }</td>
+	    <td>${ item['ticketQuantity'] }</td>
+	    <td>${ item['price'] }</td>
+	    <td><form action=UpdateShoppingCart name="updateCart">
+	    		<input type="hidden" name="movieId" value="${ movie.id }" />>
+	    		<input type="hidden" name="type" value="delete" />
+	    		<input type="hidden" name="quantity" value=${ item['ticketQuantity'] } />
+				<input class="btn btn-warning" type=submit value="Delete">
+			</form></td>
+	  </tr>
+  </c:forEach>
   <tr>
     <td></td>
     <td></td>
     <td></td>
     <td></td>
     <td></td>
-    <td>$65.00</td>
+    <td>${ totalPrice }</td>
 	<td></td>
   </tr>
 </table>
 <br>
 <div class="innertube">
-<a type="button" class="btn btn-warning" href="CustomerTransaction.jsp">Checkout</a>
-</div>
+<form action=CustomerTransaction name="checkOut">
+	<input class="btn btn-warning" type=submit value="Check Out">
+</form>
 </body>
 </html>
-
-<!-- This page displays the list of items in the shopping cart. -->
-<!-- The following information must be displayed for every item in the cart -->
-	<!-- Movie name -->
-	<!-- Movie thumbnail -->
-	<!-- Theatre name and number -->
-	<!-- Showtime and Date -->
-	<!-- Number of tickets being bought -->
-	<!-- Total price -->
-<!-- Use placeholders for this assignment. -->
-<!-- A delete button should be displayed for each item to delete that item from the shopping cart. -->
-<!-- This page should also display the total cost of the items in the shopping cart. -->
-<!-- This page should have a “Checkout” button that leads to the CustomerTransaction.jsp page. -->
-<!-- It should have logout option upon clicking that takes to the Login page. -->
-<!-- It should have “Home” button that lead to the CustomerHomePage.jsp. -->
-
-<!-- Displays the shopping cart items present in the shopping cart session object in a -->
-<!-- suitable format. -->
-<!-- o A delete button should be displayed for each shopping cart item, upon clicking -->
-<!-- should make a delete request to the Update Shopping Cart servlet. -->
-<!-- o Clicking the “Check Out” button should redirect the customer to the Customer -->
-<!-- Transaction jsp page. -->

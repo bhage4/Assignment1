@@ -11,11 +11,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
 import models.Movie;
 import models.MovieShowing;
 import models.Orders;
+import models.Showroom;
 import models.Theatres;
-import models.Orders;
 import data.access.layer.MovieShowingDB;
 import data.access.layer.MoviesDB;
 import data.access.layer.TheatersDB;
@@ -31,26 +32,29 @@ public class UpdateShoppingCart extends HttpServlet {
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
-		int movieId = (Integer) request.getAttribute("movieId");
-		int theaterId = (Integer) request.getAttribute("theaterId");
-		int showingId = (Integer) request.getAttribute("showingId");
-		String type = (String) request.getAttribute("type");
-		int quantity = (Integer) request.getAttribute("quantity");
+		int movieId = Integer.parseInt(request.getParameter("movieId"));	
+		String type = request.getParameter("type");
+		int quantity = Integer.parseInt(request.getParameter("quantity"));
 		
 		HttpSession session = request.getSession();
 		List<HashMap> cart = (List<HashMap>) session.getAttribute("cart");
 		
-		MovieShowingDB msdb = new MovieShowingDB();
-		MovieShowing showing = msdb.getShowing(showingId);
-		
 		MoviesDB mdb = new MoviesDB();
 		Movie movie = mdb.getMovie(movieId);
 		
-		TheatersDB tdb = new TheatersDB();
-		Theatres theater = tdb.getTheater(theaterId);
-		
 		if(type.equals("add")){
+			int theaterId = (Integer) request.getAttribute("theaterId");
+			int showingId = (Integer) request.getAttribute("showingId");
+			
+			MovieShowingDB msdb = new MovieShowingDB();
+			MovieShowing showing = msdb.getShowing(showingId);
+			
+			TheatersDB tdb = new TheatersDB();
+			Theatres theater = tdb.getTheater(theaterId);
+			Showroom room = tdb.getShowroom(showing.getShowroomId());
+			
 			double price = quantity * showing.getPrice();
+			String theaterNameNum = theater.getName() + " " + room.getRoomNumber();
 			
 			Orders order = new Orders();
 			if(order.checkValidQuantity(quantity)){
@@ -60,7 +64,7 @@ public class UpdateShoppingCart extends HttpServlet {
 				cartItem.put("ticketQuantity", quantity);
 				cartItem.put("movieName", movie.getTitle());
 				cartItem.put("moviePoster", movie.getThumbnail());
-				cartItem.put("theaterName", theater.getName());
+				cartItem.put("theaterNameNum", theaterNameNum);
 				cartItem.put("showtime", showing.getStartTime());
 				cartItem.put("price", price);
 				

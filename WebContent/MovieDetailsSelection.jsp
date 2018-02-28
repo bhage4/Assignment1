@@ -46,14 +46,14 @@
 	    <th>Available Seats</th>
 	  </tr>
 	  <tr>
-	    <td>"${ movie.title }"</td>
-	    <td>"${ movie.description }"</td>
-	    <td>"${ movie.rating }"</td>
+	    <td>${ movie.title }</td>
+	    <td>${ movie.description }</td>
+	    <td>${ movie.rating }</td>
 	    <td><img src="${ movie.thumbnail }"></td>
-	    <td>"${ theater.name }" "${ room.roomNumber }"</td>
-	    <td>"${ showing.startTime }"</td>
-	    <td>$ "${ showing.price }"</td>
-	    	<c:set var="seats" value="${ room.availableSeats - showing.numberPurchased }"/>
+	    <td>${ theater.name } ${ room.roomNumber }</td>
+	    <td>${ showing.startTime }</td>
+	    <td>$ ${ showing.price }</td>
+	    	<c:set var="seats" value="${ showing.numberPurchased - room.availableSeats }"/>
 	    <td>${ seats }</td>
 	  </tr>
 	</table>
@@ -67,10 +67,10 @@
 		</tr>
 		<c:forEach items="${reviews}" var="review">
 		  <tr>
-		    <td>"${ review.user.userName }"</td>
-		    <td>"${ review.reviewDate }"</td>
-		    <td>"${ review.rating }"</td>
-		    <td>"${ review.review }"</td>
+		    <td>${ review.user.userName }</td>
+		    <td>${ review.reviewDate }</td>
+		    <td>${ review.rating }</td>
+		    <td>${ review.review }</td>
 		  </tr>
 	    </c:forEach>
 	</table>

@@ -2,7 +2,6 @@ package data.access.layer;
 
 import java.sql.Connection;
 import java.sql.Date;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -12,7 +11,6 @@ public class UsersDB {
 	private Database db;
 	private Statement stmt;
 	private Connection conn;
-	private PreparedStatement ps;
 	
 	public void addUser(Users aUser) { //TODO: update to use prepared statements
 		db = new Database();

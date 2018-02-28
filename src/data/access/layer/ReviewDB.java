@@ -5,17 +5,14 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
 import models.Review;
-import models.Theatres;
 import models.Users;
 
 public class ReviewDB {
 	private Database db;
-	private Statement stmt;
 	private Connection conn;
 	private PreparedStatement ps;
 	
