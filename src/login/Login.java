@@ -38,7 +38,7 @@ public class Login extends HttpServlet {
 		
 		
 		if(isValid && exists) {	
-			Users user = new Users(userName,password);
+			Users user = udb.getUser(userName);
 			
 			TheatersDB tdb = new TheatersDB();
 			List<Theatres> theatersList = tdb.getAllTheaters();

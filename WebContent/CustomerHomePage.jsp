@@ -35,7 +35,7 @@
 		<h2> Search for a Movie!</h2>
 		<h3>    Now Showing: Interstellar, Black Panther, Jurassic Park</h3>
 		<br>
-		<form class="centered-form" action=TheaterMovieSearchQuery name="movieSearchForm">
+		<form class="centered-form" action=TheaterMovieSearchQuery name="movieSearchForm" method=post>
 			Movie Name: <input type="text" name="name">
 			Theater: <select name="theaterSelected">
 				<c:forEach  items="${theaters}" var="theater">

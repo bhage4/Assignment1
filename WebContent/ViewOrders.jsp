@@ -15,8 +15,8 @@
 </head>
 <body>
 	<div id="topsection"><div class="innertube"><br><form action=Logout method=post>
-	<a type="button" class="btn btn-info disabled" href="CustomerHomePage.jsp">Home</a>
-	<a type="button" class="btn btn-info" href="ViewOrders.jsp">View Orders</a>
+	<a type="button" class="btn btn-info" href="CustomerHomePage.jsp">Home</a>
+	<a type="button" class="btn btn-info disabled" href="ViewOrders.jsp">View Orders</a>
 	<a type="button" class="btn btn-info" href="ViewAndCheckoutShoppingCart.jsp">Shopping Cart</a>
 	<input type=submit class="btn btn-danger" value="Log out">Welcome, ${ user.userName }</form></div></div>
 
@@ -32,7 +32,7 @@
     <td>"${ order.id }"</td>
     <td>"${ order.totalCost }"</td>
     <td>"${ order.orderDate }"</td>
-    <td><form class="centered-form" action=ManageOrder name="manageOrder">
+    <td><form class="centered-form" action=ManageOrder name="manageOrder" method="post">
 	    		<input type="hidden" name="orderId" value="${ order.id }" />
 				<input class="btn btn-warning" type=submit value="Manage Order">
 			</form></td>

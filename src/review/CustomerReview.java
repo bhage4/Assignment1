@@ -34,7 +34,7 @@ public class CustomerReview extends HttpServlet {
 		Review newReview = new Review();
 		
 		Movie movie = (Movie) session.getAttribute("movie");
-		Users user = (Users) session.getAttribute("user");
+		Users user = (Users) session.getAttribute("user"); //This created user's id is 0 for some reason
 		
 		Date reviewDate = new  Date(System.currentTimeMillis());
 		

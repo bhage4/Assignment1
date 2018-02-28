@@ -10,12 +10,12 @@
 </head>
 <body>
 	<div id="topsection"><div class="innertube"><br><form action=Logout method=post>
-		<a type="button" class="btn btn-info disabled" href="CustomerHomePage.jsp">Home</a>
+		<a type="button" class="btn btn-info" href="CustomerHomePage.jsp">Home</a>
 		<a type="button" class="btn btn-info" href="ViewOrders.jsp">View Orders</a>
 		<a type="button" class="btn btn-info" href="ViewAndCheckoutShoppingCart.jsp">Shopping Cart</a>
 		<input type=submit class="btn btn-danger" value="Log out">Welcome, ${ user.userName }</form></div></div>
 	<br>
-	<form class="centered-form" action=CustomerReview name="customerReview">
+	<form class="centered-form" action=CustomerReview name="customerReview" method="post">
 		Rate the movie out of 5 stars:
 		<select name="stars">
 			<option value=1>1</option>

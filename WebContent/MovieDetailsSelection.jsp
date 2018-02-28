@@ -20,13 +20,13 @@
 </head>
 <body>
 <div id="topsection"><div class="innertube"><br><form action=Logout method=post>
-	<a type="button" class="btn btn-info disabled" href="CustomerHomePage.jsp">Home</a>
+	<a type="button" class="btn btn-info" href="CustomerHomePage.jsp">Home</a>
 	<a type="button" class="btn btn-info" href="ViewOrders.jsp">View Orders</a>
 	<a type="button" class="btn btn-info" href="ViewAndCheckoutShoppingCart.jsp">Shopping Cart</a>
 	<a type="button" class="btn btn-info" href="MovieSearchResults.jsp">Back</a>
 	<input type=submit class="btn btn-danger" value="Log out">Welcome, ${ user.userName }</form></div></div>
 	<h2>Movie Details</h2>
-	<form class="centered-form" action=UpdateShoppingCart name="updateShoppingCart">
+	<form class="centered-form" action=UpdateShoppingCart name="updateShoppingCart" method="post">
 		<input type="hidden" name="movieId" value="${ movie.id }" />
 	    <input type="hidden" name="theaterId" value="${ theater.id }" />
 	    <input type="hidden" name="showingId" value="${ showing.id }" />
