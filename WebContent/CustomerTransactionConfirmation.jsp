@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@ taglib prefix="c"  uri="http://java.sun.com/jstl/core_rt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
@@ -16,50 +17,39 @@
 		<input type=submit class="btn btn-danger" value="Log out">Welcome, ${ user.userName }</form></div></div>
 		
 		<c:choose>
-<%-- 			<c:when test= "${  }" --%>
+ 			<c:when test= "${ status == 'valid' }">
+ 				<h2>Your Order Has Been Placed</h2>
+		        <h3>Details:</h3>
+				<table>
+				<tr>
+				  <th>Movie Name</th>
+				  <th>Ticket Quantity</th>
+				  <th>Total Price</th>
+				  <th>Theater Name</th>
+				</tr>
+				<c:forEach items="${order}" var="item">
+					<tr>
+					  <td>  </td>
+					  <td> item.orderItems['quantity'] </td>
+					  <td>$</td>
+					  <td></td>
+					</tr>
+				</c:forEach>
+				</table><br>
+				<strong>Total Cost:</strong> $42.00<br><br>
+				<br>
+ 			</c:when>
+ 			<c:when test= "${ status == 'payment' }">
+ 				<h3>Purchase Not Completed</h3>
+ 				<strong>Sorry, but your payment info is not valid. Please try again.</strong>
+ 			</c:when>
+ 			<c:when test= "${ status == 'funds' }">
+ 				<h3>Purchase Not Completed</h3>
+ 				<strong>Sorry, but your account does not have sufficient funds for this purchase. Please add some more.</strong>
+ 			</c:when>
 		</c:choose>
-		<h2>Your Order Has Been Placed</h2>
-        <h3>Details:</h3>
-		<table>
-		<tr>
-		  <th>Movie Name</th>
-		  <th>Ticket Quantity</th>
-		  <th>Total Price</th>
-		  <th>Theater Name</th>
-		</tr>
-		<tr>
-		  <td>Interstellar</td>
-		  <td>3</td>
-		  <td>$24.00</td>
-		  <td>AMC West</td>
-		</tr>
-		<tr>
-		  <td>Dark Knight</td>
-		  <td>2</td>
-		  <td>$18.00</td>
-		  <td>Marcus Grande Cinema</td>
-		</tr>
-		</table><br>
-		<strong>Total Cost:</strong> $42.00<br><br>
-		<strong>Shipping Address:</strong>
-		<br>
-		Street: <input type="text" name="shipStreet"> City: <input type="text" name="shipCity"> State: <input type="text" name="shipStreet"> Zip Code: <input type="text" name="shipZip">
-		<br><br>
 	</body>
 </html>
-
-<!--  The page must display all information on the transaction page except the credit card information. -->
-<!-- The page must display a message “Your order has been placed”. -->
-<!-- The page has a “Home” button that when clicked leads to the Customer Home page. -->
-<!-- This page should have a link to the ViewOrders.jsp page. -->
-<!-- It should have logout option upon clicking that takes to the Login page -->
-
 <!-- On Success: -->
-<!-- 5 -->
-<!-- ! The page displays all the information passed on by the previous servlet. -->
-<!-- ! Display Success/Failure message. -->
-<!-- ! The page has a Print button that allows the customer to print the order -->
-<!-- showing all the order details. -->
-<!-- o On Failure: -->
-<!-- ! The page displays a message: “Transaction was not successful”. -->
-<!-- ! Display failure reason (Incorrect details/insufficient funds, etc.) -->
+	<!-- The page displays all the information passed on by the previous servlet. -->
+<!-- The page has a Print button that allows the customer to print the order showing all the order details. -->

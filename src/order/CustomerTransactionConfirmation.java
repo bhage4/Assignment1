@@ -60,8 +60,15 @@ public class CustomerTransactionConfirmation extends HttpServlet {
 		ccdb.updateBalance(transaction);
 
 		if(card.validateCreditCardInfo(price)){
+			System.out.println("made it");
 			session.removeAttribute("cart");
 			newBalance -= price;
+			if(newBalance<0){
+				System.out.println("Balance");
+				request.setAttribute("status", "funds");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("CustomerTransactionConfirmation.jsp");
+			    dispatcher.forward(request, response);
+			}
 			transaction.setBalance(newBalance);
 			ccdb.updateBalance(transaction);
 			
@@ -77,10 +84,12 @@ public class CustomerTransactionConfirmation extends HttpServlet {
 			
 			List<HashMap> orderItems = new ArrayList<HashMap>();
 			for(HashMap item: cart){
-				HashMap map = new HashMap(3);
+				HashMap map = new HashMap(6);
 				map.put("showingId", item.get("showingId"));
 				map.put("quantity", item.get("quantity"));
 				map.put("itemId", null);
+				
+				//Add Movie Name, Total Price, and Theater Name
 				
 				orderItems.add(map);
 			}
@@ -90,10 +99,11 @@ public class CustomerTransactionConfirmation extends HttpServlet {
 			int orderId = odb.addOrder(order);
 			order.setId(orderId);
 			request.setAttribute("order", order);
-			request.setAttribute("status", true);
+			request.setAttribute("status", "valid");
 		}
 		else{
-			request.setAttribute("status", false);
+			System.out.println("Didn't make it");
+			request.setAttribute("status", "payment");
 		}
 		RequestDispatcher dispatcher = request.getRequestDispatcher("CustomerTransactionConfirmation.jsp");
 	    dispatcher.forward(request, response);

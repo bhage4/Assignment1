@@ -1,9 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@ page import="models.Orders, java.util.List" %>
-<%
-	List<Orders> orders = (List<Orders>) request.getAttribute("ordersForUser");
-%>
+<%@ taglib prefix="c"  uri="http://java.sun.com/jstl/core_rt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -27,7 +24,7 @@
     <th>Date</th>
     <th></th>
   </tr>
-  <c:forEach items="${orders}" var="order">
+  <c:forEach items="${ordersForUser}" var="order">
   <tr>
     <td>"${ order.id }"</td>
     <td>"${ order.totalCost }"</td>
