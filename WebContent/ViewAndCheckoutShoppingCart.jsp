@@ -53,8 +53,7 @@
 </table>
 <br>
 <div class="innertube">
-<form action=CustomerTransaction name="checkOut">
-	<input class="btn btn-warning" type=submit value="Check Out">
-</form>
+<a type="button" class="btn btn-info" href="CustomerTransaction.jsp">Check Out</a>
+</div>
 </body>
 </html>
