@@ -101,7 +101,10 @@ public class CustomerTransactionConfirmation extends HttpServlet {
 			MovieShowingDB msdb = new MovieShowingDB();
 			for(HashMap item: orderItems){
 				MovieShowing showing = msdb.getShowing((Integer) item.get("showingId"));
-				int num = showing.getNumberPurchased() + (Integer) item.get("quantity");
+				int num = 0;
+				synchronized(this){
+					num = showing.getNumberPurchased() + (Integer) item.get("quantity");
+				}
 				showing.setNumberPurchased(num);
 				msdb.updatePurchased(showing);
 			}
