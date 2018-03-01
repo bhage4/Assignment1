@@ -112,7 +112,7 @@ public class CustomerTransactionConfirmation extends HttpServlet {
 			UsersDB udb = new UsersDB();
 			user.setFirstName(fName);
 			user.setLastName(lName);
-			user.setAddress(billAddress);
+			user.setAddress(billStreet);
 			user.setCity(billCity);
 			user.setPostalCode(Integer.parseInt(billZip));
 			user.setState(billState);

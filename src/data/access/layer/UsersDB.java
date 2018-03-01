@@ -124,7 +124,7 @@ public class UsersDB {
 			  if(password != null)
 				  password = "'" + password + "'";
 
-			  sql = "UPDATE users SET (FirstName=" + firstName +", LastName=" + lastName
+			  sql = "UPDATE users SET FirstName=" + firstName +", LastName=" + lastName
 			  		+ ", Address=" + address +", City=" + city +", State=" + state
 			  		+ ", PostalCode="+ postalCode +", EmailAddress=" + email +", PhoneNumber=" + phone
 			  		+ ", Birthday=" + birthday +", Type=" + type +", Status=" + status
