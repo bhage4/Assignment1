@@ -11,7 +11,7 @@
 </head>
 	<body>
 		<div id="topsection" class="controls form-inline"><br>
-		<form action=ViewOrders name="viewOrders">
+		<form action=ViewOrders name="viewOrders" method=post>
 			<a type="button" class="btn btn-info" href="CustomerHomePage.jsp">Home</a>
 			<input class="btn btn-info" type=submit value="View Orders">
 			<a type="button" class="btn btn-info" href="ViewAndCheckoutShoppingCart.jsp">Shopping Cart</a>
@@ -37,6 +37,3 @@
 		</table>
 	</body>
 </html>
-
-<!-- This page must display information regarding the movie, with a status update showing that the ticket order has been cancelled. -->
-<!-- The refundable amount (e.g., damage deposit) of the items price must be refunded (credited) back to the credit card account that was used to make the purchase. -->

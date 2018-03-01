@@ -12,7 +12,7 @@
 </head>
 <body>
 	<div id="topsection" class="controls form-inline"><br>
-	<form action=ViewOrders name="viewOrders">
+	<form action=ViewOrders name="viewOrders" method=post>
 		<a type="button" class="btn btn-info" href="CustomerHomePage.jsp">Home</a>
 		<input class="btn btn-info" type=submit value="View Orders">
 		<a type="button" class="btn btn-info" href="ViewAndCheckoutShoppingCart.jsp">Shopping Cart</a>
