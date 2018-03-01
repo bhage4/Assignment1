@@ -1,6 +1,8 @@
 package order;
 
 import java.io.IOException;
+import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -17,7 +19,6 @@ import models.MovieShowing;
 import models.Orders;
 import models.Showroom;
 import models.Theatres;
-
 import data.access.layer.MovieShowingDB;
 import data.access.layer.MoviesDB;
 import data.access.layer.OrdersDB;
@@ -31,41 +32,52 @@ public class ManageOrder extends HttpServlet {
         super();
     }
 
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
-		int orderId = (Integer) request.getAttribute("orderId");
+		int orderId = Integer.parseInt(request.getParameter("orderId"));
 		OrdersDB odb = new OrdersDB();
 		Orders order = odb.getOrder(orderId);
 		
 		MovieShowingDB msdb = new MovieShowingDB();
-		MovieShowing showing = new MovieShowing();
+		MoviesDB mdb = new MoviesDB();
+		TheatersDB tdb = new TheatersDB();
+		
+		List<HashMap> orderItems = new ArrayList<HashMap>();
 		
 		for(HashMap item: order.getOrderItems()){
-			if(item.get("order").equals(orderId)){
-				showing = msdb.getShowing((Integer) item.get("showingId"));
-				break;
+			HashMap map = new HashMap(6);
+			
+			MovieShowing showing = msdb.getShowing((Integer) item.get("showingId"));
+			Movie movie = mdb.getMovie(showing.getMovieId());
+			Showroom room = tdb.getShowroom(showing.getShowroomId());
+			Theatres theater = tdb.getTheater(room.getTheaterId());
+			
+			int quantity = (Integer) item.get("quantity");
+			double price = quantity * showing.getPrice();
+			
+			String theaterName = theater.getName() + " " + room.getRoomNumber();
+			
+			map.put("title", movie.getTitle());
+			map.put("quantity", quantity);
+			map.put("price", price);
+			map.put("theater", theaterName);
+			map.put("time", showing.getStartTime());
+			
+			Timestamp date = new Timestamp(System.currentTimeMillis());
+			
+			if(showing.getStartTime().after(date)){
+				map.put("validCancel", true);
 			}
+			else{
+				map.put("validCancel", false);
+			}
+			orderItems.add(map);
 		}
-		
-		MoviesDB mdb = new MoviesDB();
-		Movie movie = mdb.getMovie(showing.getMovieId());
-		
-		TheatersDB tdb = new TheatersDB();
-		Showroom room = tdb.getShowroom(showing.getShowroomId());
-		Theatres theater = tdb.getTheater(room.getTheaterId());
-		
-		if(showing.getStartTime().after(new Date())){
-			request.setAttribute("validCancel", false);
-		}
-		else{
-			request.setAttribute("validCancel", true);
-		}
-		
-		request.setAttribute("showing", showing);
-		request.setAttribute("room", room);
-		request.setAttribute("theater", theater);
-		request.setAttribute("order", order);
-		request.setAttribute("movie", movie); //should this be a redirect below
+		request.setAttribute("id", order.getId());
+		request.setAttribute("totalCost", order.getTotalCost());
+		request.setAttribute("date", order.getOrderDate());
+		request.setAttribute("orderItems", orderItems);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("ManageOrder.jsp");
 	    dispatcher.forward(request, response);
 	}
