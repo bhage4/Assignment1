@@ -46,7 +46,7 @@ public class ManageOrder extends HttpServlet {
 		List<HashMap> orderItems = new ArrayList<HashMap>();
 		
 		for(HashMap item: order.getOrderItems()){
-			HashMap map = new HashMap(6);
+			HashMap map = new HashMap(7);
 			
 			MovieShowing showing = msdb.getShowing((Integer) item.get("showingId"));
 			Movie movie = mdb.getMovie(showing.getMovieId());
@@ -63,6 +63,7 @@ public class ManageOrder extends HttpServlet {
 			map.put("price", price);
 			map.put("theater", theaterName);
 			map.put("time", showing.getStartTime());
+			map.put("itemId", item.get("itemId"));
 			
 			Timestamp date = new Timestamp(System.currentTimeMillis());
 			

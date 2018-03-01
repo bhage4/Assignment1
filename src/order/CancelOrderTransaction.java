@@ -34,6 +34,7 @@ public class CancelOrderTransaction extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
 		int orderId = Integer.parseInt(request.getParameter("orderId"));
+		int itemId = Integer.parseInt(request.getParameter("itemId"));
 
 		OrdersDB odb = new OrdersDB();
 		Orders order = odb.getOrder(orderId);
@@ -46,31 +47,39 @@ public class CancelOrderTransaction extends HttpServlet {
 		ccdb.updateBalance(transaction);
 		
 		MovieShowingDB msdb = new MovieShowingDB();
+		MoviesDB mdb = new MoviesDB();
 		
 		List<HashMap> cancelOrder = new ArrayList<HashMap>();
 		
+		int count=0;
 		for(HashMap item: order.getOrderItems()){
+			if((Integer)item.get("itemId") != itemId){
+				continue;
+			}
 			HashMap map = new HashMap(3);
 			
 			MovieShowing showing = msdb.getShowing((Integer) item.get("showingId"));
-			MoviesDB mdb = new MoviesDB();
 			Movie movie = mdb.getMovie(showing.getMovieId());
 			
 			double price = (Integer) item.get("quantity") * showing.getPrice();
-			
 			
 			if(showing.getStartTime().after(new Timestamp(System.currentTimeMillis()))){
 				int ticketsOrdered = 0;
 				ticketsOrdered = (Integer) item.get("quantity");
 				
-				int newQuantity = ticketsOrdered + showing.getNumberPurchased();
+				int newQuantity = showing.getNumberPurchased() - ticketsOrdered;
 				showing.setNumberPurchased(newQuantity);
 				msdb.updatePurchased(showing);
 				
+				count++;
+				odb.deleteOrderItem((Integer) item.get("itemId"));
 				request.setAttribute("refundStatus", "Yes");
 			}
 			else{
 				request.setAttribute("refundStatus", "No");
+			}
+			if(count == order.getOrderItems().size()){
+				odb.deleteOrder(order.getId());
 			}
 			
 			map.put("movieName", movie.getTitle());

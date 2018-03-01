@@ -219,9 +219,9 @@ public class OrdersDB {
 			for(HashMap map: order.getOrderItems()){
 				ps.setInt(2, (Integer) map.get("showingId"));
 				ps.setInt(3, (Integer) map.get("quantity"));
+				
+				ps.executeUpdate();
 			}
-			
-			ps.executeUpdate();
 			
 			rs.close();
 			db.closeConnection();
@@ -246,6 +246,42 @@ public class OrdersDB {
 			ps.setDate(3, order.getOrderDate());
 			ps.setString(4, order.getBillingAddress());
 			ps.setString(5, order.getCreditCardNumber());
+			
+			ps.executeUpdate();
+			db.closeConnection();
+		} 
+		catch (SQLException ex) {
+			ex.printStackTrace();
+		}
+	}
+
+	public void deleteOrder(int id){
+		db = new Database();
+		
+		String sql = "DELETE FROM orders WHERE Id=?";
+		try {
+			conn = db.databaseConnect();
+			ps = conn.prepareStatement(sql);
+			
+			ps.setInt(1, id);
+			
+			ps.executeUpdate();
+			db.closeConnection();
+		} 
+		catch (SQLException ex) {
+			ex.printStackTrace();
+		}
+	}
+	
+	public void deleteOrderItem(int id){
+		db = new Database();
+		
+		String sql = "DELETE FROM orderitems WHERE Id=?";
+		try {
+			conn = db.databaseConnect();
+			ps = conn.prepareStatement(sql);
+			
+			ps.setInt(1, id);
 			
 			ps.executeUpdate();
 			db.closeConnection();

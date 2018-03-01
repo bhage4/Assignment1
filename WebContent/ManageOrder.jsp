@@ -43,6 +43,7 @@
 		      <c:when test="${ order['validCancel'] }">
 		    	<form class="centered-form" action=CancelOrder name="cancelOrder" method="post">
 		    		<input type="hidden" name="orderId" value="${ id }" />
+		    		<input type="hidden" name="itemId" value="${ order['itemId'] }" />
 					<input class="btn btn-warning" type=submit value="Cancel Order">
 				</form>
 			  </c:when>

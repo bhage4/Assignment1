@@ -33,6 +33,7 @@ public class CancelOrder extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
 		int orderId = Integer.parseInt(request.getParameter("orderId"));
+		int itemId = Integer.parseInt(request.getParameter("itemId"));
 		
 		OrdersDB odb = new OrdersDB();
 		Orders order = odb.getOrder(orderId);
@@ -40,7 +41,10 @@ public class CancelOrder extends HttpServlet {
 		List<HashMap> itemInfo = new ArrayList<HashMap>();
 		
 		for(HashMap item: order.getOrderItems()){
-			HashMap map = new HashMap(5);
+			if((Integer)item.get("itemId") != itemId){
+				continue;
+			}
+			HashMap map = new HashMap(6);
 			
 			MovieShowingDB msdb = new MovieShowingDB();
 			MovieShowing showing = msdb.getShowing((Integer) item.get("showingId"));
@@ -52,7 +56,7 @@ public class CancelOrder extends HttpServlet {
 			Showroom room = tdb.getShowroom(showing.getShowroomId());
 			Theatres theater = tdb.getTheater(room.getTheaterId());
 			
-			double price = showing.getPrice() * (Double) item.get("quantity");
+			double price = showing.getPrice() * (Integer) item.get("quantity");
 			String theaterInfo = theater.getName() + " " + room.getRoomNumber();
 			
 			map.put("movieName", movie.getTitle());
@@ -63,7 +67,7 @@ public class CancelOrder extends HttpServlet {
 			
 			itemInfo.add(map);
 		}
-		
+		request.setAttribute("itemId", itemId);
 		request.setAttribute("itemInfo", itemInfo);
 		request.setAttribute("order", order);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("CancelOrder.jsp");

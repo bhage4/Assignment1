@@ -41,6 +41,7 @@
 <br>
 <form class="centered-form" action=CancelOrderTransaction name="cancelOrder" method="post">
   	<input type="hidden" name="orderId" value="${ order.id }" />
+  	<input type="hidden" name="itemId" value="${ itemId }" />
 	<input class="btn btn-warning" type=submit value="Confirm Cancellation">
 </form>
 <form class="centered-form" action=ManageOrder name="manageOrder" method="post">
