@@ -17,6 +17,7 @@ import javax.servlet.http.HttpSession;
 import data.access.layer.CreditCardsDB;
 import data.access.layer.MovieShowingDB;
 import data.access.layer.OrdersDB;
+import data.access.layer.UsersDB;
 import models.CreditCard;
 import models.MovieShowing;
 import models.Orders;
@@ -108,6 +109,15 @@ public class CustomerTransactionConfirmation extends HttpServlet {
 				showing.setNumberPurchased(num);
 				msdb.updatePurchased(showing);
 			}
+			UsersDB udb = new UsersDB();
+			user.setFirstName(fName);
+			user.setLastName(lName);
+			user.setAddress(billAddress);
+			user.setCity(billCity);
+			user.setPostalCode(Integer.parseInt(billZip));
+			user.setState(billState);
+			user.setUserType("customer");
+			udb.updateUser(user);
 			
 			double totalPrice = (Double) session.getAttribute("totalPrice");
 			session.removeAttribute("totalPrice");

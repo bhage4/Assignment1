@@ -53,7 +53,7 @@ public class Login extends HttpServlet {
 			}
 			
 			HttpSession session = request.getSession();
-			
+			user.setNumOfVisits(user.getNumOfVisits()+1);
 			session.setAttribute("user", user);
 			session.setAttribute("theaters", theatersList);
 			session.setAttribute("showTimes", showTimes);

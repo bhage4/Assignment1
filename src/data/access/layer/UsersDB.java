@@ -76,10 +76,65 @@ public class UsersDB {
 		  db.closeConnection();
 		  		  
 		  } catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 		}
 		
+	}
+	
+	public void updateUser(Users aUser){
+		db = new Database();
+
+		try {
+			  conn = db.databaseConnect();
+			  stmt = conn.createStatement();
+			  String sql;
+			  
+			  String firstName = aUser.getFirstName();
+			  if(firstName != null)
+				  firstName = "'" + firstName + "'";
+			  String lastName = aUser.getLastName();
+			  if(lastName != null)
+				  lastName = "'" + lastName + "'";
+			  String address = aUser.getAddress();
+			  if(address != null)
+				  address = "'" + address + "'";
+			  String city = aUser.getCity();
+			  if(city != null)
+				  city = "'" + city + "'";
+			  String state = aUser.getState();
+			  if(state != null)
+				  state = "'" + state + "'";
+			  int postalCode = aUser.getPostalCode();
+			  String email = aUser.getEmail();
+			  if(email != null)
+				  email = "'" + email + "'";
+			  int phone = aUser.getPhoneNumber();
+			  Date birthday = aUser.getBirthday();
+			  String type = aUser.getUserType();
+			  if(type != null)
+				  type = "'" + type + "'";
+			  String status = aUser.getStatus();
+			  if(status != null)
+				  status = "'" + status + "'";
+			  int numVisits = aUser.getNumOfVisits();
+			  String userName = aUser.getUserName();
+			  if(userName != null)
+				  userName = "'" + userName + "'";
+			  String password = aUser.getPassword();
+			  if(password != null)
+				  password = "'" + password + "'";
+
+			  sql = "UPDATE users SET (FirstName=" + firstName +", LastName=" + lastName
+			  		+ ", Address=" + address +", City=" + city +", State=" + state
+			  		+ ", PostalCode="+ postalCode +", EmailAddress=" + email +", PhoneNumber=" + phone
+			  		+ ", Birthday=" + birthday +", Type=" + type +", Status=" + status
+			  		+ ", NumOfVisits=" + numVisits +", Username=" + userName +", Password=" + password
+			  		+ " WHERE Id=" + aUser.getId();
+			  stmt.executeUpdate(sql);
+			  db.closeConnection();
+			  } catch (SQLException e) {
+					e.printStackTrace();
+			}
 	}
 	
 	public Users getUser(String aUserName) {
