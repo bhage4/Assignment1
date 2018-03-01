@@ -171,4 +171,32 @@ public class TheatersDB {
 		}
 		return null;
 	}
+	
+	public Showroom getShowroomByTheater(int theaterId){
+		db = new Database();
+		
+		String sql = "SELECT * FROM Showrooms WHERE theatreBuilding=?";
+		try {
+			conn = db.databaseConnect();
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, theaterId);
+			  
+			ResultSet rs = ps.executeQuery();
+			
+			rs.first();
+				
+			int id = rs.getInt("Id");
+			int seats = rs.getInt("availableSeats");
+			int roomNumber = rs.getInt("roomNumber");
+			
+			Showroom room = new Showroom(id, seats, roomNumber, theaterId);
+			
+			db.closeConnection();
+			rs.close();
+			return room;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 }
