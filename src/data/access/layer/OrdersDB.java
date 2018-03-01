@@ -215,14 +215,18 @@ public class OrdersDB {
 			
 			sql = "INSERT INTO orderitems (OrderId, ShowingId, Quantity) VALUES (?,?,?)";
 			
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, orderId);
+			
 			List<HashMap> orderItems = order.getOrderItems();
 			for(HashMap map: orderItems){
-				ps = conn.prepareStatement(sql);
-				
-				ps.setInt(1, orderId);
+							
 				ps.setInt(2, (Integer) map.get("showingId"));
 				ps.setInt(3, (Integer) map.get("quantity"));
 			}
+			
+			ps.executeUpdate();
+			
 			rs.close();
 			db.closeConnection();
 			return orderId;

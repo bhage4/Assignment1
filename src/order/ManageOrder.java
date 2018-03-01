@@ -2,6 +2,8 @@ package order;
 
 import java.io.IOException;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -36,7 +38,14 @@ public class ManageOrder extends HttpServlet {
 		Orders order = odb.getOrder(orderId);
 		
 		MovieShowingDB msdb = new MovieShowingDB();
-		MovieShowing showing = msdb.getShowing(order.getOrderItems()); //how do I get the showing id from the hashmap????
+		MovieShowing showing = new MovieShowing();
+		
+		for(HashMap item: order.getOrderItems()){
+			if(item.get("order").equals(orderId)){
+				showing = msdb.getShowing((Integer) item.get("showingId"));
+				break;
+			}
+		}
 		
 		MoviesDB mdb = new MoviesDB();
 		Movie movie = mdb.getMovie(showing.getMovieId());

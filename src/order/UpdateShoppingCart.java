@@ -1,6 +1,7 @@
 package order;
 
 import java.io.IOException;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -61,7 +62,7 @@ public class UpdateShoppingCart extends HttpServlet {
 			double price = quantity * showing.getPrice();
 			String theaterNameNum = theater.getName() + " " + room.getRoomNumber();
 			
-			Orders order = new Orders();	
+			Orders order = new Orders();	//This never actually adds anything to order?
 			if(order.checkValidQuantity(quantity, showingId)){
 				HashMap cartItem = new HashMap(9);
 				cartItem.put("orderId", order.getId());

@@ -47,16 +47,25 @@ public class CancelOrderTransaction extends HttpServlet {
 		Orders order = odb.getOrder(orderId);
 		
 		CreditCardsDB ccdb = new CreditCardsDB();
-		Transactions transaction = ccdb.getTransaction(order.getCreditCardNumber());
+		Transactions transaction = ccdb.getTransaction(String.valueOf(order.getCreditCardNumber()));
 		
 		double newBalance = order.getTotalCost() + transaction.getBalance();
 		transaction.setBalance(newBalance);
 		ccdb.updateBalance(transaction);
 		
 		MovieShowingDB msdb = new MovieShowingDB();
-		MovieShowing showing = msdb.getShowing(order.getShowingId());
+		MovieShowing showing = new MovieShowing();
+		int ticketsOrdered = 0;
 		
-		int newQuantity = order.getTicketsOrdered() + showing.getNumberPurchased();
+		for(HashMap item: order.getOrderItems()){
+			if(item.get("order").equals(orderId)){
+				showing = msdb.getShowing((Integer) item.get("showingId"));
+				ticketsOrdered = (Integer) item.get("quantity");
+				break;
+			}
+		}
+		
+		int newQuantity = ticketsOrdered + showing.getNumberPurchased();
 		showing.setNumberPurchased(newQuantity);
 		msdb.updatePurchased(showing);
 		//should this be a redirect
