@@ -30,7 +30,7 @@
 			  <tr>
 			    <td>${ item['movieName'] }</td>
 			    <td>${ item['quantity'] }</td>
-			    <td>$ ${ item['status'] }</td>
+			    <td>$ ${ item['price'] }</td>
 			    <td>${ refundStatus }</td>
 			  </tr>
 		  </c:forEach>
