@@ -2,20 +2,6 @@
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ taglib prefix="c"  uri="http://java.sun.com/jstl/core_rt" %>
-<%@ page import="models.Theatres, models.MovieShowing, data.access.layer.MovieShowingDB, data.access.layer.TheatersDB, java.util.List, java.text.SimpleDateFormat, java.util.ArrayList" %>
-<%-- <% --%>
-<!-- // 	TheatersDB tdb = new TheatersDB(); -->
-<!-- // 	List<Theatres> theaters = tdb.getAllTheaters(); -->
-	
-<!-- // 	MovieShowingDB msdb = new MovieShowingDB(); -->
-<!-- // 	List<MovieShowing> showings = msdb.getAllShowings(); -->
-	
-<!-- // 	List<String> showTimes = new ArrayList<String>(); -->
-<!-- // 	for(MovieShowing showing: showings){ -->
-<!-- // 		String time = new SimpleDateFormat("yyyy/MM/dd").format(showing.getStartTime()); -->
-<!-- // 		showTimes.add(time); -->
-<!-- // 	} -->
-<%-- %> --%>
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -26,11 +12,15 @@
 		<title>Home Page</title>
 	</head>
 	<body>
-		<div id="topsection"><div class="innertube"><br><form action=Logout method=post>
-		<a type="button" class="btn btn-info disabled" href="CustomerHomePage.jsp">Home</a>
-		<a type="button" class="btn btn-info" href="ViewOrders.jsp">View Orders</a>
-		<a type="button" class="btn btn-info" href="ViewAndCheckoutShoppingCart.jsp">Shopping Cart</a>
-		<input type=submit class="btn btn-danger" value="Log out">Welcome, ${ user.userName }</form></div></div>
+		<div id="topsection" class="controls form-inline"><br>
+		<form action=ViewOrders name="viewOrders">
+			<a type="button" class="btn btn-info disabled" href="CustomerHomePage.jsp">Home</a>
+			<input class="btn btn-info" type=submit value="View Orders">
+			<a type="button" class="btn btn-info" href="ViewAndCheckoutShoppingCart.jsp">Shopping Cart</a>
+		</form>
+		<form action=Logout method=post>
+			<input type=submit class="btn btn-danger" value="Log out">Welcome, ${ user.userName }
+		</form></div>
 		<br>
 		<h2> Search for a Movie!</h2>
 		<h3>    Now Showing: Interstellar, Black Panther, Jurassic Park</h3>

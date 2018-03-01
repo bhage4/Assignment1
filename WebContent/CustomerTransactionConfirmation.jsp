@@ -10,11 +10,15 @@
 		<title>Transaction Confirmation</title>
 	</head>
 	<body>
-	<div id="topsection"><div class="innertube"><br><form action=Logout method=post>
+	<div id="topsection" class="controls form-inline"><br>
+	<form action=ViewOrders name="viewOrders">
 		<a type="button" class="btn btn-info" href="CustomerHomePage.jsp">Home</a>
-		<a type="button" class="btn btn-info" href="ViewOrders.jsp">View Orders</a>
+		<input class="btn btn-info" type=submit value="View Orders">
 		<a type="button" class="btn btn-info" href="ViewAndCheckoutShoppingCart.jsp">Shopping Cart</a>
-		<input type=submit class="btn btn-danger" value="Log out">Welcome, ${ user.userName }</form></div></div>
+	</form>
+	<form action=Logout method=post>
+		<input type=submit class="btn btn-danger" value="Log out">Welcome, ${ user.userName }
+	</form></div>
 		
 		<c:choose>
  			<c:when test= "${ status == 'valid' }">
