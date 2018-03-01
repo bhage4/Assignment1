@@ -172,9 +172,9 @@ public class TheatersDB {
 		return null;
 	}
 	
-	public Showroom getShowroomByTheater(int theaterId){
+	public List<Showroom> getShowroomByTheater(int theaterId){
 		db = new Database();
-		
+		List<Showroom> rooms = new ArrayList<Showroom>();
 		String sql = "SELECT * FROM Showrooms WHERE theatreBuilding=?";
 		try {
 			conn = db.databaseConnect();
@@ -183,20 +183,19 @@ public class TheatersDB {
 			  
 			ResultSet rs = ps.executeQuery();
 			
-			rs.first();
+			while(rs.next()){
+				int id = rs.getInt("Id");
+				int seats = rs.getInt("availableSeats");
+				int roomNumber = rs.getInt("roomNumber");
 				
-			int id = rs.getInt("Id");
-			int seats = rs.getInt("availableSeats");
-			int roomNumber = rs.getInt("roomNumber");
-			
-			Showroom room = new Showroom(id, seats, roomNumber, theaterId);
-			
+				Showroom room = new Showroom(id, seats, roomNumber, theaterId);
+				rooms.add(room);
+			}
 			db.closeConnection();
 			rs.close();
-			return room;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return null;
+		return rooms;
 	}
 }

@@ -29,7 +29,6 @@ public class TheaterMovieSearchQuery extends HttpServlet {
         super();
     }
     
-//TODO: make sure no query returns null; if one does, act accordingly
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
@@ -45,32 +44,34 @@ public class TheaterMovieSearchQuery extends HttpServlet {
 			
 			TheatersDB tdb = new TheatersDB();
 			Theatres theater = tdb.getTheater(theaterName);
-			Showroom room = tdb.getShowroomByTheater(theater.getId());
-			
-			HashMap params = new HashMap(2);
-			params.put("movieId", movie.getId());
-			params.put("showRoomId", room.getId());
-			params.put("date", viewDate);
-			
-			MovieShowingDB msdb = new MovieShowingDB();
-			List<MovieShowing> showings = msdb.searchShowings(params);
+			List<Showroom> rooms = tdb.getShowroomByTheater(theater.getId());
 			
 			List<HashMap> results = new ArrayList<HashMap>();
-			for(MovieShowing showing: showings){
-				HashMap result = new HashMap(8);
+			for(Showroom room: rooms){
+				HashMap params = new HashMap(2);
+				params.put("movieId", movie.getId());
+				params.put("showRoomId", room.getId());
+				params.put("date", viewDate);
 				
-				int seats = room.getAvailableSeats() - showing.getNumberPurchased();
+				MovieShowingDB msdb = new MovieShowingDB();
+				List<MovieShowing> showings = msdb.searchShowings(params);
 				
-				result.put("seats", seats);
-				result.put("title", movie.getTitle());
-				result.put("theater", theater.getName());
-				result.put("startTime", showing.getStartTime());
-				result.put("price", showing.getPrice());
-				result.put("poster", movie.getThumbnail());
-				result.put("movieId", movie.getId());
-				result.put("showingId", showing.getId());
-				
-				results.add(result);
+				for(MovieShowing showing: showings){
+					HashMap result = new HashMap(8);
+					
+					int seats = room.getAvailableSeats() - showing.getNumberPurchased();
+					
+					result.put("seats", seats);
+					result.put("title", movie.getTitle());
+					result.put("theater", theater.getName());
+					result.put("startTime", showing.getStartTime());
+					result.put("price", showing.getPrice());
+					result.put("poster", movie.getThumbnail());
+					result.put("movieId", movie.getId());
+					result.put("showingId", showing.getId());
+					
+					results.add(result);
+				}
 			}
 			
 			request.setAttribute("results", results);
