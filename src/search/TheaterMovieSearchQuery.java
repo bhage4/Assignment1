@@ -45,7 +45,7 @@ public class TheaterMovieSearchQuery extends HttpServlet {
 			
 			TheatersDB tdb = new TheatersDB();
 			Theatres theater = tdb.getTheater(theaterName);
-			Showroom room = tdb.getShowroom(theater.getId());
+			Showroom room = tdb.getShowroomByTheater(theater.getId());
 			
 			HashMap params = new HashMap(2);
 			params.put("movieId", movie.getId());
