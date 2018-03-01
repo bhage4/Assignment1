@@ -23,11 +23,11 @@
 		    <th>Total Price</th>
 		    <th>Refunded?</th>
 		  </tr>
-		  <c:forEach items="${showingList}" var="showing">
+		  <c:forEach items="${result}" var="item">
 			  <tr>
-			    <td>${  }</td>
-			    <td>${  }</td>
-			    <td>$ ${  }</td>
+			    <td>${ item['movieName'] }</td>
+			    <td>${ item['quantity'] }</td>
+			    <td>$ ${ item['status'] }</td>
 			    <td>${ refundStatus }</td>
 			  </tr>
 		  </c:forEach>

@@ -133,6 +133,39 @@ public class CreditCardsDB {
 		return null;
 	}
 	
+	public Transactions getTransaction(String cardNumber){
+		db = new Database();
+		
+		String sql = "SELECT * FROM creditcards WHERE CreditCardNumber=?";
+		try {
+			conn = db.databaseConnect();
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, cardNumber);
+
+			ResultSet rs = ps.executeQuery();
+			
+			rs.first();
+				  
+			int id = rs.getInt("Id");
+			String name = rs.getString("CardHolderName");
+			String type = rs.getString("CardType");
+			int userId = rs.getInt("UserId");
+			String cvv = rs.getString("CVV");
+			Date expDate = rs.getDate("ExpirationDate");
+			int balance = rs.getInt("Balance");
+			
+			CreditCard card = new CreditCard(id, name, cardNumber, type, userId, cvv, expDate);
+			Transactions transaction = new Transactions(card, balance);
+			
+			rs.close();
+			db.closeConnection();
+			return transaction;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
 	public List<CreditCard> searchCards(String parameters){
 		return null;
 	}
