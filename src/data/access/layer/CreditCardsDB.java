@@ -31,8 +31,6 @@ public class CreditCardsDB {
 			ps.setDate(6, aCard.getExpirationDate());
 			
 			ps.executeUpdate();
-							
-			//stmt.executeUpdate(sql);
 			db.closeConnection();
 		}
 		catch (SQLException ex) {

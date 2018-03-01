@@ -15,8 +15,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import data.access.layer.CreditCardsDB;
+import data.access.layer.MovieShowingDB;
 import data.access.layer.OrdersDB;
 import models.CreditCard;
+import models.MovieShowing;
 import models.Orders;
 import models.Transactions;
 import models.Users;
@@ -91,10 +93,18 @@ public class CustomerTransactionConfirmation extends HttpServlet {
 				orderItems.add(map);
 			}
 			
-			Orders order = new Orders(user.getId(), price, date, billAddress, orderItems);
+			Orders order = new Orders(user.getId(), price, date, billAddress, orderItems, cardNumber);
 			OrdersDB odb = new OrdersDB();
 			int orderId = odb.addOrder(order);
 			order.setId(orderId);
+			
+			MovieShowingDB msdb = new MovieShowingDB();
+			for(HashMap item: orderItems){
+				MovieShowing showing = msdb.getShowing((Integer) item.get("showingId"));
+				int num = showing.getNumberPurchased() + (Integer) item.get("quantity");
+				showing.setNumberPurchased(num);
+				msdb.updatePurchased(showing);
+			}
 			
 			double totalPrice = (Double) session.getAttribute("totalPrice");
 			session.removeAttribute("totalPrice");

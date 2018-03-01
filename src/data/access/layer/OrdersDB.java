@@ -34,7 +34,7 @@ public class OrdersDB {
 			double cost = rs.getDouble("TotalCost");
 			Date orderDate = Date.valueOf(rs.getString("OrderDate"));
 			String address = rs.getString("BillingAddress");
-			int creditCardNumber = rs.getInt("CreditCardNumber");
+			String creditCardNumber = rs.getString("CreditCardNumber");
 			
 			List<HashMap> orderItems = new ArrayList<HashMap>();
 			
@@ -88,7 +88,7 @@ public class OrdersDB {
 				double cost = rs.getInt("TotalCost");
 				Date orderDate = Date.valueOf(rs.getString("OrderDate"));
 				String billingAddress = rs.getString("BillingAddress");
-				int cardNum = rs.getInt("CreditCardNumber");
+				String cardNum = rs.getString("CreditCardNumber");
 				
 				List<HashMap> orderItems = new ArrayList<HashMap>();
 				
@@ -147,9 +147,7 @@ public class OrdersDB {
 				double cost = rs.getDouble("totalCost");
 				Date orderDate = Date.valueOf(rs.getString("OrderDate"));
 				String address = rs.getString("BillingAddress");
-				int creditCardNumber = rs.getInt("CreditCardNumber");
-				int showingId = rs.getInt("ShowingId");
-				int ticketsOrdered = rs.getInt("TicketsOrdered");
+				String creditCardNumber = rs.getString("CreditCardNumber");
 				
 				List<HashMap> orderItems = new ArrayList<HashMap>();
 				
@@ -202,7 +200,7 @@ public class OrdersDB {
 			ps.setDouble(2, order.getTotalCost());
 			ps.setDate(3, order.getOrderDate());
 			ps.setString(4, order.getBillingAddress());
-			ps.setInt(5, order.getCreditCardNumber());
+			ps.setString(5, order.getCreditCardNumber());
 			
 			ps.executeUpdate();
 			
@@ -247,7 +245,7 @@ public class OrdersDB {
 			ps.setDouble(2, order.getTotalCost());
 			ps.setDate(3, order.getOrderDate());
 			ps.setString(4, order.getBillingAddress());
-			ps.setInt(5, order.getCreditCardNumber());
+			ps.setString(5, order.getCreditCardNumber());
 			
 			ps.executeUpdate();
 			db.closeConnection();

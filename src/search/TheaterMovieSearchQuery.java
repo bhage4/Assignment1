@@ -2,15 +2,17 @@ package search;
 
 import java.sql.Date;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+
 import models.Movie;
 import models.Theatres;
 import models.Showroom;
@@ -53,10 +55,25 @@ public class TheaterMovieSearchQuery extends HttpServlet {
 			MovieShowingDB msdb = new MovieShowingDB();
 			List<MovieShowing> showings = msdb.searchShowings(params);
 			
-			request.setAttribute("showingList", showings);
-			request.setAttribute("movie", movie);
-			request.setAttribute("showroom", room);
-			request.setAttribute("theater", theater);
+			List<HashMap> results = new ArrayList<HashMap>();
+			for(MovieShowing showing: showings){
+				HashMap result = new HashMap(8);
+				
+				int seats = room.getAvailableSeats() - showing.getNumberPurchased();
+				
+				result.put("seats", seats);
+				result.put("title", movie.getTitle());
+				result.put("theater", theater.getName());
+				result.put("startTime", showing.getStartTime());
+				result.put("price", showing.getPrice());
+				result.put("poster", movie.getThumbnail());
+				result.put("movieId", movie.getId());
+				result.put("showingId", showing.getId());
+				
+				results.add(result);
+			}
+			
+			request.setAttribute("results", results);
 		}
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("MovieSearchResults.jsp");

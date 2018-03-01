@@ -25,18 +25,17 @@
     <th>Poster</th>
     <th></th>
   </tr>
-  <c:forEach items="${showingList}" var="showing">
-	  <c:set var="seats" value="${ showing.numberPurchased - room.availableSeats }"/>
+  <c:forEach items="${results}" var="result">
 	  <tr>
-	  	<td>${ movie.title }</td>
-	    <td>${ theater.name }</td>
-	    <td>${ showing.startTime }</td>
-	    <td>$ ${ showing.price }</td>
-	    <td>${ seats }</td>
-	    <td><img src="${ movie.thumbnail }"></td>
+	  	<td>${ result['title'] }</td>
+	    <td>${ result['theater'] }</td>
+	    <td>${ result['startTime'] }</td>
+	    <td>$ ${ result['price'] }</td>
+	    <td>${ result['seats'] }</td>
+	    <td><img src="${ result['poster'] }"></td>
 	    <td><form class="centered-form" action=MovieSearchResults name="moviesearchresults" method="post">
-	    		<input type="hidden" name="movieId" value="${ movie.id }" />
-	    		<input type="hidden" name="showingId" value="${ showing.id }" />
+	    		<input type="hidden" name="movieId" value="${ result['movieId'] }" />
+	    		<input type="hidden" name="showingId" value="${ result['showingId'] }" />
 				<input class="btn btn-warning" type=submit value="View Movie Details">
 			</form></td>
 	  </tr>

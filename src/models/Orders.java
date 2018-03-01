@@ -15,24 +15,26 @@ public class Orders {
 	private List<HashMap> orderItems;	//Stores itemId, showingId, and ticketsOrdered
 	private double totalCost;
 	private Date orderDate;
-	private int creditCardNumber;
+	private String creditCardNumber;
 	private String billingAddress;
 	
 	public Orders() {
 		super();
 	}
 
-	public Orders(int customerId, double totalCost, Date orderDate, String billingAddress, List<HashMap> orderItems) {
+	public Orders(int customerId, double totalCost, Date orderDate, String billingAddress,
+			List<HashMap> orderItems, String creditCardNumber) {
 		super();
 		this.customerId = customerId;
 		this.totalCost = totalCost;
 		this.orderDate = orderDate;
 		this.orderItems = orderItems;
 		this.billingAddress = billingAddress;
+		this.creditCardNumber = creditCardNumber;
 	}
 
 	public Orders(int id, int customerId, double totalCost, Date orderDate,
-			int creditCardNumber, String billingAddress, List<HashMap> orderItems) {
+			String creditCardNumber, String billingAddress, List<HashMap> orderItems) {
 		super();
 		this.id = id;
 		this.customerId = customerId;
@@ -111,11 +113,11 @@ public class Orders {
 		this.orderDate = orderDate;
 	}
 
-	public int getCreditCardNumber() {
+	public String getCreditCardNumber() {
 		return creditCardNumber;
 	}
 
-	public void setCreditCardNumber(int creditCardNumber) {
+	public void setCreditCardNumber(String creditCardNumber) {
 		this.creditCardNumber = creditCardNumber;
 	}
 
