@@ -18,10 +18,7 @@ public class CreditCardsDB {
 		db = new Database();
 		
 		try {
-			conn = db.databaseConnect();
-
-			//stmt = conn.createStatement();
-			
+			conn = db.databaseConnect();			
 			String sql = "INSERT INTO creditcards (CardHolderName, CreditCardNumber, CardType, UserId, CVV, ExpirationDate)"
 				+" VALUES (?, ?, ?, (SELECT users.Id from users where Id = ?), ?, ?)";
 			
@@ -74,14 +71,45 @@ public class CreditCardsDB {
 		return null;
 	}
 	
-	public Transactions getTransaction(String cardNumber){
+	public CreditCard getCard(int userId){
 		db = new Database();
 		
-		String sql = "SELECT * FROM creditcards WHERE CreditCardNumber=?";
+		String sql = "SELECT * FROM creditcards WHERE UserId=?";
 		try {
 			conn = db.databaseConnect();
 			ps = conn.prepareStatement(sql);
-			ps.setString(1, cardNumber);
+			ps.setInt(1, userId);
+			  
+			ResultSet rs = ps.executeQuery();
+			
+			rs.first();
+				  
+			int id = rs.getInt("Id");
+			String name = rs.getString("CardHolderName");
+			String type = rs.getString("CardType");
+			String cardNumber = rs.getString("CreditCardNumber");
+			String cvv = rs.getString("CVV");
+			Date expDate = rs.getDate("ExpirationDate");
+			
+			CreditCard card = new CreditCard(id, name, cardNumber, type, userId, cvv, expDate);
+			
+			rs.close();
+			db.closeConnection();
+			return card;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public Transactions getTransaction(int userId){
+		db = new Database();
+		
+		String sql = "SELECT * FROM creditcards WHERE UserId=?";
+		try {
+			conn = db.databaseConnect();
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, userId);
 
 			ResultSet rs = ps.executeQuery();
 			
@@ -90,7 +118,7 @@ public class CreditCardsDB {
 			int id = rs.getInt("Id");
 			String name = rs.getString("CardHolderName");
 			String type = rs.getString("CardType");
-			int userId = rs.getInt("UserId");
+			String cardNumber = rs.getString("CreditCardNumber");
 			String cvv = rs.getString("CVV");
 			Date expDate = rs.getDate("ExpirationDate");
 			int balance = rs.getInt("Balance");

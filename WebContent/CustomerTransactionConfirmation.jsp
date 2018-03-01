@@ -27,17 +27,24 @@
 				  <th>Total Price</th>
 				  <th>Theater Name</th>
 				</tr>
-				<c:forEach items="${order}" var="item">
+				<c:forEach items="${order.orderItems}" var="item">
 					<tr>
-					  <td>  </td>
-					  <td> item.orderItems['quantity'] </td>
-					  <td>$</td>
-					  <td></td>
+					  <td> ${ item['movieName'] } </td>
+					  <td> ${ item['quantity'] } </td>
+					  <td>$ ${ item['price'] }</td>
+					  <td>${ item['theater'] }</td>
 					</tr>
 				</c:forEach>
 				</table><br>
-				<strong>Total Cost:</strong> $42.00<br><br>
+				<strong>Total Cost:</strong> $ ${ totalPrice }<br><br>
 				<br>
+				<button onclick="printPage()">Print this page</button>
+
+				<script>
+				function printPage() {
+				    window.print();
+				}
+				</script>
  			</c:when>
  			<c:when test= "${ status == 'payment' }">
  				<h3>Purchase Not Completed</h3>
@@ -50,6 +57,4 @@
 		</c:choose>
 	</body>
 </html>
-<!-- On Success: -->
-	<!-- The page displays all the information passed on by the previous servlet. -->
 <!-- The page has a Print button that allows the customer to print the order showing all the order details. -->

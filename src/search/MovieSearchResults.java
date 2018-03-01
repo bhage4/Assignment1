@@ -10,10 +10,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
 import data.access.layer.MovieShowingDB;
 import data.access.layer.ReviewDB;
+import data.access.layer.TheatersDB;
 import models.MovieShowing;
 import models.Review;
+import models.Showroom;
 
 @WebServlet("/MovieSearchResults")
 public class MovieSearchResults extends HttpServlet {
@@ -34,9 +37,14 @@ public class MovieSearchResults extends HttpServlet {
 		MovieShowingDB msdb = new MovieShowingDB();
 		MovieShowing showing = msdb.getShowing(showingId);
 		
-		HttpSession session = request.getSession();
-		session.setAttribute("showing", showing);
-		session.setAttribute("reviews", reviews);
+		TheatersDB tdb = new TheatersDB();
+		Showroom room = tdb.getShowroom(showing.getShowroomId());
+		
+		int seats = room.getAvailableSeats() - showing.getNumberPurchased();
+		
+		request.setAttribute("showing", showing);
+		request.setAttribute("reviews", reviews);
+		request.setAttribute("seats", seats);
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("MovieDetailsSelection.jsp");
 	    dispatcher.forward(request, response);

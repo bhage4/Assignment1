@@ -53,11 +53,10 @@ public class TheaterMovieSearchQuery extends HttpServlet {
 			MovieShowingDB msdb = new MovieShowingDB();
 			List<MovieShowing> showings = msdb.searchShowings(params);
 			
-			HttpSession session = request.getSession();
-			session.setAttribute("showingList", showings);
-			session.setAttribute("movie", movie);
-			session.setAttribute("showroom", room);
-			session.setAttribute("theater", theater);
+			request.setAttribute("showingList", showings);
+			request.setAttribute("movie", movie);
+			request.setAttribute("showroom", room);
+			request.setAttribute("theater", theater);
 		}
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("MovieSearchResults.jsp");

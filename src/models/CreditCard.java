@@ -40,7 +40,7 @@ public class CreditCard {
 		this.ccv = ccv;
 		this.expirationDate = expirationDate;
 	}
-	public boolean validateCreditCardInfo(double price){
+	public boolean validateCreditCardInfo(double price, double balance, CreditCard card){
 		int cardLength = String.valueOf(this.cardNumber).length();
 		if(cardLength > 19 || cardLength < 13){
 			return false;
@@ -50,10 +50,6 @@ public class CreditCard {
 		if(ccvLength != 3){
 			return false;
 		}
-		
-		CreditCardsDB ccdb = new CreditCardsDB();
-		Transactions ta = ccdb.getTransaction(this.cardNumber);
-		CreditCard card = ta.getCard();
 		
 		if(!card.getCardHolderName().equalsIgnoreCase(this.cardHolderName)){
 			return false;
@@ -67,7 +63,7 @@ public class CreditCard {
 		if(!card.getExpirationDate().equals(this.expirationDate)){
 			return false;
 		}
-		if(ta.getBalance()<price){
+		if(balance<price){
 			return false;
 		}
 		return true;

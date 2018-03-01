@@ -69,6 +69,7 @@ public class CancelOrderTransaction extends HttpServlet {
 		showing.setNumberPurchased(newQuantity);
 		msdb.updatePurchased(showing);
 		//should this be a redirect
+		request.setAttribute("refundStatus", "Yes");
 		RequestDispatcher dispatcher = request.getRequestDispatcher("CancellationConfirmation.jsp");
 	    dispatcher.forward(request, response);
 	}

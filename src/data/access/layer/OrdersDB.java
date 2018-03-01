@@ -218,9 +218,7 @@ public class OrdersDB {
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, orderId);
 			
-			List<HashMap> orderItems = order.getOrderItems();
-			for(HashMap map: orderItems){
-							
+			for(HashMap map: order.getOrderItems()){
 				ps.setInt(2, (Integer) map.get("showingId"));
 				ps.setInt(3, (Integer) map.get("quantity"));
 			}

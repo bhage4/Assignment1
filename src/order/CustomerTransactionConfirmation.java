@@ -47,24 +47,21 @@ public class CustomerTransactionConfirmation extends HttpServlet {
 		List<HashMap> cart = (List<HashMap>) session.getAttribute("cart");
 		
 		CreditCardsDB ccdb = new CreditCardsDB();
-		CreditCard checkCard = ccdb.getCard(cardNumber);
+		CreditCard checkCard = ccdb.getCard(user.getId());
 		
 		CreditCard card = new CreditCard(name, cardNumber, cardType, user.getId(), secCode, expDate);
 
 		if(checkCard == null){
 			ccdb.addCard(card);
 		}
-		Transactions transaction = ccdb.getTransaction(cardNumber);
+		Transactions transaction = ccdb.getTransaction(user.getId());
 		double newBalance = balanceAdded + transaction.getBalance();
 		transaction.setBalance(newBalance);
 		ccdb.updateBalance(transaction);
 
-		if(card.validateCreditCardInfo(price)){
-			System.out.println("made it");
-			session.removeAttribute("cart");
+		if(card.validateCreditCardInfo(price, newBalance, checkCard)){
 			newBalance -= price;
 			if(newBalance<0){
-				System.out.println("Balance");
 				request.setAttribute("status", "funds");
 				RequestDispatcher dispatcher = request.getRequestDispatcher("CustomerTransactionConfirmation.jsp");
 			    dispatcher.forward(request, response);
@@ -86,11 +83,11 @@ public class CustomerTransactionConfirmation extends HttpServlet {
 			for(HashMap item: cart){
 				HashMap map = new HashMap(6);
 				map.put("showingId", item.get("showingId"));
-				map.put("quantity", item.get("quantity"));
+				map.put("quantity", item.get("ticketQuantity"));
 				map.put("itemId", null);
-				
-				//Add Movie Name, Total Price, and Theater Name
-				
+				map.put("movieName", item.get("movieName"));
+				map.put("price", item.get("price"));
+				map.put("theater", item.get("theaterNameNum"));
 				orderItems.add(map);
 			}
 			
@@ -98,11 +95,16 @@ public class CustomerTransactionConfirmation extends HttpServlet {
 			OrdersDB odb = new OrdersDB();
 			int orderId = odb.addOrder(order);
 			order.setId(orderId);
+			
+			double totalPrice = (Double) session.getAttribute("totalPrice");
+			session.removeAttribute("totalPrice");
+			session.removeAttribute("cart");
+			
+			request.setAttribute("totalPrice", totalPrice);
 			request.setAttribute("order", order);
 			request.setAttribute("status", "valid");
 		}
 		else{
-			System.out.println("Didn't make it");
 			request.setAttribute("status", "payment");
 		}
 		RequestDispatcher dispatcher = request.getRequestDispatcher("CustomerTransactionConfirmation.jsp");

@@ -77,9 +77,6 @@ public class UpdateShoppingCart extends HttpServlet {
 				
 				cart.add(cartItem);
 				
-				OrdersDB odb = new OrdersDB();
-				odb.addOrder(order);
-				
 				session.setAttribute("cart", cart);
 				
 				double totalPrice = 0;
